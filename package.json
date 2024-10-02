@@ -7,7 +7,10 @@
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier -c --write  **/* --cache",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "react": "^18",
@@ -22,6 +25,12 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.14"
+    "eslint-config-next": "14.2.14",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "prettier --write  --ignore-unknown",
+    "*.{json,less,scss,md}": "prettier --write --ignore-unknown"
   }
 }
