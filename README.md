@@ -1,7 +1,7 @@
 [![Test Coverage](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/?query=branch:main) [![codecov](https://codecov.io/gh/yanyunchangfeng/nextjs-template/branch/main/graph/badge.svg)](https://codecov.io/gh/yanyunchangfeng/nextjs-template)
 
 <p align="center">
-    <img width="300" src="src/assets/img/yanyunchangfeng.png">
+    <img width="144" src="https://cdn.jsdelivr.net/gh/yanyunchangfeng/cdn@1.0/assets/icons/cf-icon@0,75x.png">
 </p>
 
 <p align="center">
