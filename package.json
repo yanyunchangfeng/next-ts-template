@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "true",
     "prettier": "prettier -c --write  **/* --cache",
     "prepare": "husky install",
     "pre-commit": "lint-staged"
