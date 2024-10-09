@@ -2,11 +2,11 @@ export default {
   development: [
     {
       source: '/msService/:path*',
-      destination: 'http://10.54.56.61:8080/msService/:path*'
+      destination: 'http://origin:port/msService/:path*'
     },
     {
       source: '/inter-api/:path*',
-      destination: 'http://10.54.56.61:8080/inter-api/:path*'
+      destination: 'http://origin:port/inter-api/:path*'
     },
     {
       source: '/prober/:path*',
@@ -14,21 +14,21 @@ export default {
     },
     {
       source: '/greenDill/static/:path*',
-      destination: 'http://10.54.56.61:8080/greenDill/static/:path*'
+      destination: 'http://origin:port/greenDill/static/:path*'
     },
     {
       source: '/dev/:path*',
-      destination: 'http://10.54.56.61:8080/dev/:path*'
+      destination: 'http://origin:port/dev/:path*'
     }
   ],
   test: [
     {
       source: '/msService/:path*',
-      destination: 'http://10.48.3.23:8080/msService/:path*'
+      destination: 'http://origin:port/msService/:path*'
     },
     {
       source: '/inter-api/:path*',
-      destination: 'http://10.48.3.23:8080/inter-api/:path*'
+      destination: 'http://origin:port/inter-api/:path*'
     },
     {
       source: '/prober/:path*',
@@ -36,11 +36,11 @@ export default {
     },
     {
       source: '/greenDill/static/:path*',
-      destination: 'http://10.48.3.23:8080/greenDill/static/:path*'
+      destination: 'http://origin:port/greenDill/static/:path*'
     },
     {
       source: '/test/:path*',
-      destination: 'http://10.48.3.23:8080/test/:path*'
+      destination: 'http://origin:port/test/:path*'
     }
   ]
 };
