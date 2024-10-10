@@ -1,8 +1,9 @@
-/** @type {import('next').NextConfig} */
 import proxy from './proxy.mjs';
 const mode = process.env.BUILD_MODE ?? 'standalone';
 const { ENV } = process.env;
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH,
   output: mode,
   distDir: 'dist',
   reactStrictMode: false
