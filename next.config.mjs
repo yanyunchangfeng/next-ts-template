@@ -3,7 +3,7 @@ const mode = process.env.BUILD_MODE ?? 'standalone';
 const { ENV } = process.env;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH,
+  assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
   output: mode,
   distDir: 'dist',
   reactStrictMode: false

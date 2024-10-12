@@ -32,7 +32,8 @@ export default function RootLayout({
         style={{
           backgroundImage: `url(${myImage.src})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
         }}
       >
         {children}
