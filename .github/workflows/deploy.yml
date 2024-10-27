@@ -1,11 +1,14 @@
 name: Deploy
 
+env:
+  TEST_SCRIPT: ${{vars.TEST_SCRIPT ||  'test'}}
+
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-      - 'dev/**'
+      - dev/**
 
 permissions:
   contents: write
@@ -36,10 +39,10 @@ jobs:
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
       - name: Test project
-        run: npm run pre-commit
+        run: pnpm  ${{env.TEST_SCRIPT}}
 
       - name: Build project
-        run: npm run build
+        run: pnpm build
 
       - name: Deploy to remote gh-pages branch
         uses: actions/upload-pages-artifact@v3
