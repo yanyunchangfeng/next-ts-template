@@ -29,22 +29,22 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: '21.x'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+          run_install: true
 
       - name: Test project
-        run: pnpm  ${{env.TEST_SCRIPT}}
+        run: pnpm ${{env.TEST_SCRIPT}}
 
       - name: Build project
         run: pnpm build
 
-      - name: Deploy to remote gh-pages branch
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
