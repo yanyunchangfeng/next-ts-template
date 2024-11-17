@@ -1,5 +1,7 @@
 [![Test Coverage](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/?query=branch:main) [![codecov](https://codecov.io/gh/yanyunchangfeng/nextjs-template/branch/main/graph/badge.svg)](https://codecov.io/gh/yanyunchangfeng/nextjs-template) [![Deploy](https://github.com/yanyunchangfeng/nextjs-template/workflows/Deploy/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/deploy.yml)
 
+[![npm latest version](https://img.shields.io/npm/v/web-stts/latest.svg)](https://www.npmjs.com/package/nextjs-template)
+
 <p align="center">
     <img width="144" src="https://cdn.jsdelivr.net/gh/yanyunchangfeng/cdn@1.0/assets/icons/cf-icon@0,75x.png">
 </p>
@@ -32,20 +34,20 @@
 ## 单元测试
 
 ```
-   yarn test or npm test
+   pnpm test
 ```
 
 ## 端到端测试
 
 ```
-   yarn cypress:open or  npm run cypress:open
-   yarn cypress:run or  npm run cypress:run
+   pnpm run cypress:open
+   pnpm run cypress:run
 ```
 
 ## 打包分析
 
 ```
-   yarn build-analyzer or npm run build-analyzer
+   pnpm run build-analyzer
 ```
 
 ## 社交主页
