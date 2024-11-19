@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.0.0...v1.1.0) (2024-11-19)
+
+### Features
+
+- add template & doc ([57ea674](https://github.com/yanyunchangfeng/nextjs-template/commit/57ea674dfac902850cf06a50a4dba11c8d280a4f))
+
 # 1.0.0 (2024-11-17)
 
 ### Features
