@@ -1,3 +1,9 @@
+# [1.4.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.3.0...v1.4.0-rc.1) (2024-11-19)
+
+### Features
+
+- add global-error & page err ([c68132d](https://github.com/yanyunchangfeng/nextjs-template/commit/c68132d908b94377db46a994b567863da8f51c7d))
+
 # [1.3.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.2.0...v1.3.0) (2024-11-19)
 
 ### Features
