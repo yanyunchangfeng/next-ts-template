@@ -4,7 +4,8 @@ const { ENV } = process.env;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
-  output: mode,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
+  output: mode, // 执行本地启动生产版本 需要注释掉
   distDir: 'dist',
   reactStrictMode: false
 };
