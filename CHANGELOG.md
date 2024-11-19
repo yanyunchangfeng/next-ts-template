@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.1.0...v1.2.0) (2024-11-19)
+
+### Features
+
+- add React use for page async getData ([0a1b99e](https://github.com/yanyunchangfeng/nextjs-template/commit/0a1b99ebe8b4b48032e78d1b75a6cad4abccd8a0))
+
 # [1.2.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.1.0...v1.2.0-rc.1) (2024-11-19)
 
 ### Features
