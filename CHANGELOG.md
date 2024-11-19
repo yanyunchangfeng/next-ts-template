@@ -1,3 +1,10 @@
+# [1.3.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.2.0...v1.3.0-rc.1) (2024-11-19)
+
+### Features
+
+- add basePath for Link ([aab6d94](https://github.com/yanyunchangfeng/nextjs-template/commit/aab6d9479a3b7da8f7e3f35064705144933337c0))
+- add link active ([41debe3](https://github.com/yanyunchangfeng/nextjs-template/commit/41debe3d7976b6e40c310ed7928291519e5290cc))
+
 # [1.2.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.1.0...v1.2.0) (2024-11-19)
 
 ### Features
