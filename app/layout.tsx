@@ -5,7 +5,6 @@ import myImage from '@/app/assets/homepage.png';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { CustomComponent } from './components';
-import Link from 'next/link';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -45,10 +44,6 @@ export default function RootLayout({
         }}
       >
         <div className="p-5">
-          <nav className="flex items-center justify-center gap-10 text-blue-600">
-            <Link href="/blog">blog</Link>
-            <Link href="/dashboard">dashboard</Link>
-          </nav>
           {/* 在布局中使用 Suspense，组件在导航的时候不会发生改变。而在模板中使用 Suspense，组件在导航的时候每次都会触发 Loading 效果。 */}
           <Suspense fallback={<Loading />}>
             <CustomComponent title="layout" />
