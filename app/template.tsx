@@ -3,10 +3,13 @@
 import { useState, useEffect, FC, PropsWithChildren, Suspense } from 'react';
 import { CustomComponent } from '@/app/components';
 import Loading from './loading';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 //   更具体的来说，模板会在导航的时候为每个子级创建一个新实例
 const Template: FC<PropsWithChildren> = ({ children }) => {
   const [text, setText] = useState('');
+  const path = usePathname();
 
   useEffect(() => {
     console.log('count page view');
@@ -14,6 +17,14 @@ const Template: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div>
+      <nav className="flex items-center justify-center gap-10 text-blue-600">
+        <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
+          blog
+        </Link>
+        <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
+          dashboard
+        </Link>
+      </nav>
       <Suspense fallback={<Loading />}>
         <CustomComponent title="template" />
       </Suspense>
