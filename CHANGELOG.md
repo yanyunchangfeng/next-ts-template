@@ -1,3 +1,9 @@
+# [1.5.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.4.0...v1.5.0) (2024-11-20)
+
+### Features
+
+- update config & script ([6d7c92d](https://github.com/yanyunchangfeng/nextjs-template/commit/6d7c92d9e66a763b069de985c71cca3b58803ce5))
+
 # [1.5.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.4.0...v1.5.0-rc.1) (2024-11-20)
 
 ### Features
