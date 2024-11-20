@@ -1,11 +1,11 @@
 import proxy from './proxy.mjs';
-const mode = process.env.BUILD_MODE ?? 'standalone';
+const mode = process.env.BUILD_MODE ?? undefined;
 const { ENV } = process.env;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
-  output: mode, // 执行本地启动生产版本 需要注释掉
+  output: mode,
   distDir: 'dist',
   reactStrictMode: false
 };

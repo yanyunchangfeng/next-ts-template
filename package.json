@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "dev:test": "cross-env ENV=test next dev",
-    "dev:debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev:debug": "NODE_OPTIONS=--inspect next dev",
+    "build": "cross-env BUILD_MODE=export next build",
+    "start": "next build && next start",
     "lint": "next lint",
     "test": "jest",
     "prettier": "prettier -c --write  **/* --cache",
