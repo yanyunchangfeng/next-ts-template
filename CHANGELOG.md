@@ -1,3 +1,9 @@
+# [1.6.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.5.0...v1.6.0-rc.1) (2024-11-20)
+
+### Features
+
+- add not-found ([45c0942](https://github.com/yanyunchangfeng/nextjs-template/commit/45c0942e3e70cf2e7890ff3a6af0a12516fd370d))
+
 # [1.5.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.4.0...v1.5.0) (2024-11-20)
 
 ### Features
