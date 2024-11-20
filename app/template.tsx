@@ -4,11 +4,12 @@ import { useState, useEffect, FC, PropsWithChildren, Suspense } from 'react';
 import { CustomComponent } from '@/app/components';
 import Loading from './loading';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 //   更具体的来说，模板会在导航的时候为每个子级创建一个新实例
 const Template: FC<PropsWithChildren> = ({ children }) => {
   const [text, setText] = useState('');
+  const router = useRouter();
   const path = usePathname();
 
   useEffect(() => {
@@ -24,6 +25,13 @@ const Template: FC<PropsWithChildren> = ({ children }) => {
         <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
           dashboard
         </Link>
+        {/* App Router 的默认行为是滚动到新路由的顶部，
+        或者在前进后退导航时维持之前的滚动距离。
+        如果你想要禁用这个行为，你可以给 <Link> 组件传递一个 scroll={false}属性，
+        或者在使用 router.push和 router.replace的时候，设置 scroll: false */}
+        <button onClick={() => router.push('/', { scroll: false })} className="text-blue-600">
+          返回首页
+        </button>
       </nav>
       <Suspense fallback={<Loading />}>
         <CustomComponent title="template" />
