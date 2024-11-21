@@ -7,7 +7,17 @@ const nextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
   output: mode,
   distDir: 'dist',
-  reactStrictMode: false
+  reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn2.thecatapi.com',
+        port: '',
+        pathname: '/images/**'
+      }
+    ]
+  }
 };
 const CorsHeaders = [
   { key: 'Access-Control-Allow-Credentials', value: 'true' },

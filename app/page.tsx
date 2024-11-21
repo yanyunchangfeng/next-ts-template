@@ -21,9 +21,8 @@ export default async function Home() {
   // const [title, setTitle] = useState('');
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');
   const data: ToDo[] = (await res.json()).slice(0, 10);
-  console.log(data);
   // throw new Error('Something went wrong!');
-
+  console.log('render home');
   return (
     <ul>
       {data.map(({ title, id }) => {
