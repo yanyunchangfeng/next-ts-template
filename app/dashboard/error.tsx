@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <div>
-      <h2>Something went wrong!</h2>
+      <h2>Dashboard Something went wrong!</h2>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment
