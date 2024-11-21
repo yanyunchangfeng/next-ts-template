@@ -1,3 +1,9 @@
+# [1.8.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.7.0...v1.8.0) (2024-11-21)
+
+### Features
+
+- add dashboardgroup ([c7c6af0](https://github.com/yanyunchangfeng/nextjs-template/commit/c7c6af0b0132c592590e722df463ebb3efb914b0))
+
 # [1.8.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.7.0...v1.8.0-rc.1) (2024-11-21)
 
 ### Features
