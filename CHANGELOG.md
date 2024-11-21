@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.6.0...v1.7.0) (2024-11-21)
+
+### Features
+
+- add Suspense & streaming ([af39d2a](https://github.com/yanyunchangfeng/nextjs-template/commit/af39d2a8b99c25fe770f25dcb129d0863a9abd3b))
+
 # [1.7.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.6.0...v1.7.0-rc.1) (2024-11-21)
 
 ### Features
