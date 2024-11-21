@@ -25,6 +25,12 @@ const Template: FC<PropsWithChildren> = ({ children }) => {
         <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
           dashboard
         </Link>
+        <Link
+          href="/about"
+          className={path === '/about' || path === '/settings' || path === '/team' ? 'text-blue' : 'text-black'}
+        >
+          dashboard group
+        </Link>
         {/* App Router 的默认行为是滚动到新路由的顶部，
         或者在前进后退导航时维持之前的滚动距离。
         如果你想要禁用这个行为，你可以给 <Link> 组件传递一个 scroll={false}属性，
