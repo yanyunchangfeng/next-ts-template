@@ -1,3 +1,9 @@
+# [1.10.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.9.0...v1.10.0-rc.1) (2024-11-22)
+
+### Features
+
+- add Parallel Routes ([fb29385](https://github.com/yanyunchangfeng/nextjs-template/commit/fb2938566334ee0a5c2cc5ca8389954ca677e168))
+
 # [1.9.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.8.0...v1.9.0) (2024-11-22)
 
 ### Features
