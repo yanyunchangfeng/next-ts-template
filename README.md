@@ -1,6 +1,6 @@
-[![Test Coverage](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/?query=branch:main) [![codecov](https://codecov.io/gh/yanyunchangfeng/nextjs-template/branch/main/graph/badge.svg)](https://codecov.io/gh/yanyunchangfeng/nextjs-template) [![Deploy](https://github.com/yanyunchangfeng/nextjs-template/workflows/Deploy/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/deploy.yml)
+[![Test Coverage](https://github.com/yanyunchangfeng/next-ts-template/actions/workflows/test.yml/badge.svg)](https://github.com/yanyunchangfeng/nextjs-template/actions/workflows/test.yml/?query=branch:main) [![codecov](https://codecov.io/gh/yanyunchangfeng/next-ts-template/branch/main/graph/badge.svg)](https://codecov.io/gh/yanyunchangfeng/next-ts-template) [![Deploy](https://github.com/yanyunchangfeng/nextjs-template/workflows/Deploy/badge.svg)](https://github.com/yanyunchangfeng/next-ts-template/actions/workflows/deploy.yml)
 
-[![npm latest version](https://img.shields.io/npm/v/web-stts/latest.svg)](https://www.npmjs.com/package/nextjs-template)
+[![npm latest version](https://img.shields.io/npm/v/next-ts-template/latest.svg)](https://www.npmjs.com/package/next-ts-template)
 
 <p align="center">
     <img width="144" src="https://cdn.jsdelivr.net/gh/yanyunchangfeng/cdn@1.0/assets/icons/cf-icon@0,75x.png">

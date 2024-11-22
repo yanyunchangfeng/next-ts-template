@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
-import { Suspense } from 'react';
-import Loading from '@/app/loading';
-import { CustomComponent, Navigation } from '@/app/components';
+import { Navigation } from '@/app/components';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -26,7 +24,6 @@ export const metadata: Metadata = {
 // 你可以使用路由组创建多个根布局。
 // 默认根布局是服务端组件，且不能设置为客户端组件。
 
-// 平行路由 会引发templete 中的link 无法触发 需要权衡 故不使用模版
 export default function RootLayout({
   children,
   team,
@@ -49,11 +46,7 @@ export default function RootLayout({
         }}
       >
         <div className="p-5">
-          {/* 在布局中使用 Suspense，组件在导航的时候不会发生改变。而在模板中使用 Suspense，组件在导航的时候每次都会触发 Loading 效果。 */}
-          <Suspense fallback={<Loading />}>
-            <CustomComponent title="layout" />
-            <Navigation />
-          </Suspense>
+          <Navigation />
           {children}
           {team}
           {analytics}
