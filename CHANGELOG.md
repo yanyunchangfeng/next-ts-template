@@ -1,3 +1,9 @@
+# [1.9.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.8.0...v1.9.0-rc.1) (2024-11-22)
+
+### Features
+
+- add blog [...slug] ([3e04d3e](https://github.com/yanyunchangfeng/nextjs-template/commit/3e04d3e1005638bd7398c461ef0205ca4bf6706b))
+
 # [1.8.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.7.0...v1.8.0) (2024-11-21)
 
 ### Features
