@@ -1,3 +1,9 @@
+# [1.0.0-rc.2](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2024-11-22)
+
+### Features
+
+- udpate .env.production ([c8f8802](https://github.com/yanyunchangfeng/next-ts-template/commit/c8f88023df609727f43c80ea67e80aa8ff6363e3))
+
 # 1.0.0-rc.1 (2024-11-22)
 
 ### Features
