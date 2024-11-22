@@ -11,6 +11,9 @@ const Navigation: FC = () => {
       <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
         blog
       </Link>
+      <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
+        a/b
+      </Link>
       {/* <Link href="/blog">blog</Link> */}
       <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
         dashboard

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, FC, PropsWithChildren, Suspense } from 'react';
-import { CustomComponent, Navigation } from '@/app/components';
+import { CustomComponent } from '@/app/components';
 import Loading from '@/app/loading';
 
 //   更具体的来说，模板会在导航的时候为每个子级创建一个新实例
@@ -14,7 +14,6 @@ const Template: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div>
-      <Navigation />
       <Suspense fallback={<Loading />}>
         <CustomComponent title="template" />
       </Suspense>
