@@ -1,3 +1,9 @@
+# [1.11.0-rc.1](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.10.0...v1.11.0-rc.1) (2024-11-22)
+
+### Features
+
+- add form route group ([2ca9d0d](https://github.com/yanyunchangfeng/nextjs-template/commit/2ca9d0d6ee081dbceaf20fe7e9280a580a1fc71d))
+
 # [1.10.0](https://github.com/yanyunchangfeng/nextjs-template/compare/v1.9.0...v1.10.0) (2024-11-22)
 
 ### Features
