@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.0.0...v1.1.0) (2024-11-22)
+
+### Features
+
+- add parallel route loading ([96144d9](https://github.com/yanyunchangfeng/next-ts-template/commit/96144d9d72786b85a9bb15793ecb0e2f480495ae))
+
 # [1.1.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.0.0...v1.1.0-rc.1) (2024-11-22)
 
 ### Features
