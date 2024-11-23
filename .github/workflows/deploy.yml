@@ -2,6 +2,7 @@ name: Deploy
 
 env:
   TEST_SCRIPT: ${{vars.TEST_SCRIPT ||  'test'}}
+  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build:export'}}
 
 on:
   workflow_dispatch:
@@ -42,7 +43,7 @@ jobs:
         run: pnpm ${{env.TEST_SCRIPT}}
 
       - name: Build project
-        run: pnpm build
+        run: pnpm ${{env.BUILD_SCRIPT}}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

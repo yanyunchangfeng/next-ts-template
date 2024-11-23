@@ -2,7 +2,7 @@ name: Publish Package to npmjs
 
 env:
   TEST_SCRIPT: ${{vars.TEST_SCRIPT ||  'test'}}
-
+  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build:export'}}
 on:
   workflow_dispatch: # 手动触发
   push:
@@ -31,7 +31,7 @@ jobs:
           run_install: true
 
       - name: Build project
-        run: pnpm build
+        run: pnpm ${{env.BUILD_SCRIPT}}
 
       - name: Test project
         run: pnpm ${{env.TEST_SCRIPT}}
