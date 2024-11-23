@@ -6,7 +6,7 @@ const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
   output: mode,
-  distDir: 'dist',
+  distDir: process.env.NEXT_PUBLIC_DIST_DIR ?? undefined,
   reactStrictMode: false,
   images: {
     remotePatterns: [
