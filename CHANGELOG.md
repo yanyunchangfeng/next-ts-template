@@ -1,3 +1,9 @@
+# [1.2.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.1.0...v1.2.0-rc.1) (2024-11-23)
+
+### Features
+
+- update script for vercel deploy ([eaeec3d](https://github.com/yanyunchangfeng/next-ts-template/commit/eaeec3d6c4f3f07b0884bc58fdc9652f6da0cc87))
+
 # [1.1.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.0.0...v1.1.0) (2024-11-22)
 
 ### Features
