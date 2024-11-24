@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.2.0...v1.3.0) (2024-11-24)
+
+### Features
+
+- add revalidate ([6581e61](https://github.com/yanyunchangfeng/next-ts-template/commit/6581e6150d891e5071424eaacc39f5140b7b2997))
+
 # [1.3.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.2.0...v1.3.0-rc.1) (2024-11-24)
 
 ### Features
