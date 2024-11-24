@@ -1,3 +1,10 @@
+# [1.2.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.1.0...v1.2.0-rc.1) (2024-11-24)
+
+### Features
+
+- add parallel route default ([4a8214b](https://github.com/yanyunchangfeng/next-ts-template/commit/4a8214b7e7cd796c085a4685d8724fa2233a1cda))
+- update script for vercel deploy ([5af0696](https://github.com/yanyunchangfeng/next-ts-template/commit/5af0696e4d9443f199b6058807540d15ba6e8bab))
+
 # [1.2.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.1.0...v1.2.0-rc.1) (2024-11-23)
 
 ### Features
