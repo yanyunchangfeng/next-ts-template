@@ -3,6 +3,9 @@ import { Suspense } from 'react';
 import { PostFeed, Weather, Recommend } from '@/app/dashboard/components';
 import Loading from '@/app/loading';
 
+export const revalidate = 0;
+
+// export const dynamic = 'force-dynamic';
 // <Suspense> 允许你推迟渲染某些内容，直到满足某些条件（例如数据加载完毕）。
 
 // 你可以将动态组件包装在 Suspense 中，然后向其传递一个 fallback UI，以便在动态组件加载时显示。如果数据请求缓慢，使用 Suspense 流式渲染该组件，不会影响页面其他部分的渲染，更不会阻塞整个页面。
@@ -25,6 +28,7 @@ import Loading from '@/app/loading';
 
 // 页面级别，使用 loading.jsx
 // 特定组件，使用 <Suspense>
+
 const DashBoard: FC = async () => {
   console.log('render dashboard');
   return (
