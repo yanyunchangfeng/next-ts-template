@@ -1,5 +1,7 @@
 import { FC, use } from 'react';
 
+export const revalidate = 3600;
+
 const getData = async () => {
   const res = await fetch('https://api.thecatapi.com/v1/images/search', { next: { tags: ['collection'] } });
   if (!res.ok) {
