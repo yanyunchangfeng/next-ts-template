@@ -1,8 +1,12 @@
 import { FC } from 'react';
-import { sleep } from '../utils';
+import { sleep } from '@/app/utils';
 
 const Analytics: FC = async () => {
-  await sleep(1000 * 5);
-  return <h1>Analytics</h1>;
+  await sleep(1000 * 2);
+  return (
+    <div className="h-60 flex-1 rounded-xl bg-indigo-500 text-white flex items-center justify-center">
+      Hello, Analytics!
+    </div>
+  );
 };
 export default Analytics;

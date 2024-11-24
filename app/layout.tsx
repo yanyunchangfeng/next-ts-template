@@ -35,6 +35,12 @@ export const metadata: Metadata = {
 // 3.2. 用途 2：独立路由处理
 // 平行路由可以让你为每个路由定义独立的错误处理和加载界面：
 // 3.3. 用途 3：子导航
+
+// 最后，让我们总结一下使用平行路由的优势：
+// 使用平行路由可以将单个布局拆分为多个插槽，使代码更易于管理，尤其适用于团队协作的时候
+// 每个插槽都可以定义自己的加载界面和错误状态，比如某个插槽加载速度比较慢，那就可以加一个加载效果，加载期间，也不会影响其他插槽的渲染和交互。当出现错误的时候，也只会在具体的插槽上出现错误提示，而不会影响页面其他部分，有效改善用户体验
+// 每个插槽都可以有自己独立的导航和状态管理，这使得插槽的功能更加丰富，比如在上面的例子中，我们在 @analytics 插槽下又建了查看页面 PV 的 /page-views、查看访客的 /visitors，使得同一个插槽区域可以根据路由显示不同的内容
+
 export default function RootLayout({
   children,
   team,
@@ -64,10 +70,12 @@ export default function RootLayout({
       >
         <div className="p-5">
           <Navigation />
+          <div className="flex gap-6 ">
+            {team}
+            {analytics}
+          </div>
+          <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
-          {team}
-          {analytics}
-          {isLogin ? dashboard : login}
         </div>
       </body>
     </html>

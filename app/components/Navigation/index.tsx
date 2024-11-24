@@ -7,7 +7,7 @@ const Navigation: FC = () => {
   const path = usePathname(); // 获取当前路径
   const router = useRouter();
   return (
-    <nav className="flex items-center justify-center gap-10 text-blue-600">
+    <nav className="flex items-center justify-center gap-10 text-blue-600 mb-6">
       <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
         blog
       </Link>
@@ -24,6 +24,12 @@ const Navigation: FC = () => {
         className={path === '/about' || path === '/settings' || path === '/team' ? 'text-blue' : 'text-black'}
       >
         dashboard group
+      </Link>
+      <Link href="/page-views" className={path === '/page-views' ? 'text-blue' : 'text-black'}>
+        PageViews
+      </Link>
+      <Link href="/visitors" className={path === '/visitors' ? 'text-blue' : 'text-black'}>
+        Visitors
       </Link>
       {/* <Link href="/about">dashboard group</Link> */}
       {/* App Router 的默认行为是滚动到新路由的顶部，
