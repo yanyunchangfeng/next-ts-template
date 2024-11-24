@@ -1,3 +1,9 @@
+# [1.4.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.3.0...v1.4.0-rc.1) (2024-11-24)
+
+### Features
+
+- add parallel child route ([f86ba43](https://github.com/yanyunchangfeng/next-ts-template/commit/f86ba438520c28484c5fd41554fbe15a5c0eefe4))
+
 # [1.3.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.2.0...v1.3.0) (2024-11-24)
 
 ### Features
