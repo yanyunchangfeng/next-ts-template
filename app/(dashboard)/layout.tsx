@@ -1,5 +1,8 @@
 import Link from 'next/link';
 
+export const revalidate = 0;
+
+// export const dynamic = 'force-dynamic';
 // 2. 路由组（Route groups）
 // 在 app目录下，文件夹名称通常会被映射到 URL 中，但你可以将文件夹标记为路由组，阻止文件夹名称被映射到 URL 中。
 // 2.1. 按逻辑分组
