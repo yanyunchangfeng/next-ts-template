@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
-import { use } from 'react';
+// import { use } from 'react';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -16,9 +16,9 @@ const geistMono = localFont({
   weight: '100 900'
 });
 
-const userIsLogin = async () => {
-  return Math.random() > 0.5;
-};
+// const userIsLogin = async () => {
+//   return Math.random() > 0.5;
+// };
 
 export const metadata: Metadata = {
   title: 'yanyunchangfeng',
@@ -41,20 +41,31 @@ export const metadata: Metadata = {
 // 每个插槽都可以定义自己的加载界面和错误状态，比如某个插槽加载速度比较慢，那就可以加一个加载效果，加载期间，也不会影响其他插槽的渲染和交互。当出现错误的时候，也只会在具体的插槽上出现错误提示，而不会影响页面其他部分，有效改善用户体验
 // 每个插槽都可以有自己独立的导航和状态管理，这使得插槽的功能更加丰富，比如在上面的例子中，我们在 @analytics 插槽下又建了查看页面 PV 的 /page-views、查看访客的 /visitors，使得同一个插槽区域可以根据路由显示不同的内容
 
+// 4. 拦截路由（Intercepting Routes）
+// 拦截路由允许你在当前路由拦截其他路由地址并在当前路由中展示内容。
+// 在 Next.js 中，实现拦截路由需要你在命名文件夹的时候以 (..) 开头，其中：
+
+// (.) 表示匹配同一层级
+// (..) 表示匹配上一层级
+// (..)(..) 表示匹配上上层级。
+// (...) 表示匹配根目录
+
 export default function RootLayout({
   children,
-  team,
-  analytics,
-  dashboard,
-  login
-}: Readonly<{
+  // teams,
+  // analytics,
+  // dashboard,
+  // login,
+  modal
+}: {
   children: React.ReactNode;
-  team: React.ReactNode;
-  analytics: React.ReactNode;
-  dashboard: never;
-  login: never;
-}>) {
-  const isLogin = use(userIsLogin());
+  // teams: React.ReactNode;
+  // analytics: React.ReactNode;
+  // dashboard: never;
+  // login: never;
+  modal: React.ReactNode;
+}) {
+  // const isLogin = use(userIsLogin());
 
   return (
     <html lang="en">
@@ -70,12 +81,13 @@ export default function RootLayout({
       >
         <div className="p-5">
           <Navigation />
-          <div className="flex gap-6 ">
-            {team}
+          {/* <div className="flex gap-6 ">
+            {teams}
             {analytics}
-          </div>
-          <div className="flex mt-6">{isLogin ? dashboard : login}</div>
+          </div> */}
+          {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
           {children}
+          {modal}
         </div>
       </body>
     </html>

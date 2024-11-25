@@ -4,3 +4,9 @@ export interface ToDo {
   title: string;
   completed: boolean;
 }
+
+export interface PhotoParams {
+  params: {
+    id: string;
+  };
+}

@@ -14,11 +14,9 @@ const Navigation: FC = () => {
       <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
         a/b
       </Link>
-      {/* <Link href="/blog">blog</Link> */}
       <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
         dashboard
       </Link>
-      {/* <Link href="/dashboard">dashboard</Link> */}
       <Link
         href="/about"
         className={path === '/about' || path === '/settings' || path === '/team' ? 'text-blue' : 'text-black'}
@@ -31,7 +29,7 @@ const Navigation: FC = () => {
       <Link href="/visitors" className={path === '/visitors' ? 'text-blue' : 'text-black'}>
         Visitors
       </Link>
-      {/* <Link href="/about">dashboard group</Link> */}
+
       {/* App Router 的默认行为是滚动到新路由的顶部，
     或者在前进后退导航时维持之前的滚动距离。
     如果你想要禁用这个行为，你可以给 <Link> 组件传递一个 scroll={false}属性，
@@ -39,7 +37,6 @@ const Navigation: FC = () => {
       <button onClick={() => router.push('/', { scroll: false })} className="text-blue-600">
         返回首页
       </button>
-      {/* <Link href="/">返回首页</Link> */}
     </nav>
   );
 };

@@ -6,8 +6,14 @@ const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
   output: mode,
+  // productionBrowserSourceMaps: true,
   distDir: process.env.NEXT_PUBLIC_DIST_DIR ?? undefined,
   reactStrictMode: false,
+  // eslint: {
+  //   // Warning: This allows production builds to successfully complete even if
+  //   // your project has ESLint errors.
+  //   ignoreDuringBuilds: true
+  // },
   images: {
     remotePatterns: [
       {
