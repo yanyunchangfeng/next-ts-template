@@ -1,6 +1,6 @@
 export const photos = [
   {
-    message: 'https://images.dog.ceo/breeds/spitz-japanese/beet-004.jpg',
+    message: 'https://images.dog.ceo/breeds/chippiparai-indian/Indian-Chippiparai.jpg',
     status: 'success',
     id: '1'
   },

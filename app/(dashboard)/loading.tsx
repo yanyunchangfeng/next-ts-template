@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 const Loading: FC = () => {
   return (
-    <div className="h-10 mt-5 mb-2 flex-1 rounded-xl bg-sky-500 text-white flex items-center justify-center">
-      Loading
+    <div className="flex justify-center items-center  flex-1">
+      <div className="animate-spin rounded-full  h-10 w-10 border-b-2 border-red-900"></div>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const Home: FC = () => {
       {photos.map(({ message, id }) => {
         return (
           <Link key={id} href={`/photo/${id}`}>
-            <img width={100} height={100} src={message} className="m-1" />
+            <img width="100" src={message} className="m-1" />
           </Link>
         );
       })}
