@@ -32,7 +32,7 @@ export const revalidate = 0;
 const DashBoard: FC = async () => {
   console.log('render dashboard');
   return (
-    <div className="h-60 bg-indigo-500 text-white flex  flex-col justify-center items-center">
+    <div className="h-40 bg-indigo-500 text-white flex  flex-col justify-between items-center">
       {/* <Suspense fallback={<Loading />}>
         <PostFeed />
       </Suspense>
