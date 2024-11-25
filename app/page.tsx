@@ -15,19 +15,31 @@
 // 3. 限制
 // 虽然使用服务端组件有很多好处，但使用服务端组件也有一些限制，比如不能使用 useState 管理状态，不能使用浏览器的 API 等等。如果我们使用了 Next.js 会报错
 
-import { ToDo } from '@/app/shared';
+import Link from 'next/link';
+import { type FC } from 'react';
+import { photos } from '@/app/shared';
 
-export default async function Home() {
-  // const [title, setTitle] = useState('');
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-  const data: ToDo[] = (await res.json()).slice(0, 10);
-  // throw new Error('Something went wrong!');
-  console.log('render home');
+// const fetchData = async () => {
+//   const res = await fetch('https://dog.ceo/api/breeds/image/random');
+//   const data = await res.json();
+//   return [data] as { message: string; status: string }[];
+// };
+
+const Home: FC = () => {
+  // const photos = use(fetchData());
+
+  console.log('render home', photos);
+
   return (
-    <ul>
-      {data.map(({ title, id }) => {
-        return <li key={id}>{title}</li>;
+    <main className="flex justify-center">
+      {photos.map(({ message, id }) => {
+        return (
+          <Link key={id} href={`/photo/${id}`}>
+            <img width={100} height={100} src={message} className="m-1" />
+          </Link>
+        );
       })}
-    </ul>
+    </main>
   );
-}
+};
+export default Home;
