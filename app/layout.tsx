@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
-// import { use } from 'react';
+import { use } from 'react';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -16,9 +16,9 @@ const geistMono = localFont({
   weight: '100 900'
 });
 
-// const userIsLogin = async () => {
-//   return Math.random() > 0.5;
-// };
+const userIsLogin = async () => {
+  return Math.random() > 0.5;
+};
 
 export const metadata: Metadata = {
   title: 'yanyunchangfeng',
@@ -52,20 +52,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  // teams,
-  // analytics,
-  // dashboard,
-  // login,
+  teams,
+  analytics,
+  dashboard,
+  login,
   modal
 }: {
   children: React.ReactNode;
-  // teams: React.ReactNode;
-  // analytics: React.ReactNode;
-  // dashboard: never;
-  // login: never;
+  teams: React.ReactNode;
+  analytics: React.ReactNode;
+  dashboard: never;
+  login: never;
   modal: React.ReactNode;
 }) {
-  // const isLogin = use(userIsLogin());
+  const isLogin = use(userIsLogin());
 
   return (
     <html lang="en">
@@ -81,11 +81,11 @@ export default function RootLayout({
       >
         <div className="p-5">
           <Navigation />
-          {/* <div className="flex gap-6 ">
+          <div className="flex gap-6 ">
             {teams}
             {analytics}
-          </div> */}
-          {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
+          </div>
+          <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
           {modal}
         </div>
