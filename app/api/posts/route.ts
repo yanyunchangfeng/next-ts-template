@@ -23,7 +23,7 @@ import { NextResponse, NextRequest } from 'next/server';
 
 // 重新验证
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest, context: { params: object }) {
   //  访问 /home, pathname 的值为 /home
