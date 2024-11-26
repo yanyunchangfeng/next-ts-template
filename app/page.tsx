@@ -16,26 +16,29 @@
 // 虽然使用服务端组件有很多好处，但使用服务端组件也有一些限制，比如不能使用 useState 管理状态，不能使用浏览器的 API 等等。如果我们使用了 Next.js 会报错
 
 import Link from 'next/link';
-import { type FC } from 'react';
-import { photos } from '@/app/shared';
+import { use, type FC } from 'react';
+import { photos } from './shared';
 
-// const fetchData = async () => {
-//   const res = await fetch('https://dog.ceo/api/breeds/image/random');
-//   const data = await res.json();
-//   return [data] as { message: string; status: string }[];
-// };
+const fetchData = async () => {
+  // const url = process.env.NEXT_PUBLIC_API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '';
+  // console.log('url', url);
+  // const res = await fetch(`${url}/api/photo`);
+  // const data = await res.json();
+  // return data.data as { src: string; id: string }[];
+  return photos;
+};
 
 const Home: FC = () => {
-  // const photos = use(fetchData());
+  const photos = use(fetchData());
 
   console.log('render home', photos);
 
   return (
     <main className="flex justify-center">
-      {photos.map(({ message, id }) => {
+      {photos.map(({ src, id }) => {
         return (
           <Link key={id} href={`/photo/${id}`}>
-            <img width="100" src={message} className="m-1" />
+            <img width="100" src={src} className="m-1" />
           </Link>
         );
       })}
