@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { cookies, headers } from 'next/headers';
 // app/api/route.ts
 
@@ -10,13 +10,13 @@ import { cookies, headers } from 'next/headers';
 // 第二种方法是通过next/headers包提供的 cookies方法。
 
 // 2.3. 如何处理 Headers ？
-export async function GET(request: NextRequest) {
+export async function GET() {
   //   const token = request.cookies.get('token');
   //   console.log('token', token);
   //   request.cookies.set(`token2`, '123');
   // const headersList = new Headers(request.headers);
   const headersList = headers();
-  let referer = headersList.get('referer');
+  const referer = headersList.get('referer');
   const cookiesStore = cookies();
   const token = cookiesStore.get('suposTicket');
   console.log('token', token);
