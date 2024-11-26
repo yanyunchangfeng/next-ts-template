@@ -13,10 +13,17 @@ import { NextResponse, NextRequest } from 'next/server';
 // (1.3).传入参数;
 // (1.4).缓存行为;
 // 默认情况下，使用 Response 对象（NextResponse 也是一样的）的 GET 请求会被缓存。
+
 // 退出缓存
 // 但大家也不用担心默认缓存带来的影响。实际上，默认缓存的条件是非常“严苛”的，这些情况都会导致退出缓存：
-
 // GET 请求使用 Request 对象
+// 添加其他 HTTP 方法，比如 POST
+// 使用像 cookies、headers 这样的动态函数
+// 路由段配置项手动声明为动态模式
+
+// 重新验证
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest, context: { params: object }) {
   //  访问 /home, pathname 的值为 /home
