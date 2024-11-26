@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC, memo } from 'react';
@@ -28,6 +29,9 @@ const Navigation: FC = () => {
       </Link>
       <Link href="/visitors" className={path === '/visitors' ? 'text-blue' : 'text-black'}>
         visitors
+      </Link>
+      <Link href="/hy" className={path === '/hy' ? 'text-blue' : 'text-black'}>
+        hy
       </Link>
 
       {/* App Router 的默认行为是滚动到新路由的顶部，
