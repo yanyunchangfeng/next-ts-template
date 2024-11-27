@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import { cookies, headers } from 'next/headers';
+// import { NextResponse } from 'next/server';
+// import { cookies, headers } from 'next/headers';
 // app/api/route.ts
 
 // 2.2. 如何处理 Cookie？
@@ -10,21 +10,26 @@ import { cookies, headers } from 'next/headers';
 // 第二种方法是通过next/headers包提供的 cookies方法。
 
 // 2.3. 如何处理 Headers ？
-export async function GET() {
-  //   const token = request.cookies.get('token');
-  //   console.log('token', token);
-  //   request.cookies.set(`token2`, '123');
-  // const headersList = new Headers(request.headers);
-  const headersList = headers();
-  const referer = headersList.get('referer');
-  const cookiesStore = cookies();
-  const token = cookiesStore.get('suposTicket');
-  console.log('token', token);
-  return NextResponse.json('hello world', {
-    status: 200,
-    headers: {
-      referer: referer ?? '',
-      'Set-Cookie': `token=${token?.value}`
-    }
-  });
-}
+// export async function GET() {
+//   const token = request.cookies.get('token');
+//   console.log('token', token);
+//   request.cookies.set(`token2`, '123');
+//   const headersList = new Headers(request.headers);
+//   const headersList = headers();
+//   const referer = headersList.get('referer');
+//   const cookiesStore = cookies();
+//   const token = cookiesStore.get('token');
+//   console.log('token', token);
+//   return NextResponse.json(
+//     { data: 'hello world' },
+//     {
+//       status: 200
+//       headers: {
+//         referer: referer ?? '',
+//         'Set-Cookie': `token=${token?.value}`
+//       }
+//     }
+//   );
+// }
+
+export {};

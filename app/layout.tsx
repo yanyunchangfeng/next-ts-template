@@ -55,15 +55,15 @@ export default function RootLayout({
   teams,
   analytics,
   dashboard,
-  login,
-  modal
-}: {
+  login
+}: // modal
+{
   children: React.ReactNode;
   teams: React.ReactNode;
   analytics: React.ReactNode;
   dashboard: never;
   login: never;
-  modal: React.ReactNode;
+  // modal: React.ReactNode;
 }) {
   const isLogin = use(userIsLogin());
 
@@ -87,7 +87,7 @@ export default function RootLayout({
           </div>
           <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
-          {modal}
+          {/* {modal} */}
         </div>
       </body>
     </html>
