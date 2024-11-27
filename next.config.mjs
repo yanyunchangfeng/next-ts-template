@@ -1,5 +1,5 @@
 import proxy from './proxy.mjs';
-const { ENV, NEXT_PUBLIC_BUILD_MODE, NEXT_PUBLIC_BUILD_PATH, NEXT_PUBLIC_BASE_PATH, NEXT_PUBLIC_DIST_DIR } =
+const { ENV, NEXT_PUBLIC_BUILD_MODE, NEXT_PUBLIC_BUILD_PATH, NEXT_PUBLIC_BASE_PATH, NEXT_PUBLIC_DIST_DIR, VERCEL_URL } =
   process.env;
 
 const mode = NEXT_PUBLIC_BUILD_MODE ?? undefined;
@@ -14,6 +14,14 @@ const nextConfig = {
   output: mode,
   // productionBrowserSourceMaps: true,
   distDir,
+  webpack(config, { webpack }) {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        VERCEL_URL: JSON.stringify(VERCEL_URL)
+      })
+    );
+    return config;
+  },
   reactStrictMode: false,
   // eslint: {
   //   // Warning: This allows production builds to successfully complete even if
