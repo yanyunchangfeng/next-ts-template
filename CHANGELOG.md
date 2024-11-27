@@ -1,3 +1,10 @@
+# [1.5.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.4.0...v1.5.0-rc.1) (2024-11-27)
+
+### Features
+
+- add api route ([fbc24bf](https://github.com/yanyunchangfeng/next-ts-template/commit/fbc24bf63ca71e9ac760a873c8a4e303f2ef3300))
+- add Intercepting Routes ([1abf69c](https://github.com/yanyunchangfeng/next-ts-template/commit/1abf69c22c5f2a8c18d65e7b0e4aa3f9e9506a5d))
+
 # [1.4.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.3.0...v1.4.0) (2024-11-24)
 
 ### Features
