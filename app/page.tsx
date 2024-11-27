@@ -20,12 +20,15 @@ import { use, type FC } from 'react';
 import { photos } from './shared';
 
 const fetchData = async () => {
-  // const url = process.env.NEXT_PUBLIC_API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '';
-  // console.log('url', url);
-  // const res = await fetch(`${url}/api/photo`);
-  // const data = await res.json();
-  // return data.data as { src: string; id: string }[];
-  return photos;
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  console.log('url', url);
+  console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
+  if (!url) {
+    return photos;
+  }
+  const res = await fetch(`${url}/api/photo`);
+  const data = await res.json();
+  return data.data as { src: string; id: string }[];
 };
 
 const Home: FC = () => {
