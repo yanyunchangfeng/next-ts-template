@@ -1,13 +1,19 @@
 import proxy from './proxy.mjs';
-const mode = process.env.BUILD_MODE ?? undefined;
-const { ENV } = process.env;
+const { ENV, NEXT_PUBLIC_BUILD_MODE, NEXT_PUBLIC_BUILD_PATH, NEXT_PUBLIC_BASE_PATH, NEXT_PUBLIC_DIST_DIR } =
+  process.env;
+
+const mode = NEXT_PUBLIC_BUILD_MODE ?? undefined;
+const assetPrefix = NEXT_PUBLIC_BUILD_PATH ?? undefined;
+const basePath = NEXT_PUBLIC_BASE_PATH ?? undefined;
+const distDir = NEXT_PUBLIC_DIST_DIR ?? undefined;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: process.env.NEXT_PUBLIC_BUILD_PATH ?? undefined,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? undefined,
+  assetPrefix,
+  basePath,
   output: mode,
   // productionBrowserSourceMaps: true,
-  distDir: process.env.NEXT_PUBLIC_DIST_DIR ?? undefined,
+  distDir,
   reactStrictMode: false,
   // eslint: {
   //   // Warning: This allows production builds to successfully complete even if
