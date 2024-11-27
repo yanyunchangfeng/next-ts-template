@@ -8,7 +8,8 @@
 
 ## 演示
 
-[https://next-ts-template-beta.vercel.app/](https://next-ts-template-beta.vercel.app/)
+[https://next-ts-template-beta.vercel.app/( vercel deploy dynamic site)](https://next-ts-template-beta.vercel.app/)  
+[https://yanyunchangfeng.github.io/next-ts-template/( github pages deploy static site)](https://yanyunchangfeng.github.io/next-ts-template/)
 
 ## 介绍
 

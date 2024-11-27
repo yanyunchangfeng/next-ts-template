@@ -1,9 +1,15 @@
 import proxy from './proxy.mjs';
-const { ENV, NEXT_PUBLIC_BUILD_MODE, NEXT_PUBLIC_BUILD_PATH, NEXT_PUBLIC_BASE_PATH, NEXT_PUBLIC_DIST_DIR, VERCEL_URL } =
-  process.env;
+const {
+  ENV,
+  NEXT_PUBLIC_BUILD_MODE,
+  NEXT_PUBLIC_ASSET_PREFIX,
+  NEXT_PUBLIC_BASE_PATH,
+  NEXT_PUBLIC_DIST_DIR,
+  VERCEL_URL
+} = process.env;
 
 const mode = NEXT_PUBLIC_BUILD_MODE ?? undefined;
-const assetPrefix = NEXT_PUBLIC_BUILD_PATH ?? undefined;
+const assetPrefix = NEXT_PUBLIC_ASSET_PREFIX ?? undefined;
 const basePath = NEXT_PUBLIC_BASE_PATH ?? undefined;
 const distDir = NEXT_PUBLIC_DIST_DIR ?? undefined;
 

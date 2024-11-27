@@ -4,6 +4,7 @@ import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
 import { use } from 'react';
+// import { isVercel } from './shared';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -63,7 +64,7 @@ export default function RootLayout({
   analytics: React.ReactNode;
   dashboard: never;
   login: never;
-  // modal: React.ReactNode;
+  // modal: never;
 }) {
   const isLogin = use(userIsLogin());
 
@@ -87,7 +88,7 @@ export default function RootLayout({
           </div>
           <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
-          {/* {modal} */}
+          {/* {isVercel ? modal : null} */}
         </div>
       </body>
     </html>

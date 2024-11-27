@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { isVercel } from '@/app/shared';
 
-export const revalidate = 0;
+// export const revalidate = 0; //动态流式渲染 会影响github pages的静态网页404
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = isVercel ? 'force-dynamic' : 'force-static';
 // 2. 路由组（Route groups）
 // 在 app目录下，文件夹名称通常会被映射到 URL 中，但你可以将文件夹标记为路由组，阻止文件夹名称被映射到 URL 中。
 // 2.1. 按逻辑分组
