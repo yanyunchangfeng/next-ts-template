@@ -24,6 +24,7 @@
     "url": "https://github.com/yanyunchangfeng/next-ts-template.git"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.1.0",
     "next": "14.2.14",
     "react": "^18",
     "react-dom": "^18"
