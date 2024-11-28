@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
@@ -89,6 +90,7 @@ export default function RootLayout({
           <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
           {/* {isVercel ? modal : null} */}
+          <SpeedInsights />
         </div>
       </body>
     </html>
