@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.5.0...v1.6.0) (2024-11-28)
+
+### Features
+
+- add api route redirect & refactor api routes ([ce14af8](https://github.com/yanyunchangfeng/next-ts-template/commit/ce14af82de07a03aa36f95f0b921a6a9c6e43e31))
+
 # [1.6.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.5.0...v1.6.0-rc.1) (2024-11-28)
 
 ### Features
