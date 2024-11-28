@@ -1,3 +1,9 @@
+## [1.6.1-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.6.0...v1.6.1-rc.1) (2024-11-28)
+
+### Performance Improvements
+
+- add vercel SpeedInsights ([59d95fd](https://github.com/yanyunchangfeng/next-ts-template/commit/59d95fd01a0577e291531405af80c3fd2711f742))
+
 # [1.6.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.5.0...v1.6.0) (2024-11-28)
 
 ### Features
