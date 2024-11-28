@@ -1,4 +1,4 @@
-import { isVercel } from '@/app/shared';
+import { isVercel, isStatic } from '@/app/shared';
 import { NextResponse, NextRequest } from 'next/server';
 
 // 路由处理程序是指使用 Web Request 和 Response API 对于给定的路由自定义处理逻辑。
@@ -24,25 +24,28 @@ import { NextResponse, NextRequest } from 'next/server';
 
 // 重新验证
 
-export const dynamic = isVercel ? 'force-dynamic' : 'force-static';
+export const dynamic = isVercel || !isStatic ? 'force-dynamic' : 'force-static';
 
 const fetchPosts = async () => {
   return [{ id: '1' }];
 };
+
 // Error: Page "/api/posts/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   // 从数据源获取所有博客文章的 slug
   const posts = await fetchPosts(); // 你需要根据实际情况修改 fetchPosts 函数
 
   return posts.map((post) => ({
     id: post.id
   }));
-}
+};
+
 export async function GET(request: NextRequest, context: { params: Record<string, string> }) {
   //  访问 /home, pathname 的值为 /home
   const pathname = request.nextUrl.pathname;
   // 访问 /home?name=lee, searchParams 的值为 { 'name': 'lee' }
   const field = request.nextUrl.searchParams.get('dataField');
+  console.log('field', field);
   console.log('pathname', pathname);
   console.log('context', context);
   const data = await (await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)).json();
