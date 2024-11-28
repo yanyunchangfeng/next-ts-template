@@ -10,12 +10,17 @@ import { isVercel } from '@/app/shared';
 // 第二种方法是通过next/headers包提供的 cookies方法。
 
 // 2.3. 如何处理 Headers ？
+// export async function GET(request) {
+//   const headersList = new Headers(request.headers)
+//   const referer = headersList.get('referer')
+// }
 
-const dynamicGet = async () => {
+export const dynamic = isVercel ? 'force-dynamic' : 'force-static';
+
+export const GET = async () => {
   //   const token = request.cookies.get('token');
   //   console.log('token', token);
   //   request.cookies.set(`token2`, '123');
-  //   const headersList = new Headers(request.headers);
   const headersList = headers();
   const referer = headersList.get('referer');
   const cookiesStore = cookies();
@@ -32,8 +37,3 @@ const dynamicGet = async () => {
     }
   );
 };
-const staticGet = () => {
-  return NextResponse.json({ query: 'react' }, { status: 200 });
-};
-
-export const GET = isVercel ? dynamicGet : staticGet;
