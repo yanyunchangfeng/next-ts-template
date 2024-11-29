@@ -1,3 +1,9 @@
+# [1.8.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.7.0...v1.8.0-rc.1) (2024-11-29)
+
+### Features
+
+- add supabase & api notes ([f35b576](https://github.com/yanyunchangfeng/next-ts-template/commit/f35b57680b534154d1f4a3479eaa3e0b3371adc7))
+
 # [1.7.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.6.1...v1.7.0) (2024-11-29)
 
 ### Features
