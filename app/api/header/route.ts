@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies, headers } from 'next/headers';
-import { isVercel } from '@/app/shared';
+import { isStatic, isVercel } from '@/app/shared';
 
 // 2.2. 如何处理 Cookie？
 // 其中，request 是一个 NextRequest 对象。正如上节所说，NextRequest 相比 Request 提供了更为便捷的用法，这就是一个例子。
@@ -14,8 +14,7 @@ import { isVercel } from '@/app/shared';
 //   const headersList = new Headers(request.headers)
 //   const referer = headersList.get('referer')
 // }
-
-export const dynamic = isVercel ? 'force-dynamic' : 'force-static';
+export const dynamic = isVercel || !isStatic ? 'force-dynamic' : 'force-static';
 
 export const GET = async () => {
   //   const token = request.cookies.get('token');

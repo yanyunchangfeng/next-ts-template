@@ -1,13 +1,13 @@
 import { chain } from '@/app/utils';
-import { withRedirect, withLogging } from '@/app/middlewares';
+import { withSupabase, withRedirect, withLogging } from '@/app/middlewares';
 
-export default chain([withLogging, withRedirect]);
+export default chain([withLogging, withSupabase]);
 // 设置匹配路径
 // 1.matcher 配置项
 export const config = {
   matcher: [
     {
-      source: '/about/:path+'
+      source: '/api/:path*'
     }
   ]
 };
