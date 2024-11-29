@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.6.1...v1.7.0) (2024-11-29)
+
+### Features
+
+- add middlewares & chain ([89f8d63](https://github.com/yanyunchangfeng/next-ts-template/commit/89f8d63b7358ebd16063b649000bd19587821d6c))
+
 # [1.7.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.6.1...v1.7.0-rc.1) (2024-11-29)
 
 ### Features
