@@ -1,11 +1,11 @@
-import { isStatic, isVercel } from '@/app/shared';
+import { isDynamic } from '@/app/shared';
 import { createClient } from '@/app/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
-export const dynamic = isVercel || !isStatic ? 'force-dynamic' : 'force-static';
+export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 
 export async function GET() {
-  if (!isVercel || isStatic) {
+  if (!isDynamic) {
     return NextResponse.json([]);
   }
   const supabase = await createClient();

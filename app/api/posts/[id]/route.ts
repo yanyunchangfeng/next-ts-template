@@ -1,4 +1,4 @@
-import { isVercel, isStatic } from '@/app/shared';
+import { isDynamic } from '@/app/shared';
 import { NextResponse, NextRequest } from 'next/server';
 
 // 路由处理程序是指使用 Web Request 和 Response API 对于给定的路由自定义处理逻辑。
@@ -24,10 +24,10 @@ import { NextResponse, NextRequest } from 'next/server';
 
 // 重新验证
 
-export const dynamic = isVercel || !isStatic ? 'force-dynamic' : 'force-static';
+export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 
 const fetchPosts = async () => {
-  return [{ id: '1' }];
+  return [{ id: '0' }];
 };
 
 // Error: Page "/api/posts/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
