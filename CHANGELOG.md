@@ -1,3 +1,9 @@
+# [1.9.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.8.0...v1.9.0) (2024-11-30)
+
+### Features
+
+- add notes page ([265de9b](https://github.com/yanyunchangfeng/next-ts-template/commit/265de9b15a5fe9016abf396bc7e7b341fe967ab6))
+
 # [1.9.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.8.0...v1.9.0-rc.1) (2024-11-30)
 
 ### Features
