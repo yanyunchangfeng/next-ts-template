@@ -5,7 +5,7 @@ import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
 import { use } from 'react';
-// import { isVercel } from './shared';
+// import { isDynamic } from './shared';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -89,7 +89,7 @@ export default function RootLayout({
           </div>
           <div className="flex mt-6">{isLogin ? dashboard : login}</div>
           {children}
-          {/* {isVercel ? modal : null} */}
+          {/* {isDynamic ? modal : null} */}
           <SpeedInsights />
         </div>
       </body>

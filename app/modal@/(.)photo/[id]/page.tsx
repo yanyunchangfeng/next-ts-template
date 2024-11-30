@@ -2,10 +2,10 @@ import { FC } from 'react';
 import {
   PhotoParams,
   photos
-  // isVercel
+  // isDynamic,
 } from '@/app/shared';
 
-// export const dynamicParams = isVercel;
+// export const dynamicParams = isDynamic;
 // Error: Page" /(.)photo/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
 export async function generateStaticParams() {
   return photos.map((post) => ({

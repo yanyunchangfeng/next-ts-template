@@ -20,12 +20,12 @@ import {
   //  use,
   type FC
 } from 'react';
-import { photos as originPhotos, isVercel } from './shared';
+import { photos as originPhotos, isDynamic } from './shared';
 import React from 'react';
 
 const fetchData = async () => {
   console.log(VERCEL_URL);
-  if (!isVercel) {
+  if (!isDynamic) {
     return originPhotos;
   }
   const res = await fetch(`/api/photo`);
