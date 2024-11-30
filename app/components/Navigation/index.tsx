@@ -9,11 +9,11 @@ const Navigation: FC = () => {
   const router = useRouter();
   return (
     <nav className="flex items-center justify-center gap-5 text-blue-600 mb-6">
-      <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
-        blog
-      </Link>
       <Link href="/notes" className={path === '/notes' ? 'text-blue' : 'text-black'}>
         notes
+      </Link>
+      <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
+        blog
       </Link>
       {/* <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
         a/b
@@ -27,15 +27,15 @@ const Navigation: FC = () => {
       >
         (db)
       </Link>
-      <Link href="/page-views" className={path === '/page-views' ? 'text-blue' : 'text-black'}>
+      {/* <Link href="/page-views" className={path === '/page-views' ? 'text-blue' : 'text-black'}>
         views
-      </Link>
-      <Link href="/visitors" className={path === '/visitors' ? 'text-blue' : 'text-black'}>
+      </Link> */}
+      {/* <Link href="/visitors" className={path === '/visitors' ? 'text-blue' : 'text-black'}>
         visitors
-      </Link>
-      <Link href="/hy" className={path === '/hy' ? 'text-blue' : 'text-black'}>
+      </Link> */}
+      {/* <Link href="/hy" className={path === '/hy' ? 'text-blue' : 'text-black'}>
         hy
-      </Link>
+      </Link> */}
 
       {/* App Router 的默认行为是滚动到新路由的顶部，
     或者在前进后退导航时维持之前的滚动距离。
