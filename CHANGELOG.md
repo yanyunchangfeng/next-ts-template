@@ -1,3 +1,9 @@
+# [1.10.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.9.0...v1.10.0-rc.1) (2024-11-30)
+
+### Features
+
+- add post put delete api notes ([60156af](https://github.com/yanyunchangfeng/next-ts-template/commit/60156af5989f7852565e8dbb3f91681c05b57011))
+
 # [1.9.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.8.0...v1.9.0) (2024-11-30)
 
 ### Features
