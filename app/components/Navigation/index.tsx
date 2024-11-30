@@ -12,9 +12,12 @@ const Navigation: FC = () => {
       <Link href="/blog" className={path === '/blog' ? 'text-blue' : 'text-black'}>
         blog
       </Link>
-      <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
-        a/b
+      <Link href="/notes" className={path === '/notes' ? 'text-blue' : 'text-black'}>
+        notes
       </Link>
+      {/* <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
+        a/b
+      </Link> */}
       <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
         db
       </Link>

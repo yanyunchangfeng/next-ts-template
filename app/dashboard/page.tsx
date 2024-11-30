@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { Suspense } from 'react';
 import { PostFeed, Weather, Recommend } from '@/app/dashboard/components';
 import Loading from '@/app/loading';
-import { isVercel } from '@/app/shared';
+import { isDynamic } from '@/app/shared';
 
 // export const revalidate = 0; //动态流式渲染 会影响github pages的静态网页404
 
-export const dynamic = isVercel ? 'force-dynamic' : 'force-static';
+export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 
 // <Suspense> 允许你推迟渲染某些内容，直到满足某些条件（例如数据加载完毕）。
 
