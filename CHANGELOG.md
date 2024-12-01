@@ -1,3 +1,9 @@
+## [1.11.1-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.11.0...v1.11.1-rc.1) (2024-12-01)
+
+### Performance Improvements
+
+- page ([187f948](https://github.com/yanyunchangfeng/next-ts-template/commit/187f9489466f4b8f06b0ade81f4d4fc654cd5f32))
+
 # [1.11.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.10.0...v1.11.0) (2024-12-01)
 
 ### Features
