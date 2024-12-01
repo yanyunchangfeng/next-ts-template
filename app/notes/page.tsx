@@ -3,15 +3,8 @@
 import React from 'react';
 import { isDynamic } from '@/app/shared';
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { Loading } from '@/app/components';
 
-const fetchData = async () => {
-  if (!isDynamic) {
-    return [];
-  }
-  const res = await fetch(`/api/notes`);
-  const data = await res.json();
-  return data as { title: string; id: string }[];
-};
 interface Note {
   title: string;
   id: string;
@@ -26,10 +19,21 @@ const Notes: React.FC = () => {
     title: '',
     id: ''
   });
+  const [isLoading, setIsLoading] = React.useState(false);
   const inputRefs = React.useRef<{ [key: string]: HTMLInputElement }>({});
+  const fetchData = async () => {
+    if (!isDynamic) {
+      return [];
+    }
+    const res = await fetch(`/api/notes`);
+    const data = await res.json();
+    return data as { title: string; id: string }[];
+  };
   const fetchNotes = async () => {
+    setIsLoading(true);
     const data = await fetchData();
     setNotes(data);
+    setIsLoading(false);
   };
   const addNote = async () => {
     const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify({ title: note }) });
@@ -81,6 +85,9 @@ const Notes: React.FC = () => {
   };
 
   const noteItems = React.useMemo(() => {
+    if (isLoading) {
+      return <Loading className="w-96 h-96  border-pink-900" />;
+    }
     return notes.map((note) => {
       const noteNode =
         isEditMode === note.id ? (
@@ -128,7 +135,7 @@ const Notes: React.FC = () => {
         </div>
       );
     });
-  }, [isEditMode, notes]);
+  }, [isEditMode, notes, isLoading]);
 
   return (
     <>

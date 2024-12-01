@@ -12,7 +12,7 @@ const getData = async () => {
 // const Blog: FC = async () => {
 //   const { message } = await getData();
 //   return (
-//     <div className="h-60 mt-5 flex-1 rounded-xl bg-indigo-500 text-white flex items-center justify-center">
+//     <div className="h-60 mt-5 flex-1 rounded-xl  text-white flex items-center justify-center">
 //       {message}
 //     </div>
 //   );
@@ -20,10 +20,9 @@ const getData = async () => {
 
 const Blog: FC = () => {
   const data = use(getData());
-  console.log('render Blog', data);
 
   return (
-    <div className="h-60 mt-5 flex-1 rounded-xl bg-indigo-500 text-white flex items-center justify-center">
+    <div className="h-60 mt-5 flex-1 rounded-xl text-white flex items-center justify-center">
       <img src={data[0].url} alt="cat" width={200} height={200} />
     </div>
   );
