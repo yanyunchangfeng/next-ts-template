@@ -4,7 +4,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 import myImage from '@/app/assets/homepage.png';
 import { Navigation } from '@/app/components';
-import { use } from 'react';
 // import { isDynamic } from './shared';
 
 const geistSans = localFont({
@@ -18,9 +17,9 @@ const geistMono = localFont({
   weight: '100 900'
 });
 
-const userIsLogin = async () => {
-  return Math.random() > 0.5;
-};
+// const userIsLogin = async () => {
+//   return Math.random() > 0.5;
+// };
 
 export const metadata: Metadata = {
   title: 'yanyunchangfeng',
@@ -53,21 +52,21 @@ export const metadata: Metadata = {
 // (...) 表示匹配根目录
 
 export default function RootLayout({
-  children,
-  teams,
-  analytics,
-  dashboard,
-  login
-}: // modal
+  children
+}: // teams,
+// analytics,
+// dashboard,
+// login
+// modal
 {
   children: React.ReactNode;
-  teams: React.ReactNode;
-  analytics: React.ReactNode;
-  dashboard: never;
-  login: never;
+  // teams: React.ReactNode;
+  // analytics: React.ReactNode;
+  // dashboard: never;
+  // login: never;
   // modal: never;
 }) {
-  const isLogin = use(userIsLogin());
+  // const isLogin = use(userIsLogin());
 
   return (
     <html lang="en">
@@ -83,11 +82,11 @@ export default function RootLayout({
       >
         <div className="p-5">
           <Navigation />
-          <div className="flex gap-6 ">
+          {/* <div className="flex gap-6 ">
             {teams}
             {analytics}
-          </div>
-          <div className="flex mt-6">{isLogin ? dashboard : login}</div>
+          </div> */}
+          {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
           {children}
           {/* {isDynamic ? modal : null} */}
           <SpeedInsights />
