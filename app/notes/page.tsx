@@ -94,7 +94,7 @@ const Notes: React.FC = () => {
           const noteNode =
             editModeId === note.id ? (
               <Textarea
-                rows={3}
+                rows={2}
                 placeholder="Add a new note"
                 className="bg-white p-2 rounded-md shadow-md flex-1"
                 defaultValue={note.title}
@@ -140,9 +140,9 @@ const Notes: React.FC = () => {
             </div>
           );
         })}
-        <div className="flex ">
-          <input
-            type="text"
+        <div className="flex items-center">
+          <Textarea
+            rows={2}
             placeholder="Add a new note"
             className="bg-white p-2 rounded-md shadow-md flex-1"
             value={note}
@@ -163,9 +163,14 @@ const Notes: React.FC = () => {
   return (
     <>
       <div className="flex flex-col gap-4">{noteItems}</div>
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        transition
+        className="relative z-50 transition duration-300 ease-out data-[closed]:opacity-0"
+      >
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4 border bg-blue-500 p-12  text-white">
+          <DialogPanel className="max-w-lg space-y-4 border bg-pink-500 p-12  text-white">
             <DialogTitle className="font-bold">
               Delete note id:
               {openNote.id}
