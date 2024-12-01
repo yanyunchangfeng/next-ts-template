@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { isDynamic } from '@/app/shared';
-import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { Description, Dialog, DialogPanel, DialogTitle, Textarea } from '@headlessui/react';
 import { Loading } from '@/app/components';
 
 interface Note {
@@ -12,7 +12,7 @@ interface Note {
 
 const Notes: React.FC = () => {
   const [notes, setNotes] = React.useState<Note[]>([]);
-  const [isEditMode, setIsEditMode] = React.useState<string>('');
+  const [editModeId, setEditModeId] = React.useState<string>('');
   const [note, setNote] = React.useState('');
   const [isOpen, setIsOpen] = React.useState(false);
   const [openNote, setOpenNote] = React.useState<Note>({
@@ -20,7 +20,7 @@ const Notes: React.FC = () => {
     id: ''
   });
   const [isLoading, setIsLoading] = React.useState(true);
-  const inputRefs = React.useRef<{ [key: string]: HTMLInputElement }>({});
+  const inputRefs = React.useRef<{ [key: string]: HTMLElement }>({});
   const fetchData = async () => {
     if (!isDynamic) {
       return [];
@@ -74,10 +74,10 @@ const Notes: React.FC = () => {
     fetchNotes();
   }, []);
   React.useEffect(() => {
-    if (isEditMode && inputRefs.current[isEditMode]) {
-      inputRefs.current[isEditMode].focus();
+    if (editModeId && inputRefs.current[editModeId]) {
+      inputRefs.current[editModeId].focus();
     }
-  }, [isEditMode]);
+  }, [editModeId]);
 
   const handleDelete = (note: Note) => {
     setIsOpen(true);
@@ -92,9 +92,9 @@ const Notes: React.FC = () => {
       <>
         {notes.map((note) => {
           const noteNode =
-            isEditMode === note.id ? (
-              <input
-                type="text"
+            editModeId === note.id ? (
+              <Textarea
+                rows={3}
                 placeholder="Add a new note"
                 className="bg-white p-2 rounded-md shadow-md flex-1"
                 defaultValue={note.title}
@@ -108,10 +108,10 @@ const Notes: React.FC = () => {
                   const prev = note.title;
                   const current = e.target.value;
                   if (current === prev) {
-                    setIsEditMode('');
+                    setEditModeId('');
                     return;
                   }
-                  setIsEditMode('');
+                  setEditModeId('');
                   updateNote({ id: note.id, title: current });
                 }}
               />
@@ -119,10 +119,10 @@ const Notes: React.FC = () => {
               <h2 className="text-lg font-medium flex-1">{note.title}</h2>
             );
           const editButton =
-            isEditMode !== note.id ? (
+            editModeId !== note.id ? (
               <button
                 className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
-                onClick={() => setIsEditMode(note.id)}
+                onClick={() => setEditModeId(note.id)}
               >
                 Edit
               </button>
@@ -158,7 +158,7 @@ const Notes: React.FC = () => {
         </div>
       </>
     );
-  }, [isEditMode, notes, isLoading, note]);
+  }, [editModeId, notes, isLoading, note]);
 
   return (
     <>
