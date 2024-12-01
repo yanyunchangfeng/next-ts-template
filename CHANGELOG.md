@@ -1,3 +1,9 @@
+# [1.11.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.10.0...v1.11.0) (2024-12-01)
+
+### Features
+
+- api routes & notes page ([ce3b953](https://github.com/yanyunchangfeng/next-ts-template/commit/ce3b9536a4801132f436dd47b257a6915774989a))
+
 # [1.11.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.10.0...v1.11.0-rc.1) (2024-12-01)
 
 ### Features
