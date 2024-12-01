@@ -19,7 +19,7 @@ const Notes: React.FC = () => {
     title: '',
     id: ''
   });
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const inputRefs = React.useRef<{ [key: string]: HTMLInputElement }>({});
   const fetchData = async () => {
     if (!isDynamic) {
@@ -86,61 +86,60 @@ const Notes: React.FC = () => {
 
   const noteItems = React.useMemo(() => {
     if (isLoading) {
-      return <Loading className="w-96 h-96 border-pink-900" />;
+      return <Loading />;
     }
-    return notes.map((note) => {
-      const noteNode =
-        isEditMode === note.id ? (
-          <input
-            type="text"
-            placeholder="Add a new note"
-            className="bg-white p-2 rounded-md shadow-md flex-1"
-            defaultValue={note.title}
-            ref={(el) => {
-              // 在这里不返回 el，只保存在 refs 对象中
-              if (el) {
-                inputRefs.current[note.id] = el;
-              }
-            }}
-            onBlur={(e) => {
-              const prev = note.title;
-              const current = e.target.value;
-              if (current === prev) {
-                setIsEditMode('');
-                return;
-              }
-              setIsEditMode('');
-              updateNote({ id: note.id, title: current });
-            }}
-          />
-        ) : (
-          <h2 className="text-lg font-medium flex-1">{note.title}</h2>
-        );
-      const editButton =
-        isEditMode !== note.id ? (
-          <button
-            className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
-            onClick={() => setIsEditMode(note.id)}
-          >
-            Edit
-          </button>
-        ) : null;
-      return (
-        <div key={note.id} className="bg-white p-4 rounded-md shadow-md flex items-center ">
-          {noteNode}
-          {editButton}
-          <button className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2" onClick={() => handleDelete(note)}>
-            Delete
-          </button>
-        </div>
-      );
-    });
-  }, [isEditMode, notes, isLoading]);
-
-  return (
-    <>
-      <div className="flex flex-col gap-4">
-        {noteItems}
+    return (
+      <>
+        {notes.map((note) => {
+          const noteNode =
+            isEditMode === note.id ? (
+              <input
+                type="text"
+                placeholder="Add a new note"
+                className="bg-white p-2 rounded-md shadow-md flex-1"
+                defaultValue={note.title}
+                ref={(el) => {
+                  // 在这里不返回 el，只保存在 refs 对象中
+                  if (el) {
+                    inputRefs.current[note.id] = el;
+                  }
+                }}
+                onBlur={(e) => {
+                  const prev = note.title;
+                  const current = e.target.value;
+                  if (current === prev) {
+                    setIsEditMode('');
+                    return;
+                  }
+                  setIsEditMode('');
+                  updateNote({ id: note.id, title: current });
+                }}
+              />
+            ) : (
+              <h2 className="text-lg font-medium flex-1">{note.title}</h2>
+            );
+          const editButton =
+            isEditMode !== note.id ? (
+              <button
+                className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
+                onClick={() => setIsEditMode(note.id)}
+              >
+                Edit
+              </button>
+            ) : null;
+          return (
+            <div key={note.id} className="bg-white p-4 rounded-md shadow-md flex items-center ">
+              {noteNode}
+              {editButton}
+              <button
+                className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
+                onClick={() => handleDelete(note)}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
         <div className="flex ">
           <input
             type="text"
@@ -157,7 +156,13 @@ const Notes: React.FC = () => {
             Add
           </button>
         </div>
-      </div>
+      </>
+    );
+  }, [isEditMode, notes, isLoading, note]);
+
+  return (
+    <>
+      <div className="flex flex-col gap-4">{noteItems}</div>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           <DialogPanel className="max-w-lg space-y-4 border bg-blue-500 p-12  text-white">
