@@ -26,6 +26,7 @@ const Notes: React.FC = () => {
     title: '',
     id: ''
   });
+  const inputRefs = React.useRef<{ [key: string]: HTMLInputElement }>({});
   const fetchNotes = async () => {
     const data = await fetchData();
     setNotes(data);
@@ -68,6 +69,11 @@ const Notes: React.FC = () => {
   React.useEffect(() => {
     fetchNotes();
   }, []);
+  React.useEffect(() => {
+    if (isEditMode && inputRefs.current[isEditMode]) {
+      inputRefs.current[isEditMode].focus();
+    }
+  }, [isEditMode]);
 
   const handleDelete = (note: Note) => {
     setIsOpen(true);
@@ -83,6 +89,12 @@ const Notes: React.FC = () => {
             placeholder="Add a new note"
             className="bg-white p-2 rounded-md shadow-md flex-1"
             defaultValue={note.title}
+            ref={(el) => {
+              // 在这里不返回 el，只保存在 refs 对象中
+              if (el) {
+                inputRefs.current[note.id] = el;
+              }
+            }}
             onBlur={(e) => {
               setIsEditMode('');
               updateNote({ id: note.id, title: e.target.value });
