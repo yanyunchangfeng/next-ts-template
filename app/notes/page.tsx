@@ -96,8 +96,14 @@ const Notes: React.FC = () => {
               }
             }}
             onBlur={(e) => {
+              const prev = note.title;
+              const current = e.target.value;
+              if (current === prev) {
+                setIsEditMode('');
+                return;
+              }
               setIsEditMode('');
-              updateNote({ id: note.id, title: e.target.value });
+              updateNote({ id: note.id, title: current });
             }}
           />
         ) : (
