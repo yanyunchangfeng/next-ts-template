@@ -41,7 +41,7 @@ const Navigation: FC = () => {
     或者在前进后退导航时维持之前的滚动距离。
     如果你想要禁用这个行为，你可以给 <Link> 组件传递一个 scroll={false}属性，
     或者在使用 router.push和 router.replace的时候，设置 scroll: false */}
-      <button onClick={() => router.push('/', { scroll: false })} className="text-blue-600">
+      <button onClick={() => router.push('/', { scroll: false })} className={path === '/' ? 'text-blue' : 'text-black'}>
         home
       </button>
     </nav>

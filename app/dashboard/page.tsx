@@ -34,8 +34,8 @@ export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 const DashBoard: FC = async () => {
   console.log('render dashboard');
   return (
-    <div className="h-40 bg-indigo-500 text-white flex  flex-col justify-between items-center">
-      {/* <Suspense fallback={<Loading />}>
+    <div className="h-40  text-pink-600 flex  flex-col justify-between items-center">
+      <Suspense fallback={<Loading />}>
         <PostFeed />
       </Suspense>
       <Suspense fallback={<Loading />}>
@@ -43,9 +43,9 @@ const DashBoard: FC = async () => {
       </Suspense>
       <Suspense fallback={<Loading />}>
         <Recommend />
-      </Suspense> */}
+      </Suspense>
       {/* 答案是 8s，这些数据请求是同时发送的，所以当 Weather 组件返回的时候，Recommend 组件立刻就展示了出来。 */}
-      <Suspense fallback={<Loading />}>
+      {/* <Suspense fallback={<Loading />}>
         <PostFeed />
         <Suspense fallback={<Loading />}>
           <Weather />
@@ -53,7 +53,7 @@ const DashBoard: FC = async () => {
             <Recommend />
           </Suspense>
         </Suspense>
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 };
