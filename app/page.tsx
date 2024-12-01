@@ -19,36 +19,43 @@ import Link from 'next/link';
 import { type FC } from 'react';
 import { photos as originPhotos, isDynamic } from './shared';
 import React from 'react';
-
-const fetchData = async () => {
-  if (!isDynamic) {
-    return originPhotos;
-  }
-  const res = await fetch(`/api/photo`);
-  const data = await res.json();
-  return data as { src: string; id: string }[];
-};
+import { Loading } from '@/app/components';
 
 const Home: FC = () => {
   const [photos, setPhotos] = React.useState<{ src: string; id: string }[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const fetchData = async () => {
+    if (!isDynamic) {
+      return originPhotos;
+    }
+    const res = await fetch(`/api/photo`);
+    const data = await res.json();
+    return data as { src: string; id: string }[];
+  };
+
   const fetchPhotos = async () => {
+    setIsLoading(true);
     const data = await fetchData();
+    setIsLoading(false);
     setPhotos(data);
   };
   React.useEffect(() => {
     fetchPhotos();
   }, []);
 
-  return (
-    <main className="flex justify-center">
-      {photos.map(({ src, id }) => {
-        return (
-          <Link key={id} href={`/photo/${id}`}>
-            <img width="100" src={src} className="m-1" />
-          </Link>
-        );
-      })}
-    </main>
-  );
+  const photoTem = React.useMemo(() => {
+    if (isLoading) {
+      return <Loading className="w-20 h-20 border-pink-900" />;
+    }
+    return photos.map(({ src, id }) => {
+      return (
+        <Link key={id} href={`/photo/${id}`}>
+          <img width="100" src={src} className="m-1" />
+        </Link>
+      );
+    });
+  }, [photos, isLoading]);
+
+  return <main className="flex justify-center">{photoTem}</main>;
 };
 export default Home;

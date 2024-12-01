@@ -18,15 +18,15 @@ const Navigation: FC = () => {
       {/* <Link href="/a" className={path === '/a' || path === '/b' ? 'text-blue' : 'text-black'}>
         a/b
       </Link> */}
-      <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
+      {/* <Link href="/dashboard" className={path === '/dashboard' ? 'text-blue' : 'text-black'}>
         db
-      </Link>
-      <Link
+      </Link> */}
+      {/* <Link
         href="/about"
         className={path === '/about' || path === '/settings' || path === '/team' ? 'text-blue' : 'text-black'}
       >
         (db)
-      </Link>
+      </Link> */}
       {/* <Link href="/page-views" className={path === '/page-views' ? 'text-blue' : 'text-black'}>
         views
       </Link> */}

@@ -86,7 +86,7 @@ const Notes: React.FC = () => {
 
   const noteItems = React.useMemo(() => {
     if (isLoading) {
-      return <Loading className="w-96 h-96  border-pink-900" />;
+      return <Loading className="w-96 h-96 border-pink-900" />;
     }
     return notes.map((note) => {
       const noteNode =
