@@ -45,7 +45,7 @@ const Home: FC = () => {
 
   const photoTem = React.useMemo(() => {
     if (isLoading) {
-      return <Loading className="w-20 h-20 border-pink-900" />;
+      return <Loading />;
     }
     return photos.map(({ src, id }) => {
       return (
