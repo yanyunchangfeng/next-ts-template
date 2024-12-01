@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
-import myImage from '@/app/assets/homepage.png';
+import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
 // import { isDynamic } from './shared';
 
@@ -77,7 +77,7 @@ export default function RootLayout({
           backgroundImage: `url(${myImage.src})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          height: '100vh'
         }}
       >
         <div className="p-5">
