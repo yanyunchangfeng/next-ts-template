@@ -14,7 +14,7 @@ export const AddNote: FC = () => {
         onChange={(e) => setAddNoteTitle(e.target.value)}
       />
       <button
-        className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2 disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed"
+        className="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-md shadow-md ml-2 disabled:bg-pink-300 disabled:text-pink-600 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={!addNoteTitle}
         onClick={addNote}
       >

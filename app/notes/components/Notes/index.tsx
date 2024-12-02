@@ -59,7 +59,7 @@ export const Notes: React.FC = () => {
           const editButton =
             editNoteId !== note.id ? (
               <button
-                className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
+                className="bg-pink-500 text-white p-2 rounded-md shadow-md ml-2 hover:bg-pink-600"
                 onClick={() => setEditNoteId(note.id)}
               >
                 Edit
@@ -70,7 +70,7 @@ export const Notes: React.FC = () => {
               {noteNode}
               {editButton}
               <button
-                className="bg-blue-500 text-white p-2 rounded-md shadow-md ml-2"
+                className="bg-pink-500 text-white p-2 rounded-md shadow-md ml-2 hover:bg-pink-600"
                 onClick={() => handleDelete(note)}
               >
                 Delete
