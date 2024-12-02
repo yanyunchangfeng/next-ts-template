@@ -18,6 +18,7 @@ export const withSupabase = (
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
+          console.log('Setting cookies:', cookiesToSet);
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
           supabaseResponse = NextResponse.next({
             request
