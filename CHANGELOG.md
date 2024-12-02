@@ -1,3 +1,9 @@
+# [1.13.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.12.0...v1.13.0-rc.1) (2024-12-02)
+
+### Features
+
+- add notes pagination ([7e0f407](https://github.com/yanyunchangfeng/next-ts-template/commit/7e0f4074b792aaead1f62c78d4bbca42b1291925))
+
 # [1.12.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.11.1...v1.12.0) (2024-12-02)
 
 ### Features
