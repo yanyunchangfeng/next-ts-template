@@ -9,7 +9,12 @@ export async function GET() {
     return NextResponse.json([]);
   }
   const supabase = await createClient();
-  const { data: notes, error, status, statusText } = await supabase.from('notes').select();
+  const {
+    data: notes,
+    error,
+    status,
+    statusText
+  } = await supabase.from('notes').select().order('created_at', { ascending: false });
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });
   }
