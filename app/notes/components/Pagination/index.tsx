@@ -94,5 +94,5 @@ export const Paganition: React.FC = () => {
       </>
     );
   }, [notes]);
-  return <div className="flex jusi gap-2 justify-center items-center">{pages}</div>;
+  return <div className="flex jusi gap-2 justify-center items-center mb-4">{pages}</div>;
 };
