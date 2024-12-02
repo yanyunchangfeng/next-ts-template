@@ -1,3 +1,3 @@
-export * from './photo';
-export * from './note';
+export * from './photos';
+export * from './notes';
 export * from './store';
