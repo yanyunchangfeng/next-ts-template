@@ -28,7 +28,6 @@ export const Notes: React.FC = () => {
     }
     return (
       <div className="flex flex-col gap-2 flex-1">
-        <Paganition />
         <AddNote />
         {notes.data.map((note) => {
           const noteNode =
@@ -80,6 +79,7 @@ export const Notes: React.FC = () => {
             </div>
           );
         })}
+        <Paganition />
       </div>
     );
   }, [editNoteId, notes, pending]);

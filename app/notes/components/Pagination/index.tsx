@@ -20,7 +20,9 @@ export const Paganition: React.FC = () => {
     const buttons = [];
     const range = 2;
     if (notes.totalPages <= 5) {
-      buttons.push(...Array.from({ length: 5 }, (_, i) => renderPageButton(i + 1)));
+      for (let i = 1; i <= totalPages; i++) {
+        buttons.push(renderPageButton(i));
+      }
     } else {
       if (currentPage > range + 1) {
         buttons.push(renderPageButton(1));
@@ -80,7 +82,7 @@ export const Paganition: React.FC = () => {
           </button>
         )}
 
-        {renderRange1Buttons()}
+        {renderRange2Buttons()}
         {notes.pageNo < notes.totalPages && (
           <button
             className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4 py-2 "
