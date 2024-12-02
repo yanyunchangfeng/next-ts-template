@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const withRedirect = (
-  index: number
-  // next:Function,
-) => {
+export const withRedirect = (index: number, next: (request: NextRequest) => void) => {
   return async (request: NextRequest) => {
     console.log(`Middleware withRedirect index is ${index} running`, request.url);
     // 条件语句
@@ -14,7 +11,10 @@ export const withRedirect = (
     // if (request.nextUrl.pathname.startsWith('/dashboard/')) {
     //   return NextResponse.rewrite(new URL('/', request.url)); // 重写不会变更浏览器地址栏
     // }
-    return NextResponse.redirect(new URL('/', request.url)); // matcher config 对应的处理逻辑
-    // return next(request);
+    const { pathname, searchParams } = request.nextUrl;
+    if (pathname === '/' && !searchParams.has('redirect')) {
+      return NextResponse.redirect(new URL('/notes', request.url)); // matcher config 对应的处理逻辑
+    }
+    return next(request);
   };
 };
