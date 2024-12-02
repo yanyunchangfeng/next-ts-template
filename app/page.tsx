@@ -56,6 +56,6 @@ const Home: FC = () => {
     });
   }, [photos, isLoading]);
 
-  return <main className="flex justify-center">{photoTem}</main>;
+  return <main className="flex justify-center items-center flex-1">{photoTem}</main>;
 };
 export default Home;

@@ -80,17 +80,18 @@ export default function RootLayout({
           height: '100vh'
         }}
       >
-        <div className="p-5">
+        <div className="flex flex-col h-full">
           <Navigation />
-          {/* <div className="flex gap-6 ">
+          <div className="flex flex-1">{children}</div>
+        </div>
+        {/* <div className="flex gap-6 ">
             {teams}
             {analytics}
           </div> */}
-          {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
-          {children}
-          {/* {isDynamic ? modal : null} */}
-          <SpeedInsights />
-        </div>
+        {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
+
+        {/* {isDynamic ? modal : null} */}
+        <SpeedInsights />
       </body>
     </html>
   );

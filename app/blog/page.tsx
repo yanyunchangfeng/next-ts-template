@@ -22,7 +22,7 @@ const Blog: FC = () => {
   const data = use(getData());
 
   return (
-    <div className="h-60 mt-5 flex-1 rounded-xl text-white flex items-center justify-center">
+    <div className="mt-5 flex-1 rounded-xl text-white flex items-center justify-center">
       <img src={data[0].url} alt="cat" width={200} height={200} />
     </div>
   );
