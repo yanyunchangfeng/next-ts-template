@@ -1,12 +1,12 @@
 import { isDynamic, Note } from '@/app/shared';
 
-export const fetchData = async () => {
+export const fetchData = async (page = { pageNo: 1, pageSize: 10 }) => {
   if (!isDynamic) {
     return [];
   }
-  const res = await fetch(`/api/notes`);
+  const res = await fetch(`/api/notes?pageNo=${page.pageNo}&pageSize=${page.pageSize}`);
   const data = await res.json();
-  return data as Note[];
+  return data;
 };
 
 export const addNote = async (title: string) => {

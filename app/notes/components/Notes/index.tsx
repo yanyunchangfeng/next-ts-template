@@ -3,7 +3,7 @@ import { Loading } from '@/app/components';
 import { Note } from '@/app/shared';
 import { useNotesStore } from '@/app/store';
 import { Textarea } from '@headlessui/react';
-import { AddNote } from '@/app/notes/components';
+import { AddNote, Paganition } from '@/app/notes/components';
 
 export const Notes: React.FC = () => {
   const { editNoteId, notes, pending, setEditNoteId, updateNote, setIsOpen, setOpenNote, fetchNotes } = useNotesStore();
@@ -28,7 +28,9 @@ export const Notes: React.FC = () => {
     }
     return (
       <div className="flex flex-col gap-4 flex-1">
-        {notes.map((note) => {
+        <Paganition />
+        <AddNote />
+        {notes.data.map((note) => {
           const noteNode =
             editNoteId === note.id ? (
               <Textarea
@@ -78,7 +80,6 @@ export const Notes: React.FC = () => {
             </div>
           );
         })}
-        <AddNote />
       </div>
     );
   }, [editNoteId, notes, pending]);
