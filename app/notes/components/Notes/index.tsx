@@ -34,7 +34,7 @@ export const Notes: React.FC = () => {
               <Textarea
                 rows={2}
                 placeholder="Add a new note"
-                className="border bg-transparent p-2 rounded-md shadow-md flex-1 focus:border-pink-500 focus:outline-none"
+                className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
                 defaultValue={note.title}
                 ref={(el) => {
                   // 在这里不返回 el，只保存在 refs 对象中
