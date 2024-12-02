@@ -50,7 +50,9 @@ export async function PUT(request: NextRequest) {
   const { data, error, status, statusText } = await supabase
     .from('notes')
     .update([{ title: title }])
-    .eq('id', id);
+    .eq('id', id)
+    .select();
+
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });
   }
@@ -66,7 +68,9 @@ export async function DELETE(request: NextRequest) {
   }
   const supabase = await createClient();
   // 执行删除操作
-  const { data, error, status, statusText } = await supabase.from('notes').delete().eq('id', id); // 通过 id 删除笔记
+  //   eq 是单个字段的等值匹配，适用于比较一个字段与某个具体值是否相等。
+  // match 是多条件匹配，适用于一次性检查多个字段与对应值的匹配，等价于多个 eq 条件的 AND 组合。
+  const { data, error, status, statusText } = await supabase.from('notes').delete().match({ id }).select(); // 通过 id 删除笔记
   // 错误处理
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });
