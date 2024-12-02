@@ -80,7 +80,7 @@ export default function RootLayout({
           height: '100vh'
         }}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full ">
           <Navigation />
           <div className="flex flex-1">{children}</div>
         </div>
