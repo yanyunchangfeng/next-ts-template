@@ -27,14 +27,14 @@ export const Notes: React.FC = () => {
       return <Loading />;
     }
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 flex-1">
         {notes.map((note) => {
           const noteNode =
             editNoteId === note.id ? (
               <Textarea
                 rows={2}
                 placeholder="Add a new note"
-                className="bg-white p-2 rounded-md shadow-md flex-1"
+                className="bg-transparent p-2 rounded-md shadow-md flex-1 focus:outline-pink-500"
                 defaultValue={note.title}
                 ref={(el) => {
                   // 在这里不返回 el，只保存在 refs 对象中
@@ -66,7 +66,7 @@ export const Notes: React.FC = () => {
               </button>
             ) : null;
           return (
-            <div key={note.id} className="bg-white p-4 rounded-md shadow-md flex items-center ">
+            <div key={note.id} className="p-4 rounded-md shadow-md flex items-center ">
               {noteNode}
               {editButton}
               <button

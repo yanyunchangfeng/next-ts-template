@@ -5,11 +5,11 @@ import { FC } from 'react';
 export const AddNote: FC = () => {
   const { addNoteTitle, addNote, setAddNoteTitle } = useNotesStore();
   return (
-    <div className="flex items-center bg-white p-4 rounded-md shadow-md mb-4">
+    <div className="flex items-center p-4 rounded-md shadow-md mb-4">
       <Textarea
         rows={2}
         placeholder="Add a new note"
-        className="bg-white p-2 rounded-md shadow-md flex-1"
+        className="bg-transparent p-2 rounded-md shadow-md flex-1 focus:outline-pink-500"
         value={addNoteTitle}
         onChange={(e) => setAddNoteTitle(e.target.value)}
       />
