@@ -27,7 +27,7 @@ export const Notes: React.FC = () => {
       return <Loading />;
     }
     return (
-      <div className="flex flex-col gap-4 flex-1">
+      <div className="flex flex-col gap-2 flex-1">
         <Paganition />
         <AddNote />
         {notes.data.map((note) => {
