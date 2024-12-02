@@ -5,7 +5,7 @@ import { FC } from 'react';
 export const AddNote: FC = () => {
   const { addNoteTitle, addNote, setAddNoteTitle } = useNotesStore();
   return (
-    <div className="flex items-center">
+    <div className="flex items-center bg-white p-4 rounded-md shadow-md mb-4">
       <Textarea
         rows={2}
         placeholder="Add a new note"
