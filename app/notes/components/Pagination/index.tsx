@@ -11,7 +11,7 @@ export const Paganition: React.FC = () => {
       key={pageNo}
       disabled={pageNo === notes.pageNo}
       onClick={() => fetchNotes({ pageNo, pageSize: notes.pageSize })}
-      className="rounded-md shadow-md ml-2 hover:bg-pink-600 bg-pink-500 text-white px-4  py-2 disabled:bg-pink-300 disabled:text-pink-600 disabled:cursor-not-allowed disabled:opacity-50"
+      className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4  py-2 disabled:bg-pink-300 disabled:text-pink-600 disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pageNo}
     </button>
@@ -73,24 +73,24 @@ export const Paganition: React.FC = () => {
         <span className="text-pink-500">Total {notes.totalCount} items</span>
         {notes.pageNo > 1 && (
           <button
-            className="rounded-md shadow-md ml-2 hover:bg-pink-600 bg-pink-500 text-white p-2"
+            className="rounded-md shadow-md  hover:bg-pink-600 bg-pink-500 text-white px-4 py-2"
             onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: notes.pageSize })}
           >
-            Prev
+            &lt;
           </button>
         )}
 
         {renderRange1Buttons()}
         {notes.pageNo < notes.totalPages && (
           <button
-            className="rounded-md shadow-md ml-2 hover:bg-pink-600 bg-pink-500 text-white p-2 "
+            className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4 py-2 "
             onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}
           >
-            Next
+            &gt;
           </button>
         )}
       </>
     );
   }, [notes]);
-  return <div className="flex jusi gap-4 justify-center items-center">{pages}</div>;
+  return <div className="flex jusi gap-2 justify-center items-center">{pages}</div>;
 };
