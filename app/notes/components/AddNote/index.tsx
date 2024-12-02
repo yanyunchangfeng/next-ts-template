@@ -7,7 +7,7 @@ export const AddNote: FC = () => {
   return (
     <div className="flex items-center p-4 rounded-md shadow-md mb-4">
       <Textarea
-        rows={2}
+        // rows={2}
         placeholder="Add a new note"
         className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
         value={addNoteTitle}

@@ -32,7 +32,7 @@ export const Notes: React.FC = () => {
           const noteNode =
             editNoteId === note.id ? (
               <Textarea
-                rows={2}
+                // rows={2}
                 placeholder="Add a new note"
                 className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
                 defaultValue={note.title}
@@ -54,7 +54,7 @@ export const Notes: React.FC = () => {
                 }}
               />
             ) : (
-              <h2 className="text-lg font-medium flex-1">{note.title}</h2>
+              <div className="font-medium flex-1 p-5">{note.title}</div>
             );
           const editButton =
             editNoteId !== note.id ? (
