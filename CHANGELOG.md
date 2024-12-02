@@ -1,3 +1,9 @@
+# [1.12.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.11.1...v1.12.0) (2024-12-02)
+
+### Features
+
+- update api notes query ([d553850](https://github.com/yanyunchangfeng/next-ts-template/commit/d55385080433e10bd38046cb2dfa78a01f189e4b))
+
 # [1.12.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.11.1...v1.12.0-rc.1) (2024-12-02)
 
 ### Features
