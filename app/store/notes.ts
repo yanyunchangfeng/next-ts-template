@@ -3,7 +3,13 @@ import { Note } from '@/app/shared';
 import RequestService from '@/app/platform/request/browser/RequestService';
 
 const DEFAULT_NOTES = {
-  notes: [] as Note[],
+  notes: {
+    pageNo: 1,
+    pageSize: 10,
+    totalCount: 0,
+    totalPages: 0,
+    data: [] as Note[]
+  },
   isOpen: false,
   openNote: { id: '', title: '' } as Note,
   editNoteId: '',
@@ -21,9 +27,9 @@ export const useNotesStore = createPersistStore(
       };
     }
     const methods = {
-      async fetchNotes() {
+      async fetchNotes(page = { pageNo: 1, pageSize: 5 }) {
         set(() => ({ pending: true }));
-        const notes = await RequestService.notes.fetchData();
+        const notes = await RequestService.notes.fetchData(page);
         set(() => ({ notes, pending: false }));
       },
       async addNote() {
@@ -43,7 +49,7 @@ export const useNotesStore = createPersistStore(
         set(() => ({ isOpen: false, openNote: { id: '', title: '' } }));
         get().fetchNotes();
       },
-      setNotes(notes: Note[]) {
+      setNotes(notes: typeof DEFAULT_NOTES.notes) {
         set(() => ({ notes }));
       },
       setIsOpen(isOpen: boolean) {

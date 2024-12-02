@@ -4,21 +4,42 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   if (!isDynamic) {
     return NextResponse.json([]);
   }
+  const url = new URL(request.url);
+  const pageNo = parseInt(url.searchParams.get('pageNo') || '1', 10); // 默认为第 1 页
+  const pageSize = parseInt(url.searchParams.get('pageSize') || '10', 10);
+  const offset = (pageNo - 1) * pageSize;
   const supabase = await createClient();
+  const { count, error: countError } = await supabase.from('notes').select('id', { count: 'exact', head: true });
+  if (countError) {
+    return NextResponse.json({ message: countError.message }, { status: 400 });
+  }
   const {
     data: notes,
     error,
     status,
     statusText
-  } = await supabase.from('notes').select().order('created_at', { ascending: false });
+  } = await supabase
+    .from('notes')
+    .select()
+    .order('created_at', { ascending: false })
+    .range(offset, offset + pageSize - 1);
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });
   }
-  return NextResponse.json(notes, { status: 200, statusText });
+  return NextResponse.json(
+    {
+      totalCount: count,
+      data: notes,
+      pageNo,
+      pageSize,
+      totalPages: Math.ceil(count! / pageSize)
+    },
+    { status: 200, statusText }
+  );
 }
 export async function POST(request: NextRequest) {
   if (!isDynamic) {
