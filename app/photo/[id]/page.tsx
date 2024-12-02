@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 const Page: FC<PhotoParams> = ({ params: { id } }) => {
   const photo = photos.find((p) => p.id === id);
 
-  return <img className="block w-1/4 mx-auto mt-10" src={photo?.src} />;
+  return <img className="max-w-96 max-h-96 mx-auto self-center " src={photo?.src} />;
 };
 
 export default Page;
