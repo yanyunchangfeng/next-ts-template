@@ -1,5 +1,5 @@
 import { createPersistStore } from '@/app/utils';
-import { Note } from '@/app/shared';
+import { Note, Notes } from '@/app/shared';
 import RequestService from '@/app/platform/request/browser/RequestService';
 
 const DEFAULT_NOTES = {
@@ -11,7 +11,7 @@ const DEFAULT_NOTES = {
     data: [] as Note[]
   },
   isOpen: false,
-  openNote: { id: '', title: '' } as Note,
+  openNote: { id: '', title: '' },
   editNoteId: '',
   addNoteTitle: '',
   pending: true
@@ -49,7 +49,7 @@ export const useNotesStore = createPersistStore(
         set(() => ({ isOpen: false, openNote: { id: '', title: '' } }));
         get().fetchNotes();
       },
-      setNotes(notes: typeof DEFAULT_NOTES.notes) {
+      setNotes(notes: Notes) {
         set(() => ({ notes }));
       },
       setIsOpen(isOpen: boolean) {

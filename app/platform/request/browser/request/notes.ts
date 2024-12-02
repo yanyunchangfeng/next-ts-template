@@ -1,8 +1,8 @@
-import { isDynamic, Note } from '@/app/shared';
+import { isDynamic, Note, Notes, notes } from '@/app/shared';
 
-export const fetchData = async (page = { pageNo: 1, pageSize: 10 }) => {
+export const fetchData = async (page = { pageNo: 1, pageSize: 10 }): Promise<Notes> => {
   if (!isDynamic) {
-    return [];
+    return notes;
   }
   const res = await fetch(`/api/notes?pageNo=${page.pageNo}&pageSize=${page.pageSize}`);
   const data = await res.json();
