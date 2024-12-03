@@ -61,18 +61,20 @@ export const Notes: React.FC = () => {
             ) : (
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
                 <span>{note.title}</span>
-                <Popover className="relative">
-                  <PopoverButton className="text-gray-400 outline-none">(created)</PopoverButton>
+                <Popover>
+                  <PopoverButton className="text-sm/6 font-semibold text-pink-300 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 data-[focus]:outline-1 data-[focus]:outline-white">
+                    (created)
+                  </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="text-pink-500 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className="text-pink-500 p-2 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {new Date(note.created_at).toLocaleString()}
                   </PopoverPanel>
                 </Popover>
                 <Popover className="relative">
-                  <PopoverButton className="text-gray-400 outline-none">
+                  <PopoverButton className="text-sm/6 font-semibold text-pink-300 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 data-[focus]:outline-1 data-[focus]:outline-white">
                     {note.updated_at ? `(edited)` : null}
                   </PopoverButton>
                   <PopoverPanel
