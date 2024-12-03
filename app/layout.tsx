@@ -72,15 +72,14 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
         style={{
           backgroundImage: `url(${myImage.src})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '100vh'
+          backgroundPosition: 'center'
         }}
       >
-        <div className="flex flex-col h-full p-4">
+        <div className="flex flex-col h-full pt-4">
           <Navigation />
           <div className="flex flex-1">{children}</div>
         </div>
