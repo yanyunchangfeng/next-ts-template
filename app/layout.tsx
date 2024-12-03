@@ -79,7 +79,7 @@ export default function RootLayout({
           backgroundPosition: 'center'
         }}
       >
-        <div className="flex flex-col h-full pt-4">
+        <div className="flex flex-col h-full px-4">
           <Navigation />
           <div className="flex flex-1">{children}</div>
         </div>
