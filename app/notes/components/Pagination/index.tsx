@@ -14,6 +14,8 @@ export const Paganition: React.FC = () => {
   const currentPage = notes.pageNo;
   const totalPages = notes.totalPages;
 
+  if (totalPages === 0) return null;
+
   const renderPageButton = (pageNo: number) => (
     <button
       key={pageNo}
