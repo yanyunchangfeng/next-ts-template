@@ -1,3 +1,9 @@
+# [1.14.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.13.0...v1.14.0) (2024-12-03)
+
+### Features
+
+- add perPage ([79910b4](https://github.com/yanyunchangfeng/next-ts-template/commit/79910b44c0335e73df6c10e2660bee08d83c5382))
+
 # [1.14.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.13.0...v1.14.0-rc.1) (2024-12-03)
 
 ### Features
