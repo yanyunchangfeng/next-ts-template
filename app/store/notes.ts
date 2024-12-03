@@ -14,7 +14,8 @@ const DEFAULT_NOTES = {
   openNote: { id: '', title: '' },
   editNoteId: '',
   addNoteTitle: '',
-  pending: true
+  pending: true,
+  selectedPerPage: { id: 1, name: `5 / page`, pageSize: 5 }
 };
 
 export const useNotesStore = createPersistStore(
@@ -63,6 +64,10 @@ export const useNotesStore = createPersistStore(
       },
       setAddNoteTitle(title: string) {
         set(() => ({ addNoteTitle: title }));
+      },
+      setSelectedPerPage(selectedPerPage: typeof DEFAULT_NOTES.selectedPerPage) {
+        get().fetchNotes({ pageNo: 1, pageSize: selectedPerPage.pageSize });
+        set(() => ({ selectedPerPage }));
       }
     };
     return methods;

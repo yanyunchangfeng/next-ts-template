@@ -1,11 +1,19 @@
 /* eslint-disable */
 import { useNotesStore } from '@/app/store';
 import React from 'react';
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 
+const perPages = [
+  { id: 1, name: `5/page`, pageSize: 5 },
+  { id: 2, name: `10/page`, pageSize: 10 },
+  { id: 3, name: `15/page`, pageSize: 15 },
+  { id: 4, name: `20/page`, pageSize: 20 }
+];
 export const Paganition: React.FC = () => {
-  const { notes, fetchNotes } = useNotesStore();
+  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage } = useNotesStore();
   const currentPage = notes.pageNo;
   const totalPages = notes.totalPages;
+
   const renderPageButton = (pageNo: number) => (
     <button
       key={pageNo}
@@ -94,5 +102,25 @@ export const Paganition: React.FC = () => {
       </>
     );
   }, [notes]);
-  return <div className="flex jusi gap-2 justify-center items-center">{pages}</div>;
+  return (
+    <div className="flex jusi gap-2 justify-center items-center">
+      {pages}
+      <Listbox value={selectedPerPage} onChange={setSelectedPerPage}>
+        <ListboxButton className="text-pink-500  p-2">{selectedPerPage.name}</ListboxButton>
+        <ListboxOptions anchor="bottom">
+          {perPages.map((perPage) => {
+            return (
+              <ListboxOption
+                key={perPage.id}
+                value={perPage}
+                className="data-[focus]:bg-pink-500 data-[focus]:text-white data p-2 flex items-center justify-center cursor-default rounded-md"
+              >
+                <div>{perPage.name}</div>
+              </ListboxOption>
+            );
+          })}
+        </ListboxOptions>
+      </Listbox>
+    </div>
+  );
 };
