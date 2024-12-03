@@ -5,7 +5,7 @@ import RequestService from '@/app/platform/request/browser/RequestService';
 const DEFAULT_NOTES = {
   notes: {
     pageNo: 1,
-    pageSize: 10,
+    pageSize: 5,
     totalCount: 0,
     totalPages: 0,
     data: [] as Note[]
@@ -28,8 +28,9 @@ export const useNotesStore = createPersistStore(
       };
     }
     const methods = {
-      async fetchNotes(page = { pageNo: 1, pageSize: 5 }) {
+      async fetchNotes(page?: { pageNo: number; pageSize: number }) {
         set(() => ({ pending: true }));
+        page = page ?? { pageNo: 1, pageSize: get().selectedPerPage.pageSize };
         const notes = await RequestService.notes.fetchData(page);
         set(() => ({ notes, pending: false }));
       },
@@ -66,8 +67,8 @@ export const useNotesStore = createPersistStore(
         set(() => ({ addNoteTitle: title }));
       },
       setSelectedPerPage(selectedPerPage: typeof DEFAULT_NOTES.selectedPerPage) {
-        get().fetchNotes({ pageNo: 1, pageSize: selectedPerPage.pageSize });
         set(() => ({ selectedPerPage }));
+        get().fetchNotes();
       }
     };
     return methods;
