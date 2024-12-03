@@ -7,10 +7,14 @@ import { AddNote, Paganition } from '@/app/notes/components';
 
 export const Notes: React.FC = () => {
   const { editNoteId, notes, pending, setEditNoteId, updateNote, setIsOpen, setOpenNote, fetchNotes } = useNotesStore();
-  const inputRefs = React.useRef<{ [key: string]: HTMLElement }>({});
+  const inputRefs = React.useRef<{ [key: string]: HTMLTextAreaElement }>({});
   React.useEffect(() => {
     if (editNoteId && inputRefs.current[editNoteId]) {
       inputRefs.current[editNoteId].focus();
+      inputRefs.current[editNoteId]?.setSelectionRange(
+        inputRefs.current[editNoteId].value.length,
+        inputRefs.current[editNoteId].value.length
+      );
     }
   }, [editNoteId]);
 
@@ -35,9 +39,9 @@ export const Notes: React.FC = () => {
               <Textarea
                 // rows={2}
                 placeholder="Add a new note"
-                className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
+                className="focus:ring bg-transparent px-2 pt-4 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
                 defaultValue={note.title}
-                ref={(el) => {
+                ref={(el: HTMLTextAreaElement) => {
                   // 在这里不返回 el，只保存在 refs 对象中
                   if (el) {
                     inputRefs.current[note.id] = el;
@@ -55,23 +59,23 @@ export const Notes: React.FC = () => {
                 }}
               />
             ) : (
-              <div className="font-medium flex-1 p-5">{note.title}</div>
+              <div className="font-medium flex-1 pl-2 py-5 ">{note.title}</div>
             );
           const editButton =
             editNoteId !== note.id ? (
               <button
-                className="bg-pink-500 text-white p-2 rounded-md shadow-md ml-2 hover:bg-pink-600"
+                className="bg-pink-500 text-white p-2 rounded-md shadow-md  hover:bg-pink-600"
                 onClick={() => setEditNoteId(note.id)}
               >
                 Edit
               </button>
             ) : null;
           return (
-            <div key={note.id} className="p-4 rounded-md shadow-md flex items-center ">
+            <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2">
               {noteNode}
               {editButton}
               <button
-                className="bg-pink-500 text-white p-2 rounded-md shadow-md ml-2 hover:bg-pink-600"
+                className="bg-pink-500 text-white p-2 rounded-md shadow-md  hover:bg-pink-600"
                 onClick={() => handleDelete(note)}
               >
                 Delete

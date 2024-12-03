@@ -18,7 +18,7 @@ const Navigation: FC = () => {
     'text-black': path !== '/'
   });
   return (
-    <nav className="flex items-center justify-center gap-4 text-pink-500 mt-4">
+    <nav className="flex items-center justify-center gap-4 text-pink-500 ">
       <Link href="/notes" className={notesClasses}>
         notes
       </Link>
