@@ -60,14 +60,14 @@ export const Notes: React.FC = () => {
               />
             ) : (
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
-                <span>{note.title}</span>
+                <span className="break-all">{note.title}</span>
                 <Popover>
                   <PopoverButton className="text-sm/6 font-semibold text-pink-300 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 data-[focus]:outline-1 data-[focus]:outline-white">
                     (created)
                   </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="text-pink-500 p-2 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className="text-white p-2 divide-y divide-white/5 rounded-xl  bg-pink-500/50  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {new Date(note.created_at).toLocaleString()}
@@ -79,7 +79,7 @@ export const Notes: React.FC = () => {
                   </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="text-pink-500 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className="text-white p-2 divide-y divide-white/5 rounded-xl bg-pink-500/50 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {note.updated_at ? `${new Date(note.updated_at).toLocaleString()}` : null}
