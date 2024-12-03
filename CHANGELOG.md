@@ -1,3 +1,9 @@
+# [1.15.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.14.0...v1.15.0-rc.1) (2024-12-03)
+
+### Features
+
+- add notes createTime & editTime ([c222ab6](https://github.com/yanyunchangfeng/next-ts-template/commit/c222ab6ef1ed6ed43ce1bee9cca4942eabfe124a))
+
 # [1.14.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.13.0...v1.14.0) (2024-12-03)
 
 ### Features
