@@ -5,7 +5,7 @@ import { FC } from 'react';
 export const DelelteNote: FC = () => {
   const { isOpen, setIsOpen, openNote, deleteNote, setOpenNote } = useNotesStore();
   const handClose = () => {
-    setOpenNote({ title: '', id: '' });
+    setOpenNote({ title: '', id: '', created_at: 0 });
     setIsOpen(false);
   };
   return (
