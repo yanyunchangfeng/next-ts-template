@@ -2,7 +2,7 @@ import React from 'react';
 import { Loading } from '@/app/components';
 import { Note } from '@/app/shared';
 import { useNotesStore } from '@/app/store';
-import { Textarea } from '@headlessui/react';
+import { Textarea, Popover, PopoverPanel, PopoverButton } from '@headlessui/react';
 import { AddNote, Paganition } from '@/app/notes/components';
 
 export const Notes: React.FC = () => {
@@ -55,11 +55,35 @@ export const Notes: React.FC = () => {
                     return;
                   }
                   setEditNoteId('');
-                  updateNote({ id: note.id, title: current });
+                  updateNote({ id: note.id, title: current, created_at: note.created_at });
                 }}
               />
             ) : (
-              <div className="font-medium flex-1 pl-2 py-5 ">{note.title}</div>
+              <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
+                <span>{note.title}</span>
+                <Popover className="relative">
+                  <PopoverButton className="text-gray-400 outline-none">(created)</PopoverButton>
+                  <PopoverPanel
+                    anchor="bottom"
+                    className="text-pink-500 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    transition
+                  >
+                    {new Date(note.created_at).toLocaleString()}
+                  </PopoverPanel>
+                </Popover>
+                <Popover className="relative">
+                  <PopoverButton className="text-gray-400 outline-none">
+                    {note.updated_at ? `(edited)` : null}
+                  </PopoverButton>
+                  <PopoverPanel
+                    anchor="bottom"
+                    className="text-pink-500 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    transition
+                  >
+                    {note.updated_at ? `${new Date(note.updated_at).toLocaleString()}` : null}
+                  </PopoverPanel>
+                </Popover>
+              </div>
             );
           const editButton =
             editNoteId !== note.id ? (
