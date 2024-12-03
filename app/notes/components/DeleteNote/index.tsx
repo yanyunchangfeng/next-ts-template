@@ -21,7 +21,7 @@ export const DelelteNote: FC = () => {
             Delete note id:
             {openNote.id}
           </DialogTitle>
-          <Description>{openNote.title}</Description>
+          <Description className="break-words">{openNote.title}</Description>
           <p>Are you sure you want to delete your note? your note will be permanently removed.</p>
           <div className="flex gap-4">
             <button onClick={handClose}>Cancel</button>
