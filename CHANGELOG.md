@@ -1,3 +1,9 @@
+## [1.15.1-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.15.0...v1.15.1-rc.1) (2024-12-04)
+
+### Performance Improvements
+
+- api notes query ([cbc5b74](https://github.com/yanyunchangfeng/next-ts-template/commit/cbc5b743aa27ba1fd6381e3c29c1a67deb0c0ce4))
+
 # [1.15.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.14.0...v1.15.0) (2024-12-03)
 
 ### Features
