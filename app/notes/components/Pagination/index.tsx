@@ -109,13 +109,16 @@ export const Paganition: React.FC = () => {
       {pages}
       <Listbox value={selectedPerPage} onChange={setSelectedPerPage}>
         <ListboxButton className="text-pink-500  p-2">{selectedPerPage.name}</ListboxButton>
-        <ListboxOptions anchor="bottom">
+        <ListboxOptions
+          anchor="bottom"
+          className="text-white rounded-xl border border-white/5 bg-pink-500/50 p-1 [--anchor-gap:var(--spacing-1)] focus:outline-none"
+        >
           {perPages.map((perPage) => {
             return (
               <ListboxOption
                 key={perPage.id}
                 value={perPage}
-                className="data-[focus]:bg-pink-500 data-[focus]:text-white data p-2 flex items-center justify-center cursor-default rounded-md"
+                className="data-[focus]:bg-pink-600 data-[focus]:text-white  p-2 flex items-center justify-center cursor-default rounded-md"
               >
                 <div>{perPage.name}</div>
               </ListboxOption>
