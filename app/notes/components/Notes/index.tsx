@@ -60,7 +60,7 @@ export const Notes: React.FC = () => {
               />
             ) : (
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
-                <span className="break-all">{note.title}</span>
+                <span className="break-all whitespace-pre-line">{note.title}</span>
                 <Popover>
                   <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                     (created)
