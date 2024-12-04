@@ -31,7 +31,7 @@ export const Notes: React.FC = () => {
       return <Loading />;
     }
     return (
-      <div className="flex flex-col gap-2 flex-1">
+      <div className="flex flex-col flex-1 gap-2">
         <AddNote />
         {notes.data.map((note) => {
           const noteNode =
@@ -39,7 +39,7 @@ export const Notes: React.FC = () => {
               <Textarea
                 // rows={2}
                 placeholder="Add a new note"
-                className="focus:ring bg-transparent px-2 pt-4 rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none"
+                className="focus:ring bg-transparent px-2 pt-4  rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none"
                 defaultValue={note.title}
                 ref={(el: HTMLTextAreaElement) => {
                   // 在这里不返回 el，只保存在 refs 对象中
@@ -62,7 +62,7 @@ export const Notes: React.FC = () => {
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
                 <span className="break-all whitespace-pre-line">{note.title}</span>
                 <Popover>
-                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
+                  <PopoverButton className="font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                     (created)
                   </PopoverButton>
                   <PopoverPanel
@@ -74,7 +74,7 @@ export const Notes: React.FC = () => {
                   </PopoverPanel>
                 </Popover>
                 <Popover className="relative">
-                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white">
+                  <PopoverButton className="font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white">
                     {note.updated_at ? `(edited)` : null}
                   </PopoverButton>
                   <PopoverPanel

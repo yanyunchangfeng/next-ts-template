@@ -105,7 +105,7 @@ export const Paganition: React.FC = () => {
     );
   }, [notes]);
   return (
-    <div className="flex jusi gap-2 justify-center items-center mb-4">
+    <div className="flex jusi gap-2 justify-center items-center mb-4 mt-2">
       {pages}
       <Listbox value={selectedPerPage} onChange={setSelectedPerPage}>
         <ListboxButton className="p-2">{selectedPerPage.name}</ListboxButton>
