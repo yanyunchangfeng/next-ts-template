@@ -62,7 +62,7 @@ export const Notes: React.FC = () => {
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
                 <span className="break-all">{note.title}</span>
                 <Popover>
-                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
+                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                     (created)
                   </PopoverButton>
                   <PopoverPanel
@@ -74,7 +74,7 @@ export const Notes: React.FC = () => {
                   </PopoverPanel>
                 </Popover>
                 <Popover className="relative">
-                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
+                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white">
                     {note.updated_at ? `(edited)` : null}
                   </PopoverButton>
                   <PopoverPanel
