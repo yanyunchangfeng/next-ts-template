@@ -39,7 +39,7 @@ export const Notes: React.FC = () => {
               <Textarea
                 // rows={2}
                 placeholder="Add a new note"
-                className="focus:ring bg-transparent px-2 pt-4 rounded-md shadow-md flex-1 focus:ring-pink-500 focus:outline-none"
+                className="focus:ring bg-transparent px-2 pt-4 rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none"
                 defaultValue={note.title}
                 ref={(el: HTMLTextAreaElement) => {
                   // 在这里不返回 el，只保存在 refs 对象中
@@ -62,24 +62,24 @@ export const Notes: React.FC = () => {
               <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
                 <span className="break-all">{note.title}</span>
                 <Popover>
-                  <PopoverButton className="text-sm/6 font-semibold text-pink-300 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 data-[focus]:outline-1 data-[focus]:outline-white">
+                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
                     (created)
                   </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="text-white p-2 divide-y divide-white/5 rounded-xl  bg-pink-500/50  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className="p-2 divide-y divide-white/5 rounded-xl  bg-red-500  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {new Date(note.created_at).toLocaleString()}
                   </PopoverPanel>
                 </Popover>
                 <Popover className="relative">
-                  <PopoverButton className="text-sm/6 font-semibold text-pink-300 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 data-[focus]:outline-1 data-[focus]:outline-white">
+                  <PopoverButton className="text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
                     {note.updated_at ? `(edited)` : null}
                   </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="text-white p-2 divide-y divide-white/5 rounded-xl bg-pink-500/50 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className=" p-2 divide-y divide-white/5 rounded-xl bg-red-500 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {note.updated_at ? `${new Date(note.updated_at).toLocaleString()}` : null}
@@ -90,7 +90,7 @@ export const Notes: React.FC = () => {
           const editButton =
             editNoteId !== note.id ? (
               <button
-                className="bg-pink-500 text-white p-2 rounded-md shadow-md  hover:bg-pink-600"
+                className="bg-red-500 text-white p-2 rounded-md shadow-md  hover:bg-red-600"
                 onClick={() => setEditNoteId(note.id)}
               >
                 Edit
@@ -101,7 +101,7 @@ export const Notes: React.FC = () => {
               {noteNode}
               {editButton}
               <button
-                className="bg-pink-500 text-white p-2 rounded-md shadow-md  hover:bg-pink-600"
+                className="bg-red-500 text-white p-2 rounded-md shadow-md  hover:bg-red-600"
                 onClick={() => handleDelete(note)}
               >
                 Delete
