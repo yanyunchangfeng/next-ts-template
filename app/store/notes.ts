@@ -38,7 +38,7 @@ export const useNotesStore = createPersistStore(
         const id = await RequestService.notes.addNote(get().addNoteTitle);
         if (!id) return;
         set(() => ({ addNoteTitle: '' }));
-        get().fetchNotes();
+        get().fetchNotes({ pageNo: 1, pageSize: get().selectedPerPage.pageSize });
       },
       async updateNote(note: Note) {
         const data = await RequestService.notes.updateNote(note);
