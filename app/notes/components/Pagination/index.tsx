@@ -20,7 +20,7 @@ export const Paganition: React.FC = () => {
     <button
       key={pageNo}
       disabled={pageNo === notes.pageNo}
-      onClick={() => fetchNotes({ pageNo, pageSize: notes.pageSize })}
+      onClick={() => fetchNotes({ pageNo, pageSize: selectedPerPage.pageSize })}
       className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4  py-2 disabled:bg-pink-300 disabled:text-pink-600 disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pageNo}
@@ -86,7 +86,7 @@ export const Paganition: React.FC = () => {
         {notes.pageNo > 1 && (
           <button
             className="rounded-md shadow-md  hover:bg-pink-600 bg-pink-500 text-white px-4 py-2"
-            onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: notes.pageSize })}
+            onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: selectedPerPage.pageSize })}
           >
             &lt;
           </button>
@@ -96,7 +96,7 @@ export const Paganition: React.FC = () => {
         {notes.pageNo < notes.totalPages && (
           <button
             className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4 py-2 "
-            onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}
+            onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: selectedPerPage.pageSize })}
           >
             &gt;
           </button>

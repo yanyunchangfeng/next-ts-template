@@ -9,14 +9,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json([]);
   }
   const url = new URL(request.url);
-  const pageNo = parseInt(url.searchParams.get('pageNo') || '1', 10); // 默认为第 1 页
+  const pageNo = parseInt(url.searchParams.get('pageNo') || '1', 10);
   const pageSize = parseInt(url.searchParams.get('pageSize') || '10', 10);
-  const offset = (pageNo - 1) * pageSize;
   const supabase = await createClient();
   const { count, error: countError } = await supabase.from('notes').select('id', { count: 'exact', head: true });
   if (countError) {
     return NextResponse.json({ message: countError.message }, { status: 400 });
   }
+  const totalPages = Math.ceil(count! / pageSize);
+  const validPageNo = pageNo > totalPages ? 1 : pageNo;
+  const offset = (validPageNo - 1) * pageSize;
   const {
     data: notes,
     error,
@@ -25,8 +27,8 @@ export async function GET(request: NextRequest) {
   } = await supabase
     .from('notes')
     .select()
-    .order('created_at', { ascending: false })
-    .range(offset, offset + pageSize - 1);
+    .range(offset, offset + pageSize - 1)
+    .order('created_at', { ascending: false });
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });
   }
@@ -34,9 +36,9 @@ export async function GET(request: NextRequest) {
     {
       totalCount: count,
       data: notes,
-      pageNo,
+      pageNo: validPageNo,
       pageSize,
-      totalPages: Math.ceil(count! / pageSize)
+      totalPages
     },
     { status: 200, statusText }
   );

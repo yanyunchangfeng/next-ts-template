@@ -15,7 +15,7 @@ const DEFAULT_NOTES = {
   editNoteId: '',
   addNoteTitle: '',
   pending: true,
-  selectedPerPage: { id: 1, name: `5 / page`, pageSize: 5 }
+  selectedPerPage: { id: 1, name: `5/page`, pageSize: 5 }
 };
 
 export const useNotesStore = createPersistStore(
@@ -30,7 +30,7 @@ export const useNotesStore = createPersistStore(
     const methods = {
       async fetchNotes(page?: { pageNo: number; pageSize: number }) {
         set(() => ({ pending: true }));
-        page = page ?? { pageNo: 1, pageSize: get().selectedPerPage.pageSize };
+        page = page ?? { pageNo: get().notes.pageNo, pageSize: get().selectedPerPage.pageSize };
         const notes = await RequestService.notes.fetchData(page);
         set(() => ({ notes, pending: false }));
       },
