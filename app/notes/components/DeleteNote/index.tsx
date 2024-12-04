@@ -16,7 +16,7 @@ export const DelelteNote: FC = () => {
       className="relative z-50 transition duration-300 ease-out data-[closed]:opacity-0"
     >
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-        <DialogPanel className="max-w-lg space-y-4 border bg-pink-500 p-12  text-white">
+        <DialogPanel className="max-w-lg space-y-4  bg-red-500 p-12  text-white">
           <DialogTitle className="font-bold">
             Delete note id:
             {openNote.id}

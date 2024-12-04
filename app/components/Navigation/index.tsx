@@ -8,17 +8,17 @@ import { FC, memo } from 'react';
 const Navigation: FC = () => {
   const path = usePathname(); // 获取当前路径
   const router = useRouter();
-  const notesClasses = clsx('hover:text-pink-600', {
-    'text-black': path !== '/notes'
+  const notesClasses = clsx('hover:text-red-600', {
+    'text-red-500': path === '/notes'
   });
-  const blogClasses = clsx('hover:text-pink-600', {
-    'text-black': path !== '/blog'
+  const blogClasses = clsx('hover:text-red-600', {
+    'text-red-500': path === '/blog'
   });
-  const homeClasses = clsx('hover:text-pink-600', {
-    'text-black': path !== '/'
+  const homeClasses = clsx('hover:text-red-600', {
+    'text-red-500': path === '/'
   });
   return (
-    <nav className="flex items-center justify-center gap-4 text-pink-500 py-4">
+    <nav className="flex items-center justify-center gap-4  py-4">
       <Link href="/notes" className={notesClasses}>
         notes
       </Link>

@@ -21,7 +21,7 @@ export const Paganition: React.FC = () => {
       key={pageNo}
       disabled={pageNo === notes.pageNo}
       onClick={() => fetchNotes({ pageNo, pageSize: selectedPerPage.pageSize })}
-      className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4  py-2 disabled:bg-pink-300 disabled:text-pink-600 disabled:cursor-not-allowed disabled:opacity-50"
+      className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4  py-2 disabled:bg-red-300  disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pageNo}
     </button>
@@ -82,10 +82,10 @@ export const Paganition: React.FC = () => {
   const pages = React.useMemo(() => {
     return (
       <>
-        <span className="text-pink-500">Total {notes.totalCount} items</span>
+        <span>Total {notes.totalCount} items</span>
         {notes.pageNo > 1 && (
           <button
-            className="rounded-md shadow-md  hover:bg-pink-600 bg-pink-500 text-white px-4 py-2"
+            className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
             onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: selectedPerPage.pageSize })}
           >
             &lt;
@@ -95,7 +95,7 @@ export const Paganition: React.FC = () => {
         {renderRange2Buttons()}
         {notes.pageNo < notes.totalPages && (
           <button
-            className="rounded-md shadow-md hover:bg-pink-600 bg-pink-500 text-white px-4 py-2 "
+            className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4 py-2 "
             onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: selectedPerPage.pageSize })}
           >
             &gt;
@@ -108,17 +108,17 @@ export const Paganition: React.FC = () => {
     <div className="flex jusi gap-2 justify-center items-center mb-4">
       {pages}
       <Listbox value={selectedPerPage} onChange={setSelectedPerPage}>
-        <ListboxButton className="text-pink-500  p-2">{selectedPerPage.name}</ListboxButton>
+        <ListboxButton className="p-2">{selectedPerPage.name}</ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="text-white rounded-xl border border-white/5 bg-pink-500/50 p-1 [--anchor-gap:var(--spacing-1)] focus:outline-none"
+          className="rounded-xl border border-white/5 bg-red-500 p-1 [--anchor-gap:var(--spacing-1)] focus:outline-none"
         >
           {perPages.map((perPage) => {
             return (
               <ListboxOption
                 key={perPage.id}
                 value={perPage}
-                className="data-[focus]:bg-pink-600 data-[focus]:text-white  p-2 flex items-center justify-center cursor-default rounded-md"
+                className="data-[focus]:bg-red-600  p-2 flex items-center justify-center cursor-default rounded-md"
               >
                 <div>{perPage.name}</div>
               </ListboxOption>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
-import myImage from '@/public/assets/home.png';
+// import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
 // import { isDynamic } from './shared';
 
@@ -72,12 +72,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
-        style={{
-          backgroundImage: `url(${myImage.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 text-white h-screen`}
       >
         <div className="flex flex-col h-full px-4">
           <Navigation />
