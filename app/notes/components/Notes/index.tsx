@@ -31,7 +31,7 @@ export const Notes: React.FC = () => {
       return <Loading />;
     }
     return (
-      <div className="flex flex-col flex-1 gap-2">
+      <div className="flex flex-col flex-1 gap-2 w-full">
         <AddNote />
         {notes.data.map((note) => {
           const noteNode =
@@ -59,8 +59,8 @@ export const Notes: React.FC = () => {
                 }}
               />
             ) : (
-              <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center">
-                <span className="break-all whitespace-pre-line">{note.title}</span>
+              <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center w-9/12">
+                <span className="flex-1 truncate">{note.title}</span>
                 <Popover>
                   <PopoverButton className="font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                     (created)
@@ -73,7 +73,7 @@ export const Notes: React.FC = () => {
                     {new Date(note.created_at).toLocaleString()}
                   </PopoverPanel>
                 </Popover>
-                <Popover className="relative">
+                <Popover>
                   <PopoverButton className="font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white">
                     {note.updated_at ? `(edited)` : null}
                   </PopoverButton>
@@ -97,7 +97,7 @@ export const Notes: React.FC = () => {
               </button>
             ) : null;
           return (
-            <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2">
+            <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2 w-full">
               {noteNode}
               {editButton}
               <button
