@@ -3,14 +3,8 @@ import { useNotesStore } from '@/app/store';
 import React from 'react';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 
-const perPages = [
-  { id: 1, name: `5/page`, pageSize: 5 },
-  { id: 2, name: `10/page`, pageSize: 10 },
-  { id: 3, name: `15/page`, pageSize: 15 },
-  { id: 4, name: `20/page`, pageSize: 20 }
-];
 export const Paganition: React.FC = () => {
-  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage } = useNotesStore();
+  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage, perPages } = useNotesStore();
   const currentPage = notes.pageNo;
   const totalPages = notes.totalPages;
 
@@ -20,7 +14,7 @@ export const Paganition: React.FC = () => {
     <button
       key={pageNo}
       disabled={pageNo === notes.pageNo}
-      onClick={() => fetchNotes({ pageNo, pageSize: selectedPerPage.pageSize })}
+      onClick={() => fetchNotes({ pageNo, pageSize: notes.pageSize })}
       className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4  py-2 disabled:bg-red-300  disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pageNo}
@@ -86,7 +80,7 @@ export const Paganition: React.FC = () => {
         {notes.pageNo > 1 && (
           <button
             className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
-            onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: selectedPerPage.pageSize })}
+            onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: notes.pageSize })}
           >
             &lt;
           </button>
@@ -96,7 +90,7 @@ export const Paganition: React.FC = () => {
         {notes.pageNo < notes.totalPages && (
           <button
             className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4 py-2 "
-            onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: selectedPerPage.pageSize })}
+            onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}
           >
             &gt;
           </button>

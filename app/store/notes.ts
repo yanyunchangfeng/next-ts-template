@@ -15,7 +15,13 @@ const DEFAULT_NOTES = {
   editNoteId: '',
   addNoteTitle: '',
   pending: true,
-  selectedPerPage: { id: 1, name: `5/page`, pageSize: 5 }
+  selectedPerPage: { id: 1, name: `5/page`, pageSize: 5 },
+  perPages: [
+    { id: 1, name: `5/page`, pageSize: 5 },
+    { id: 2, name: `10/page`, pageSize: 10 },
+    { id: 3, name: `15/page`, pageSize: 15 },
+    { id: 4, name: `20/page`, pageSize: 20 }
+  ]
 };
 
 export const useNotesStore = createPersistStore(
@@ -30,15 +36,18 @@ export const useNotesStore = createPersistStore(
     const methods = {
       async fetchNotes(page?: { pageNo: number; pageSize: number }) {
         set(() => ({ pending: true }));
-        page = page ?? { pageNo: get().notes.pageNo, pageSize: get().selectedPerPage.pageSize };
+        page = page ?? { pageNo: get().notes.pageNo, pageSize: get().notes.pageSize };
         const notes = await RequestService.notes.fetchData(page);
+        set(() => ({
+          selectedPerPage: get().perPages.find((item) => item.pageSize === notes.pageSize)
+        }));
         set(() => ({ notes, pending: false }));
       },
       async addNote() {
         const id = await RequestService.notes.addNote(get().addNoteTitle);
         if (!id) return;
         set(() => ({ addNoteTitle: '' }));
-        get().fetchNotes({ pageNo: 1, pageSize: get().selectedPerPage.pageSize });
+        get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize });
       },
       async updateNote(note: Note) {
         const data = await RequestService.notes.updateNote(note);
@@ -68,6 +77,7 @@ export const useNotesStore = createPersistStore(
       },
       setSelectedPerPage(selectedPerPage: typeof DEFAULT_NOTES.selectedPerPage) {
         set(() => ({ selectedPerPage }));
+        set(() => ({ notes: { ...get().notes, pageSize: selectedPerPage.pageSize } }));
         get().fetchNotes();
       }
     };

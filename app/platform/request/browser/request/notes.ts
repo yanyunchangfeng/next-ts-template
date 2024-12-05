@@ -4,51 +4,64 @@ export const fetchData = async (page = { pageNo: 1, pageSize: 5 }): Promise<Note
   if (!isDynamic) {
     return notes;
   }
-  const res = await fetch(`/api/notes?pageNo=${page.pageNo}&pageSize=${page.pageSize}`);
-  if (res.status !== 200) {
-    console.log('Error fetch notes');
+  try {
+    const res = await fetch(`/api/notes?pageNo=${page.pageNo}&pageSize=${page.pageSize}`);
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log('Error fetch notes', e);
     return { totalCount: 0, totalPages: 0, data: [], pageNo: 1, pageSize: 5 };
   }
-  const data = await res.json();
-  return data;
 };
 
 export const addNote = async (title: string) => {
-  const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify({ title }) });
-  if (res.status !== 200) {
-    console.log('Error adding note');
-    return;
+  try {
+    const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify({ title }) });
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    const newId = data?.[0]?.id; // 获取新增记录的 id
+    return newId;
+  } catch (e) {
+    console.log('Error add note', e);
   }
-  const data = await res.json();
-  const newId = data?.[0]?.id; // 获取新增记录的 id
-  return newId;
 };
 
 export const updateNote = async (note: Note) => {
-  const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note) });
-  if (res.status !== 200) {
-    console.log('Error update note');
-    return;
+  try {
+    const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note) });
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    const newData = data?.[0];
+    return newData;
+  } catch (e) {
+    console.log('Error update note', e);
   }
-  const data = await res.json();
-  const newData = data?.[0];
-  return newData;
 };
 
 export const deleteNote = async (id: string) => {
-  const res = await fetch(`/api/notes`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ id })
-  });
+  try {
+    const res = await fetch(`/api/notes`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    });
 
-  if (res.status !== 200) {
-    console.log('Error deleting note');
-    return;
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    const effectRows = data?.length;
+    return effectRows;
+  } catch (e) {
+    console.log('Error delete note', e);
   }
-  const data = await res.json();
-  const effectRows = data?.length;
-  return effectRows;
 };
