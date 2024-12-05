@@ -59,8 +59,19 @@ export const Notes: React.FC = () => {
                 }}
               />
             ) : (
-              <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center w-9/12">
-                <span className="flex-1 truncate">{note.title}</span>
+              <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center truncate">
+                <Popover className="flex-1 truncate flex">
+                  <PopoverButton className="truncate font-semibold focus:outline-none data-[active]:text-white data-[hover]:text-white ">
+                    {note.title}
+                  </PopoverButton>
+                  <PopoverPanel
+                    anchor="bottom"
+                    className="p-2 divide-y divide-white/5 rounded-xl  bg-red-500  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    transition
+                  >
+                    {note.title}
+                  </PopoverPanel>
+                </Popover>
                 <Popover>
                   <PopoverButton className="font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                     (created)

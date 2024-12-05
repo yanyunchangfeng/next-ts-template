@@ -82,7 +82,7 @@ export const Paganition: React.FC = () => {
   const pages = React.useMemo(() => {
     return (
       <>
-        <span>Total {notes.totalCount} items</span>
+        <span>{notes.totalCount} </span>
         {notes.pageNo > 1 && (
           <button
             className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
@@ -92,7 +92,7 @@ export const Paganition: React.FC = () => {
           </button>
         )}
 
-        {renderRange2Buttons()}
+        {renderRange1Buttons()}
         {notes.pageNo < notes.totalPages && (
           <button
             className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4 py-2 "
