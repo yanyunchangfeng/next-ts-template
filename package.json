@@ -4,11 +4,13 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
+    "dev:host": "next dev -H 192.168.10.84 ",
     "dev:test": "cross-env ENV=test next dev",
     "dev:debug": "NODE_OPTIONS=--inspect next dev",
     "build": "next build",
     "build:export": "cross-env NEXT_PUBLIC_BUILD_MODE=export NEXT_PUBLIC_BASE_PATH=/next-ts-template NEXT_PUBLIC_DIST_DIR=dist next build",
     "start": "next build && next start",
+    "start:profile": "next build --profile && next start",
     "lint": "next lint",
     "test": "jest",
     "prettier": "prettier -c --write  **/* --cache",
