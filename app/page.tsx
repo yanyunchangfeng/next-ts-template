@@ -56,6 +56,10 @@ const Home: FC = () => {
     });
   }, [photos, isLoading]);
 
-  return <main className="flex justify-center items-center flex-1">{photoTem}</main>;
+  return (
+    <React.Profiler id="home" onRender={console.log}>
+      <main className="flex justify-center items-center flex-1">{photoTem}</main>
+    </React.Profiler>
+  );
 };
 export default Home;

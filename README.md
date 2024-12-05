@@ -19,7 +19,8 @@
 
 ```
    pnpm i
-   pnpm dev
+   pnpm dev or pnpm dev:host
+
 ```
 
 ## build
@@ -46,17 +47,10 @@
    pnpm test
 ```
 
-## 端到端测试
+## 开启 React 的生产性能分析
 
 ```
-   pnpm run cypress:open
-   pnpm run cypress:run
-```
-
-## 打包分析
-
-```
-   pnpm run build-analyzer
+   pnpm start:profile
 ```
 
 ## 社交主页
