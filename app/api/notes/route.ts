@@ -9,8 +9,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json([]);
   }
   const url = new URL(request.url);
-  const pageNo = parseInt(url.searchParams.get('pageNo') || '1', 10);
-  const pageSize = parseInt(url.searchParams.get('pageSize') || '10', 10);
+  let pageNo = Number(url.searchParams.get('pageNo'));
+  let pageSize = Number(url.searchParams.get('pageSize'));
+  pageNo = Number.isNaN(pageNo) || pageNo <= 0 ? 1 : pageNo;
+  pageSize = Number.isNaN(pageSize) || pageSize <= 0 ? 10 : pageSize;
+
   const supabase = await createClient();
   const { count, error: countError } = await supabase.from('notes').select('id', { count: 'exact', head: true });
   if (countError) {
