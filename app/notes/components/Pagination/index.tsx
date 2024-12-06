@@ -58,17 +58,17 @@ export const Paganition: React.FC = () => {
     const range = 1;
     const buttons = [];
     // 显示前一页按钮
-    if (currentPage > 1) {
-      buttons.push(renderPageButton(currentPage - range)); // 显示前一页
-    }
+    // if (currentPage > 1) {
+    //   buttons.push(renderPageButton(currentPage - range)); // 显示前一页
+    // }
 
     // 显示当前页按钮
     buttons.push(renderPageButton(currentPage)); // 显示当前页
 
     // 显示后一页按钮
-    if (currentPage < totalPages) {
-      buttons.push(renderPageButton(currentPage + range)); // 显示后一页
-    }
+    // if (currentPage < totalPages) {
+    //   buttons.push(renderPageButton(currentPage + range)); // 显示后一页
+    // }
 
     return buttons;
   };
@@ -80,19 +80,35 @@ export const Paganition: React.FC = () => {
         {notes.pageNo > 1 && (
           <button
             className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
+            onClick={() => fetchNotes({ pageNo: 1, pageSize: notes.pageSize })}
+          >
+            first
+          </button>
+        )}
+        {notes.pageNo > 1 && (
+          <button
+            className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
             onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: notes.pageSize })}
           >
             &lt;
           </button>
         )}
-
         {renderRange1Buttons()}
+
         {notes.pageNo < notes.totalPages && (
           <button
             className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4 py-2 "
             onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}
           >
             &gt;
+          </button>
+        )}
+        {notes.pageNo !== totalPages && (
+          <button
+            className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
+            onClick={() => fetchNotes({ pageNo: totalPages, pageSize: notes.pageSize })}
+          >
+            last
           </button>
         )}
       </>
