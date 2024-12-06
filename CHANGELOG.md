@@ -1,3 +1,9 @@
+# [1.16.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.15.1...v1.16.0-rc.1) (2024-12-06)
+
+### Features
+
+- add fisrt & last perpage ([5ad0a22](https://github.com/yanyunchangfeng/next-ts-template/commit/5ad0a2216ca89b0b9629bc10c8675f99e6118811))
+
 ## [1.15.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.15.0...v1.15.1) (2024-12-04)
 
 ### Performance Improvements
