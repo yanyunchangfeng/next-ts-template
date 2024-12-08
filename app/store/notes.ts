@@ -44,20 +44,23 @@ export const useNotesStore = createPersistStore(
         set(() => ({ notes, pending: false }));
       },
       async addNote() {
+        set(() => ({ pending: true }));
         const id = await RequestService.notes.addNote(get().addNoteTitle);
         if (!id) return;
         set(() => ({ addNoteTitle: '' }));
         get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize });
       },
       async updateNote(note: Note) {
+        set(() => ({ pending: true }));
         const data = await RequestService.notes.updateNote(note);
         if (!data) return;
         get().fetchNotes();
       },
       async deleteNote(id?: string) {
+        set(() => ({ isOpen: false, pending: true }));
         const data = await RequestService.notes.deleteNote(id || get().openNote.id);
         if (!data) return;
-        set(() => ({ isOpen: false, openNote: { id: '', title: '' } }));
+        set(() => ({ openNote: { id: '', title: '' } }));
         get().fetchNotes();
       },
       setNotes(notes: Notes) {
