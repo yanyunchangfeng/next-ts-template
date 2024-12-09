@@ -19,9 +19,7 @@ export const withSupabase = (
       {
         cookies: {
           getAll() {
-            const cookies = request.cookies.getAll();
-            console.log('getAll cookies', cookies);
-            return cookies;
+            return request.cookies.getAll();
           },
           setAll(cookiesToSet) {
             // setAll 本质上是在以下情景中调用的：
@@ -35,8 +33,6 @@ export const withSupabase = (
               request
             });
             cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options));
-            const all = supabaseResponse.cookies.getAll();
-            console.log('test cookies', all);
           }
         }
       }
@@ -61,8 +57,6 @@ export const withSupabase = (
         const redirectResponse = NextResponse.redirect(data.url);
         // 从请求中获取所有 cookies
         const cookies = supabaseResponse.cookies.getAll();
-        console.log('Original cookies:', cookies);
-
         // 将 cookies 手动设置到响应中
         cookies.forEach((cookie) => {
           redirectResponse.cookies.set(cookie.name, cookie.value, {
