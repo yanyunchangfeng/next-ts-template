@@ -1,3 +1,9 @@
+# [1.17.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.16.0...v1.17.0) (2024-12-09)
+
+### Features
+
+- add google auth ([7116a23](https://github.com/yanyunchangfeng/next-ts-template/commit/7116a235a312cbcbb0b9e063eff51c39fee91e0c))
+
 # [1.16.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.15.1...v1.16.0) (2024-12-06)
 
 ### Features
