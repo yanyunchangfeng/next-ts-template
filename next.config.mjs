@@ -15,6 +15,9 @@ const distDir = NEXT_PUBLIC_DIST_DIR ?? undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // devIndicators: {
+  //   https: true
+  // },
   assetPrefix,
   basePath,
   output: mode,
