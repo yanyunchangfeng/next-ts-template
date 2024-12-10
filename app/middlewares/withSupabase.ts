@@ -37,19 +37,16 @@ export const withSupabase = (
         }
       }
     );
-    // const { origin } = new URL(request.url);
+    const { origin } = new URL(request.url);
     const {
       data: { user }
     } = await supabase.auth.getUser();
+    console.log('User:', user);
     if (!user) {
       const { data } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          // redirectTo: `${origin}/auth/callback` // 以supabase的Site URL为准
-          // queryParams: {
-          //   access_type: 'offline',
-          //   prompt: 'consent'
-          // }
+          redirectTo: `${origin}/auth/callback` // 以supabase的Site URL为准
         }
       });
       if (data?.url) {
