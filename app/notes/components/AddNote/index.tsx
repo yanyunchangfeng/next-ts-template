@@ -9,7 +9,7 @@ export const AddNote: FC = () => {
       <Textarea
         // rows={2}
         placeholder="Add a new note"
-        className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none placeholder-white"
+        className="focus:ring bg-transparent p-2 rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none placeholder-white/50"
         value={addNoteTitle}
         onChange={(e) => setAddNoteTitle(e.target.value)}
       />
