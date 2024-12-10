@@ -13,7 +13,7 @@ export const fetchData = async (page = { pageNo: 1, pageSize: 5 }): Promise<Note
     return data;
   } catch (e) {
     console.log('Error fetch notes', e);
-    return { totalCount: 0, totalPages: 0, data: [], pageNo: 1, pageSize: 5 };
+    return { totalCount: 0, totalPages: 0, data: [], ...page };
   }
 };
 
