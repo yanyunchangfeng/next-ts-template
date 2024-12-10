@@ -66,7 +66,7 @@ export const Notes: React.FC = () => {
                   </PopoverButton>
                   <PopoverPanel
                     anchor="bottom"
-                    className="w-96 p-2 divide-y divide-white/5 rounded-xl  bg-red-500  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+                    className="break-all whitespace-pre-line w-96 p-2 divide-y divide-white/5 rounded-xl  bg-red-500  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
                     transition
                   >
                     {note.title}
