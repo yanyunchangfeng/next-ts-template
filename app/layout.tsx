@@ -53,7 +53,8 @@ export const metadata: Metadata = {
 // (...) 表示匹配根目录
 
 export default function RootLayout({
-  children
+  children,
+  modal
 }: // teams,
 // analytics,
 // dashboard,
@@ -61,11 +62,11 @@ export default function RootLayout({
 // modal
 {
   children: React.ReactNode;
+  modal: React.ReactNode;
   // teams: React.ReactNode;
   // analytics: React.ReactNode;
   // dashboard: never;
   // login: never;
-  // modal: never;
 }) {
   // const isLogin = use(userIsLogin());
 
@@ -86,8 +87,7 @@ export default function RootLayout({
             {analytics}
           </div> */}
         {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
-
-        {/* {isDynamic ? modal : null} */}
+        {modal}
         <SpeedInsights />
       </body>
     </html>
