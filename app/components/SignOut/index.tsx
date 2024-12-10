@@ -8,7 +8,7 @@ export function SignOut() {
   const router = useRouter();
   async function handleLogout() {
     await supabase.auth.signOut();
-    router.push('/');
+    router.push('/blog');
     router.refresh();
   }
 
