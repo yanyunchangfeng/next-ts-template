@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 // import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
+import { User } from '@/app/components/User';
 // import { isDynamic } from './shared';
 
 const geistSans = localFont({
@@ -75,7 +76,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 text-white h-screen`}
       >
         <div className="flex flex-col h-full px-4">
-          <Navigation />
+          <Navigation>
+            <User />
+          </Navigation>
           <div className="flex flex-1">{children}</div>
         </div>
         {/* <div className="flex gap-6 ">

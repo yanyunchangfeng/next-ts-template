@@ -3,9 +3,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, memo } from 'react';
+import { FC, memo, PropsWithChildren } from 'react';
+import { SignOut } from '@/app/components';
 
-const Navigation: FC = () => {
+const Navigation: FC<PropsWithChildren> = ({ children }) => {
   const path = usePathname(); // 获取当前路径
   const router = useRouter();
   const notesClasses = clsx('hover:text-red-600', {
@@ -19,6 +20,7 @@ const Navigation: FC = () => {
   });
   return (
     <nav className="flex items-center justify-center gap-4  py-4">
+      {children}
       <Link href="/notes" className={notesClasses}>
         notes
       </Link>
@@ -54,6 +56,7 @@ const Navigation: FC = () => {
       <button onClick={() => router.push('/?redirect=false', { scroll: false })} className={homeClasses}>
         home
       </button>
+      <SignOut />
     </nav>
   );
 };
