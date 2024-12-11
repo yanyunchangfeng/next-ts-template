@@ -13,5 +13,9 @@ export function SignOut() {
     router.refresh();
   }
 
-  return <Button onClick={handleLogout}>Sign out</Button>;
+  return (
+    <Button onClick={handleLogout} variant="destructive">
+      Sign out
+    </Button>
+  );
 }
