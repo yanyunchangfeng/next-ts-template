@@ -11,9 +11,9 @@ const DEFAULT_NOTES = {
     data: [] as Note[]
   },
   searchNote: { keyWord: '' },
-  isOpen: false,
-  openNote: { id: '', title: '' },
-  editNoteId: '',
+  deleteIsOpen: false,
+  editIsOpen: false,
+  openNote: { id: '', title: '' } as Note,
   addNoteTitle: '',
   pending: true,
   selectedPerPage: '5',
@@ -60,29 +60,29 @@ export const useNotesStore = createPersistStore(
         get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize, keyWord: get().searchNote.keyWord });
       },
       async updateNote(note: Note) {
-        set(() => ({ pending: true }));
+        set(() => ({ editIsOpen: false, pending: true }));
         const data = await RequestService.notes.updateNote(note);
         if (!data) return;
         get().fetchNotes();
       },
       async deleteNote(id?: string) {
-        set(() => ({ isOpen: false, pending: true }));
+        set(() => ({ deleteIsOpen: false, pending: true }));
         const data = await RequestService.notes.deleteNote(id || get().openNote.id);
         if (!data) return;
-        set(() => ({ openNote: { id: '', title: '' } }));
+        set(() => ({ openNote: { id: '', title: '' } as Note }));
         get().fetchNotes();
       },
       setNotes(notes: Notes) {
         set(() => ({ notes }));
       },
-      setIsOpen(isOpen: boolean) {
-        set(() => ({ isOpen }));
+      setDeleteIsOpen(deleteIsOpen: boolean) {
+        set(() => ({ deleteIsOpen }));
+      },
+      setEditIsOpen(editIsOpen: boolean) {
+        set(() => ({ editIsOpen }));
       },
       setOpenNote(note: Note) {
         set(() => ({ openNote: note }));
-      },
-      setEditNoteId(id: string) {
-        set(() => ({ editNoteId: id }));
       },
       setAddNoteTitle(title: string) {
         set(() => ({ addNoteTitle: title }));
