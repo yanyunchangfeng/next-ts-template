@@ -1,12 +1,11 @@
-import { Note } from '@/app/shared';
 import { useNotesStore } from '@/app/store';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { MoreOptions } from '@/app/notes/components';
 
 export const NoteList: React.FC = () => {
-  const { editNoteId, notes, setEditNoteId, updateNote, setIsOpen, setOpenNote } = useNotesStore();
+  const { editNoteId, notes, setEditNoteId, updateNote } = useNotesStore();
   const inputRefs = React.useRef<{ [key: string]: HTMLTextAreaElement }>({});
 
   React.useEffect(() => {
@@ -18,11 +17,6 @@ export const NoteList: React.FC = () => {
       );
     }
   }, [editNoteId]);
-
-  const handleDelete = (note: Note) => {
-    setIsOpen(true);
-    setOpenNote(note);
-  };
 
   return (
     <>
@@ -89,19 +83,11 @@ export const NoteList: React.FC = () => {
               </Popover>
             </div>
           );
-        const editButton =
-          editNoteId !== note.id ? (
-            <Button onClick={() => setEditNoteId(note.id)} variant="destructive">
-              Edit
-            </Button>
-          ) : null;
+
         return (
           <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2 w-full">
             {noteNode}
-            {editButton}
-            <Button onClick={() => handleDelete(note)} variant="destructive">
-              Delete
-            </Button>
+            <MoreOptions note={note} />
           </div>
         );
       })}

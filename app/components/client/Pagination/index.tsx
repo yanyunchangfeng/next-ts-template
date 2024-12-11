@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import {
   Pagination,
   PaginationContent,
@@ -26,28 +28,51 @@ export const Paginations: React.FC<PaginationProps> = ({ current, onChange, page
           <span>{total}</span>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
-            First
-          </PaginationLink>
+          {current === 1 ? (
+            <Button disabled variant="ghost">
+              First
+            </Button>
+          ) : (
+            <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
+              First
+            </PaginationLink>
+          )}
         </PaginationItem>
         <PaginationItem>
-          <PaginationPrevious onClick={() => handleChange(current - 1)} className="cursor-pointer" />
+          {current === 1 ? (
+            <Button disabled variant="ghost">
+              <ChevronLeft />
+              Previous
+            </Button>
+          ) : (
+            <PaginationPrevious onClick={() => handleChange(current - 1)} className="cursor-pointer" />
+          )}
         </PaginationItem>
         <PaginationItem>
           <PaginationLink isActive className="cursor-pointer">
             {current}
           </PaginationLink>
         </PaginationItem>
-        {/* <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem> */}
         <PaginationItem>
-          <PaginationNext onClick={() => handleChange(current + 1)} className="cursor-pointer" />
+          {current === pages ? (
+            <Button disabled variant="ghost">
+              Next
+              <ChevronRight />
+            </Button>
+          ) : (
+            <PaginationNext onClick={() => handleChange(current + 1)} className="cursor-pointer" />
+          )}
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
-            Last
-          </PaginationLink>
+          {current === pages ? (
+            <Button disabled variant="ghost">
+              Last
+            </Button>
+          ) : (
+            <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
+              Last
+            </PaginationLink>
+          )}
         </PaginationItem>
       </PaginationContent>
     </Pagination>

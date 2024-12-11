@@ -1,6 +1,6 @@
 'use client';
 
-import { DelelteNote, Notes, AddNote, SearchNote, Paganition } from '@/app/notes/components';
+import { AlertNote, Notes, AddNote, SearchNote, Paganition } from '@/app/notes/components';
 
 const NotePage: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const NotePage: React.FC = () => {
       <AddNote />
       <Notes />
       <Paganition />
-      <DelelteNote />
+      <AlertNote />
     </div>
   );
 };
