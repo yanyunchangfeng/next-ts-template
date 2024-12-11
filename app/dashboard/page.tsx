@@ -34,7 +34,7 @@ export const dynamic = isDynamic ? 'force-dynamic' : 'force-static';
 const DashBoard: FC = async () => {
   console.log('render dashboard');
   return (
-    <div className="h-40  text-pink-600 flex  flex-col justify-between items-center">
+    <div className="flex-1  text-red-500 flex  flex-col justify-between items-center">
       <Suspense fallback={<Loading />}>
         <PostFeed />
       </Suspense>
