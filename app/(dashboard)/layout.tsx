@@ -29,7 +29,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section>
+    <section className="flex flex-col flex-1">
       <nav className="flex items-center justify-center gap-10 text-blue-600 mb-6">
         <Link href="/about">About</Link>
         <Link href="/settings">Settings</Link>
