@@ -25,7 +25,7 @@ export function createPersistStore<T extends object, M>(
   methods: (set: SetStoreState<T & MakeUpdater<T>>, get: () => T & MakeUpdater<T>) => M,
   persistOptions: SecondParam<typeof persist<T & M & MakeUpdater<T>>>
 ) {
-  persistOptions.storage = createJSONStorage(() => localStorage);
+  persistOptions.storage = createJSONStorage(() => sessionStorage);
   //   const oldOonRehydrateStorage = persistOptions?.onRehydrateStorage;
   //   persistOptions.onRehydrateStorage = (state) => {
   //     oldOonRehydrateStorage?.(state);

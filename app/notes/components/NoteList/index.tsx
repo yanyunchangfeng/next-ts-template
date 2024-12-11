@@ -1,7 +1,9 @@
 import { Note } from '@/app/shared';
 import { useNotesStore } from '@/app/store';
-import { Popover, PopoverButton, PopoverPanel, Textarea } from '@headlessui/react';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 
 export const NoteList: React.FC = () => {
   const { editNoteId, notes, setEditNoteId, updateNote, setIsOpen, setOpenNote } = useNotesStore();
@@ -29,8 +31,6 @@ export const NoteList: React.FC = () => {
           editNoteId === note.id ? (
             <Textarea
               // rows={2}
-              placeholder="Add a new note"
-              className="focus:ring bg-transparent px-2 pt-4  rounded-md shadow-md flex-1 focus:ring-red-500 focus:outline-none"
               defaultValue={note.title}
               ref={(el: HTMLTextAreaElement) => {
                 // 在这里不返回 el，只保存在 refs 对象中
@@ -50,8 +50,8 @@ export const NoteList: React.FC = () => {
               }}
             />
           ) : (
-            <div className="font-medium flex-1 pl-2 py-5 flex gap-2 items-center truncate">
-              <Popover className="flex-1 truncate flex ">
+            <div className="font-medium flex-1 pl-2 flex gap-2 items-center truncate min-h-[60px]">
+              <Popover className="flex-1 truncate flex">
                 <PopoverButton className="truncate font-semibold focus:outline-none data-[active]:text-white data-[hover]:text-white ">
                   {note.title}
                 </PopoverButton>
@@ -89,25 +89,12 @@ export const NoteList: React.FC = () => {
               </Popover>
             </div>
           );
-        const editButton =
-          editNoteId !== note.id ? (
-            <button
-              className="bg-red-500 text-white p-2 rounded-md shadow-md  hover:bg-red-600"
-              onClick={() => setEditNoteId(note.id)}
-            >
-              Edit
-            </button>
-          ) : null;
+        const editButton = editNoteId !== note.id ? <Button onClick={() => setEditNoteId(note.id)}>Edit</Button> : null;
         return (
           <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2 w-full">
             {noteNode}
             {editButton}
-            <button
-              className="bg-red-500 text-white p-2 rounded-md shadow-md  hover:bg-red-600"
-              onClick={() => handleDelete(note)}
-            >
-              Delete
-            </button>
+            <Button onClick={() => handleDelete(note)}>Delete</Button>
           </div>
         );
       })}
