@@ -1,4 +1,5 @@
 import { createClient } from '@/app/utils/supabase/server';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export async function User() {
   const supabase = await createClient();
@@ -6,13 +7,9 @@ export async function User() {
     data: { user }
   } = await supabase.auth.getUser();
   return (
-    <div className="flex items-center gap-2">
-      <img
-        src={user?.user_metadata.avatar_url || 'https://via.placeholder.com/32'}
-        alt="User avatar"
-        className="w-8 h-8 rounded-full object-cover"
-      />
-      <h1 className="font-medium"> {user?.user_metadata.name || 'N/A'}</h1>
-    </div>
+    <Avatar>
+      <AvatarImage src={user?.user_metadata.avatar_url || 'https://via.placeholder.com/32'} />
+      <AvatarFallback>{user?.user_metadata.name || 'N/A'}</AvatarFallback>
+    </Avatar>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
-// import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
 import { User } from '@/app/components/server/User';
 import { isDynamic } from './shared';
@@ -17,10 +16,6 @@ const geistMono = localFont({
   variable: '--font-geist-mono',
   weight: '100 900'
 });
-
-// const userIsLogin = async () => {
-//   return Math.random() > 0.5;
-// };
 
 export const metadata: Metadata = {
   title: 'yanyunchangfeng',
@@ -52,40 +47,17 @@ export const metadata: Metadata = {
 // (..)(..) 表示匹配上上层级。
 // (...) 表示匹配根目录
 
-export default function RootLayout({
-  children
-}: // modal
-// teams,
-// analytics,
-// dashboard,
-// login
-// modal
-{
-  children: React.ReactNode;
-  // modal: React.ReactNode;
-  // teams: React.ReactNode;
-  // analytics: React.ReactNode;
-  // dashboard: never;
-  // login: never;
-}) {
-  // const isLogin = use(userIsLogin());
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 text-white h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 h-screen`}
       >
         <div className="flex flex-col h-full px-4">
           <Navigation>{isDynamic ? <User /> : null}</Navigation>
           <div className="flex flex-1">{children}</div>
         </div>
-        {/* <div className="flex gap-6 ">
-            {teams}
-            {analytics}
-          </div> */}
-        {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
-        {/* {modal} */}
         <SpeedInsights />
       </body>
     </html>

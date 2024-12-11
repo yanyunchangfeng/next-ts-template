@@ -89,12 +89,19 @@ export const NoteList: React.FC = () => {
               </Popover>
             </div>
           );
-        const editButton = editNoteId !== note.id ? <Button onClick={() => setEditNoteId(note.id)}>Edit</Button> : null;
+        const editButton =
+          editNoteId !== note.id ? (
+            <Button onClick={() => setEditNoteId(note.id)} variant="destructive">
+              Edit
+            </Button>
+          ) : null;
         return (
           <div key={note.id} className="rounded-md shadow-md flex items-center gap-2 pr-2 w-full">
             {noteNode}
             {editButton}
-            <Button onClick={() => handleDelete(note)}>Delete</Button>
+            <Button onClick={() => handleDelete(note)} variant="destructive">
+              Delete
+            </Button>
           </div>
         );
       })}

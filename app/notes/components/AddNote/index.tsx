@@ -15,8 +15,8 @@ export const AddNote: FC = () => {
         value={addNoteTitle}
         onChange={(e) => setAddNoteTitle(e.target.value)}
       />
-      <Button disabled={!addNoteTitle || pending} onClick={addNote}>
-        {pending ? <Loader2 className="animate-spin" /> : null}
+      <Button disabled={!addNoteTitle || pending} onClick={addNote} variant="destructive">
+        {addNoteTitle && pending ? <Loader2 className="animate-spin" /> : null}
         Add
       </Button>
     </div>

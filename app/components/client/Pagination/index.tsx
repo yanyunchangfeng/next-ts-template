@@ -34,7 +34,7 @@ export const Paginations: React.FC<PaginationProps> = ({ current, onChange, page
           <PaginationPrevious onClick={() => handleChange(current - 1)} className="cursor-pointer" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink isActive className="text-black cursor-pointer">
+          <PaginationLink isActive className="cursor-pointer">
             {current}
           </PaginationLink>
         </PaginationItem>
