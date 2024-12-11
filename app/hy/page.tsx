@@ -18,11 +18,11 @@ const HY: FC = () => {
     setIsClient(true);
   }, []);
   return (
-    <>
+    <div className="flex flex-col flex-1 justify-center items-center">
       <h1>{isClient ? 'This is never prerendered' : 'Prerendered'}</h1>
       <WebApi />
       <Time />
-    </>
+    </div>
   );
 };
 
