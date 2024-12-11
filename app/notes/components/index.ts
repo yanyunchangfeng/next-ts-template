@@ -4,3 +4,4 @@ export * from './Notes';
 export * from './Pagination';
 export * from './SearchNote';
 export * from './NoteList';
+export * from './PageSelect';

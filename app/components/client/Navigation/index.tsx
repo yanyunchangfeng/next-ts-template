@@ -19,7 +19,7 @@ export const Navigation: React.FC<React.PropsWithChildren> = ({ children }) => {
     'text-red-500': path === '/'
   });
   return (
-    <nav className="flex items-center justify-center gap-4  py-4">
+    <nav className="flex items-center justify-center gap-2  py-4">
       {children}
       <Link href="/notes" className={notesClasses}>
         notes

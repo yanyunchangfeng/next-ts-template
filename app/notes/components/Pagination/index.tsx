@@ -1,22 +1,23 @@
 /* eslint-disable */
 import { useNotesStore } from '@/app/store';
 import React from 'react';
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
+import { Button } from '@/components/ui/button';
+import { PageSelect } from '@/app/notes/components/PageSelect';
+import { Paginations } from '@/app/components';
 
 export const Paganition: React.FC = () => {
-  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage, perPages, pending } = useNotesStore();
+  const { notes, fetchNotes, pending } = useNotesStore();
   const currentPage = notes.pageNo;
   const totalPages = notes.totalPages;
 
   const renderPageButton = (pageNo: number) => (
-    <button
+    <Button
       key={pageNo}
       disabled={pageNo === notes.pageNo}
       onClick={() => fetchNotes({ pageNo, pageSize: notes.pageSize })}
-      className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4  py-2 disabled:bg-red-300  disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pageNo}
-    </button>
+    </Button>
   );
   const renderRange2Buttons = () => {
     const buttons = [];
@@ -75,39 +76,22 @@ export const Paganition: React.FC = () => {
     return (
       <>
         <span>{notes.totalCount} </span>
+        {notes.pageNo > 1 && <Button onClick={() => fetchNotes({ pageNo: 1, pageSize: notes.pageSize })}>first</Button>}
         {notes.pageNo > 1 && (
-          <button
-            className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
-            onClick={() => fetchNotes({ pageNo: 1, pageSize: notes.pageSize })}
-          >
-            first
-          </button>
-        )}
-        {notes.pageNo > 1 && (
-          <button
+          <Button
             className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
             onClick={() => fetchNotes({ pageNo: notes.pageNo - 1, pageSize: notes.pageSize })}
           >
             &lt;
-          </button>
+          </Button>
         )}
         {renderRange1Buttons()}
 
         {notes.pageNo < notes.totalPages && (
-          <button
-            className="rounded-md shadow-md hover:bg-red-600 bg-red-500 text-white px-4 py-2 "
-            onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}
-          >
-            &gt;
-          </button>
+          <Button onClick={() => fetchNotes({ pageNo: notes.pageNo + 1, pageSize: notes.pageSize })}>&gt;</Button>
         )}
         {notes.pageNo !== totalPages && (
-          <button
-            className="rounded-md shadow-md  hover:bg-red-600 bg-red-500 text-white px-4 py-2"
-            onClick={() => fetchNotes({ pageNo: totalPages, pageSize: notes.pageSize })}
-          >
-            last
-          </button>
+          <Button onClick={() => fetchNotes({ pageNo: totalPages, pageSize: notes.pageSize })}>last</Button>
         )}
       </>
     );
@@ -115,28 +99,14 @@ export const Paganition: React.FC = () => {
 
   if (pending) return null;
   if (totalPages === 0) return null;
+  const onChange = (pageNo: number) => {
+    fetchNotes({ pageNo, pageSize: notes.pageSize });
+  };
   return (
-    <div className="flex jusi gap-2 justify-center items-center mb-4 mt-2">
-      {pages}
-      <Listbox value={selectedPerPage} onChange={setSelectedPerPage}>
-        <ListboxButton className="p-2">{selectedPerPage.name}</ListboxButton>
-        <ListboxOptions
-          anchor="bottom"
-          className="rounded-xl border border-white/5 bg-red-500 p-1 [--anchor-gap:var(--spacing-1)] focus:outline-none"
-        >
-          {perPages.map((perPage) => {
-            return (
-              <ListboxOption
-                key={perPage.id}
-                value={perPage}
-                className="data-[focus]:bg-red-600  p-2 flex items-center justify-center cursor-default rounded-md"
-              >
-                <div>{perPage.name}</div>
-              </ListboxOption>
-            );
-          })}
-        </ListboxOptions>
-      </Listbox>
+    <div className="flex justify-center gap-2 items-center mb-4 mt-2 flex-wrap">
+      {/* {pages} */}
+      <Paginations current={notes.pageNo} onChange={onChange} pages={notes.totalPages} total={notes.totalCount} />
+      <PageSelect />
     </div>
   );
 };
