@@ -4,11 +4,9 @@ import React from 'react';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 
 export const Paganition: React.FC = () => {
-  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage, perPages } = useNotesStore();
+  const { notes, fetchNotes, selectedPerPage, setSelectedPerPage, perPages, pending } = useNotesStore();
   const currentPage = notes.pageNo;
   const totalPages = notes.totalPages;
-
-  if (totalPages === 0) return null;
 
   const renderPageButton = (pageNo: number) => (
     <button
@@ -114,6 +112,9 @@ export const Paganition: React.FC = () => {
       </>
     );
   }, [notes]);
+
+  if (pending) return null;
+  if (totalPages === 0) return null;
   return (
     <div className="flex jusi gap-2 justify-center items-center mb-4 mt-2">
       {pages}

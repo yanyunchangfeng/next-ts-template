@@ -1,11 +1,13 @@
-import { isDynamic, Note, Notes, notes } from '@/app/shared';
+import { isDynamic, Note, Notes, notes, NoteSearchParams } from '@/app/shared';
 
-export const fetchData = async (page = { pageNo: 1, pageSize: 5 }): Promise<Notes> => {
+export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> => {
   if (!isDynamic) {
     return notes;
   }
   try {
-    const res = await fetch(`/api/notes?pageNo=${page.pageNo}&pageSize=${page.pageSize}`);
+    const res = await fetch(
+      `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}`
+    );
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
@@ -13,7 +15,7 @@ export const fetchData = async (page = { pageNo: 1, pageSize: 5 }): Promise<Note
     return data;
   } catch (e) {
     console.log('Error fetch notes', e);
-    return { totalCount: 0, totalPages: 0, data: [], ...page };
+    return { totalCount: 0, totalPages: 0, data: [], pageNo: searchParams.pageNo, pageSize: searchParams.pageSize };
   }
 };
 
