@@ -5,7 +5,6 @@ export async function User() {
   const {
     data: { user }
   } = await supabase.auth.getUser();
-
   return (
     <div className="flex items-center gap-2">
       <img

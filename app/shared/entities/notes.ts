@@ -11,3 +11,8 @@ export interface Notes {
   totalPages: number;
   data: Note[];
 }
+export interface NoteSearchParams {
+  pageNo: number;
+  pageSize: number;
+  keyWord?: string;
+}

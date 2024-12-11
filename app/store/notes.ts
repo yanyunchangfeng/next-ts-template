@@ -1,5 +1,5 @@
 import { createPersistStore } from '@/app/utils';
-import { Note, Notes } from '@/app/shared';
+import { Note, Notes, NoteSearchParams } from '@/app/shared';
 import RequestService from '@/app/platform/request/browser/RequestService';
 
 const DEFAULT_NOTES = {
@@ -10,6 +10,7 @@ const DEFAULT_NOTES = {
     totalPages: 0,
     data: [] as Note[]
   },
+  searchNote: { keyWord: '' },
   isOpen: false,
   openNote: { id: '', title: '' },
   editNoteId: '',
@@ -34,10 +35,17 @@ export const useNotesStore = createPersistStore(
       };
     }
     const methods = {
-      async fetchNotes(page?: { pageNo: number; pageSize: number }) {
+      async fetchNotes(searchParams?: NoteSearchParams) {
         set(() => ({ pending: true }));
-        page = page ?? { pageNo: get().notes.pageNo, pageSize: get().notes.pageSize };
-        const notes = await RequestService.notes.fetchData(page);
+        searchParams = Object.assign(
+          {
+            pageNo: get().notes.pageNo,
+            pageSize: get().notes.pageSize,
+            keyWord: get().searchNote.keyWord
+          },
+          searchParams
+        );
+        const notes = await RequestService.notes.fetchData(searchParams);
         set(() => ({
           selectedPerPage: get().perPages.find((item) => item.pageSize === notes.pageSize)
         }));
@@ -48,7 +56,8 @@ export const useNotesStore = createPersistStore(
         const id = await RequestService.notes.addNote(get().addNoteTitle);
         if (!id) return;
         set(() => ({ addNoteTitle: '' }));
-        get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize });
+        set(() => ({ searchNote: { ...get().searchNote, keyWord: '' } }));
+        get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize, keyWord: get().searchNote.keyWord });
       },
       async updateNote(note: Note) {
         set(() => ({ pending: true }));
@@ -82,6 +91,9 @@ export const useNotesStore = createPersistStore(
         set(() => ({ selectedPerPage }));
         set(() => ({ notes: { ...get().notes, pageSize: selectedPerPage.pageSize } }));
         get().fetchNotes();
+      },
+      setSearchNote(searchNote: typeof DEFAULT_NOTES.searchNote) {
+        set(() => ({ searchNote: { ...get().searchNote, ...searchNote } }));
       }
     };
     return methods;

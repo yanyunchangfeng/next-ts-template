@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren, Suspense } from 'react';
-import { CustomComponent } from '@/app/components';
-import Loading from '../loading';
+import { CustomComponent, Loading } from '@/app/components';
 import Link from 'next/link';
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {

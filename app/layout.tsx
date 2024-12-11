@@ -5,7 +5,7 @@ import '@/app/globals.css';
 // import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
 import { User } from '@/app/components/server/User';
-// import { isDynamic } from './shared';
+import { isDynamic } from './shared';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -53,16 +53,16 @@ export const metadata: Metadata = {
 // (...) 表示匹配根目录
 
 export default function RootLayout({
-  children,
-  modal
-}: // teams,
+  children
+}: // modal
+// teams,
 // analytics,
 // dashboard,
 // login
 // modal
 {
   children: React.ReactNode;
-  modal: React.ReactNode;
+  // modal: React.ReactNode;
   // teams: React.ReactNode;
   // analytics: React.ReactNode;
   // dashboard: never;
@@ -77,9 +77,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 text-white h-screen`}
       >
         <div className="flex flex-col h-full px-4">
-          <Navigation>
-            <User />
-          </Navigation>
+          <Navigation>{isDynamic ? <User /> : null}</Navigation>
           <div className="flex flex-1">{children}</div>
         </div>
         {/* <div className="flex gap-6 ">
@@ -87,7 +85,7 @@ export default function RootLayout({
             {analytics}
           </div> */}
         {/* <div className="flex mt-6">{isLogin ? dashboard : login}</div> */}
-        {modal}
+        {/* {modal} */}
         <SpeedInsights />
       </body>
     </html>

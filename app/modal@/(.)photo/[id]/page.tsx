@@ -7,11 +7,11 @@ import {
 
 // export const dynamicParams = isDynamic;
 // Error: Page" /(.)photo/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
-// export async function generateStaticParams() {
-//   return photos.map((post) => ({
-//     id: post.id
-//   }));
-// }
+export async function generateStaticParams() {
+  return photos.map((post) => ({
+    id: post.id
+  }));
+}
 
 const Page: FC<PhotoParams> = ({ params: { id } }) => {
   const photo = photos.find((p) => p.id === id);
