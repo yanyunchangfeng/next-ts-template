@@ -11,11 +11,15 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   let pageNo = Number(url.searchParams.get('pageNo'));
   let pageSize = Number(url.searchParams.get('pageSize'));
+  const keyWord = url.searchParams.get('keyWord') || '';
   pageNo = Number.isNaN(pageNo) || pageNo <= 0 ? 1 : pageNo;
   pageSize = Number.isNaN(pageSize) || pageSize <= 0 ? 10 : pageSize;
 
   const supabase = await createClient();
-  const { count, error: countError } = await supabase.from('notes').select('id', { count: 'exact', head: true });
+  const { count, error: countError } = await supabase
+    .from('notes')
+    .select('id', { count: 'exact', head: true })
+    .ilike('title', `%${keyWord}%`);
   if (countError) {
     return NextResponse.json({ message: countError.message }, { status: 400 });
   }
@@ -30,6 +34,7 @@ export async function GET(request: NextRequest) {
   } = await supabase
     .from('notes')
     .select()
+    .ilike('title', `%${keyWord}%`)
     .range(offset, offset + pageSize - 1)
     .order('created_at', { ascending: false });
   if (error) {
