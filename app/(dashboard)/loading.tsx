@@ -1,10 +1,6 @@
 import { FC } from 'react';
-
+import { Loading as DefaultLoading } from '@/app/components';
 const Loading: FC = () => {
-  return (
-    <div className="flex justify-center items-center  flex-1">
-      <div className="animate-spin rounded-full  h-10 w-10 border-b-2 border-red-900"></div>
-    </div>
-  );
+  return <DefaultLoading />;
 };
 export default Loading;
