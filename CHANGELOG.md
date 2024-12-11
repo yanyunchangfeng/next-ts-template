@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.17.0...v1.18.0) (2024-12-11)
+
+### Features
+
+- add notes search ([a656e98](https://github.com/yanyunchangfeng/next-ts-template/commit/a656e9894a2531a83379b692348d6dd8bf04fb34))
+- add user & signOut ([c541465](https://github.com/yanyunchangfeng/next-ts-template/commit/c5414655f2e33a89b62db92f4700fe73e6df61e9))
+
 # [1.18.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.17.0...v1.18.0-rc.1) (2024-12-11)
 
 ### Features
