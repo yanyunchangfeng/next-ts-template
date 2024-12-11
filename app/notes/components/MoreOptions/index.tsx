@@ -15,9 +15,13 @@ import React from 'react';
 
 export const MoreOptions: React.FC<{ note: Note }> = ({ note }) => {
   const [open, setOpen] = React.useState(false);
-  const { setEditNoteId, setIsOpen, setOpenNote } = useNotesStore();
-  const handleDelete = (note: Note) => {
-    setIsOpen(true);
+  const { setDeleteIsOpen, setOpenNote, setEditIsOpen } = useNotesStore();
+  const handleDelete = () => {
+    setDeleteIsOpen(true);
+    setOpenNote(note);
+  };
+  const handleUpdate = () => {
+    setEditIsOpen(true);
     setOpenNote(note);
   };
   return (
@@ -30,8 +34,8 @@ export const MoreOptions: React.FC<{ note: Note }> = ({ note }) => {
       <DropdownMenuContent align="end" className="w-[200px]">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => setEditNoteId(note.id)}>Edit</DropdownMenuItem>
-          <DropdownMenuItem className="text-red-600" onClick={() => handleDelete(note)}>
+          <DropdownMenuItem onClick={handleUpdate}>Edit</DropdownMenuItem>
+          <DropdownMenuItem className="text-red-600" onClick={handleDelete}>
             Delete
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
