@@ -4,7 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 // import myImage from '@/public/assets/home.png';
 import { Navigation } from '@/app/components';
-import { User } from '@/app/components/User';
+import { User } from '@/app/components/server/User';
 // import { isDynamic } from './shared';
 
 const geistSans = localFont({

@@ -3,10 +3,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, memo, PropsWithChildren } from 'react';
+import React from 'react';
 import { SignOut } from '@/app/components';
 
-const Navigation: FC<PropsWithChildren> = ({ children }) => {
+export const Navigation: React.FC<React.PropsWithChildren> = ({ children }) => {
   const path = usePathname(); // 获取当前路径
   const router = useRouter();
   const notesClasses = clsx('hover:text-red-600', {
@@ -60,5 +60,3 @@ const Navigation: FC<PropsWithChildren> = ({ children }) => {
     </nav>
   );
 };
-
-export default memo(Navigation);

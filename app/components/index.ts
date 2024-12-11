@@ -1,4 +1,2 @@
-export * from './template';
-export * from './Loading';
-export { default as Navigation } from './Navigation';
-export * from './SignOut';
+export * from './client';
+export * from './server';
