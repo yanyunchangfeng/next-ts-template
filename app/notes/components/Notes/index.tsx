@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from '@/app/components';
+import { Skeleton } from '@/app/components';
 import { useNotesStore } from '@/app/store';
 import { NoteList, NoteDrawer } from '@/app/notes/components';
 import { Note } from '@/app/shared';
@@ -19,7 +19,7 @@ export const Notes: React.FC = () => {
 
   return React.useMemo(() => {
     if (pending) {
-      return <Loading />;
+      return <Skeleton />;
     }
     return (
       <>
