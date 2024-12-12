@@ -1,32 +1,9 @@
 import { useNotesStore } from '@/app/store';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle
-} from '@/components/ui/alert-dialog';
+import { Confirm } from '@/app/components';
 
-export const AlertNote = () => {
+export const AlertNote: React.FC = () => {
   const { deleteIsOpen, setDeleteIsOpen, deleteNote, openNote } = useNotesStore();
   return (
-    <AlertDialog open={deleteIsOpen} onOpenChange={setDeleteIsOpen}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure? [id:{openNote.id}]</AlertDialogTitle>
-          <AlertDialogDescription>{openNote.title}</AlertDialogDescription>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => deleteNote()}>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+    <Confirm open={deleteIsOpen} onOk={deleteNote} onCancel={setDeleteIsOpen} data={{ description: openNote.title }} />
   );
 };
