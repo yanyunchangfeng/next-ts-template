@@ -64,9 +64,9 @@ export const useNotesStore = createPersistStore(
         if (!data) return;
         get().fetchNotes();
       },
-      async deleteNote(id?: number) {
+      async deleteNote() {
         set(() => ({ deleteIsOpen: false, pending: true }));
-        const data = await RequestService.notes.deleteNote(id || (get().openNote.id as unknown as number));
+        const data = await RequestService.notes.deleteNote(get().openNote.id as unknown as number);
         if (!data) return;
         get().fetchNotes();
       },
