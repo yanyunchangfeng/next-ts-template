@@ -1,3 +1,9 @@
+# [1.19.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.18.0...v1.19.0) (2024-12-12)
+
+### Features
+
+- add skeleton for all pages ([7c9cc5d](https://github.com/yanyunchangfeng/next-ts-template/commit/7c9cc5dd3bfd552f6a98b267e417f0588e591dec))
+
 # [1.19.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.18.0...v1.19.0-rc.1) (2024-12-12)
 
 ### Features
