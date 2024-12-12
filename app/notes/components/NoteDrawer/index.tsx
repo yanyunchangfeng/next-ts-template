@@ -1,16 +1,7 @@
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle
-} from '@/components/ui/drawer';
-import { Button } from '@/components/ui/button';
 import React from 'react';
-import { Textarea } from '@/components/ui/textarea';
+import { Drawer } from '@/app/components';
 import { Note } from '@/app/shared';
+import { Textarea } from '@/components/ui/textarea';
 
 interface NoteDrawerProps {
   open: boolean;
@@ -20,33 +11,34 @@ interface NoteDrawerProps {
 }
 
 export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, onCancel }) => {
+  const [title, setTitle] = React.useState(data.title);
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
   const handleOk = () => {
-    if (inputRef.current?.value) onOk({ ...data, title: inputRef.current.value } as Note);
+    if (title) onOk({ ...data, title } as Note);
   };
+
   const handleCancel = () => {
     onCancel();
   };
+
+  React.useEffect(() => {
+    if (data.title) {
+      setTitle(data.title);
+    }
+  }, [data.title]);
+
   return (
-    <Drawer open={open} onClose={handleCancel}>
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
-          </DrawerHeader>
-          <div className="p-4 pb-0">
-            <Textarea rows={5} placeholder="Write a note..." defaultValue={data?.title} ref={inputRef} />
-          </div>
-          <DrawerFooter>
-            <Button onClick={handleOk}>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant={'outline'}>Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
+    <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title}>
+      <div className="p-4 pb-0">
+        <Textarea
+          rows={5}
+          placeholder="Write a note..."
+          ref={inputRef}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
     </Drawer>
   );
 };

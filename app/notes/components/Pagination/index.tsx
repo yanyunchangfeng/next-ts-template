@@ -3,9 +3,9 @@ import { useNotesStore } from '@/app/store';
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { PageSelect } from '@/app/notes/components/PageSelect';
-import { Paginations } from '@/app/components';
+import { Pagination } from '@/app/components';
 
-export const Paganition: React.FC = () => {
+export const PaganitionContainer: React.FC = () => {
   const { notes, fetchNotes, pending } = useNotesStore();
   const { pageNo, pageSize, totalPages, totalCount } = notes;
 
@@ -96,7 +96,7 @@ export const Paganition: React.FC = () => {
   };
   return (
     <div className="flex justify-center gap-2 items-center mb-4 mt-2 flex-wrap">
-      <Paginations
+      <Pagination
         className="m-0 w-auto"
         current={pageNo}
         onPageChange={onPageChange}
