@@ -7,19 +7,22 @@ import { Note } from '@/app/shared';
 
 export const AddNote: React.FC = () => {
   const { setAddIsOpen, addIsOpen, addNote } = useNotesStore();
-  const handleAddNote = (note: Partial<Note>) => {
+  const handleAddNote = async (note: Partial<Note>) => {
     setAddIsOpen(false);
-    addNote(note);
+    await addNote(note);
   };
-  const handleOpen = () => {
+  const handleOpen = async () => {
     setAddIsOpen(true);
+  };
+  const handleCancel = async () => {
+    setAddIsOpen(false);
   };
   return (
     <>
       <Button variant="outline" size="icon" onClick={handleOpen}>
         <Plus />
       </Button>
-      <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={() => setAddIsOpen(false)} />
+      <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={handleCancel} />
     </>
   );
 };
