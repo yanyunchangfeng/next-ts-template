@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import {
-  Pagination,
+  Pagination as DefaultPagination,
   PaginationContent,
   //   PaginationEllipsis,
   PaginationItem,
@@ -17,7 +17,7 @@ interface PaginationProps {
   onPageChange: (pageNo: number) => void;
 }
 
-export const Paginations: React.FC<PaginationProps & React.ComponentProps<'nav'>> = ({
+export const Pagination: React.FC<PaginationProps & React.ComponentProps<'nav'>> = ({
   current,
   onPageChange,
   pages,
@@ -28,7 +28,7 @@ export const Paginations: React.FC<PaginationProps & React.ComponentProps<'nav'>
     onPageChange(pageNo);
   };
   return (
-    <Pagination {...restProps}>
+    <DefaultPagination {...restProps}>
       <PaginationContent>
         <PaginationItem>
           <span>{total}</span>
@@ -81,6 +81,6 @@ export const Paginations: React.FC<PaginationProps & React.ComponentProps<'nav'>
           )}
         </PaginationItem>
       </PaginationContent>
-    </Pagination>
+    </DefaultPagination>
   );
 };
