@@ -6,9 +6,12 @@ import { Note } from '@/app/shared';
 
 export const Notes: React.FC = () => {
   const { pending, fetchNotes, setEditIsOpen, updateNote, editIsOpen, openNote } = useNotesStore();
-  const handleUpdateNote = (note: Note) => {
+  const handleUpdateNote = async (note: Note) => {
     setEditIsOpen(false);
-    updateNote(note);
+    await updateNote(note);
+  };
+  const handleCancel = async () => {
+    setEditIsOpen(false);
   };
   React.useEffect(() => {
     fetchNotes();
@@ -21,7 +24,7 @@ export const Notes: React.FC = () => {
     return (
       <>
         <NoteList />
-        <NoteDrawer onOk={handleUpdateNote} open={editIsOpen} data={openNote} onCancel={() => setEditIsOpen(false)} />
+        <NoteDrawer onOk={handleUpdateNote} open={editIsOpen} data={openNote} onCancel={handleCancel} />
       </>
     );
   }, [pending, editIsOpen, openNote]);

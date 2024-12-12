@@ -5,21 +5,23 @@ import { Textarea } from '@/components/ui/textarea';
 
 interface NoteDrawerProps {
   open: boolean;
-  onOk: (note: Note) => void;
-  onCancel: () => void;
+  onOk: (note: Note) => Promise<void>;
+  onCancel: () => Promise<void>;
   data?: Partial<Note>;
 }
 
 export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, onCancel }) => {
   const [title, setTitle] = React.useState(data.title);
-  const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const handleOk = () => {
-    if (title) onOk({ ...data, title } as Note);
+  const handleOk = async () => {
+    if (title) {
+      await onOk({ ...data, title } as Note);
+      setTitle(undefined);
+    }
   };
 
-  const handleCancel = () => {
-    onCancel();
+  const handleCancel = async () => {
+    await onCancel();
   };
 
   React.useEffect(() => {
@@ -31,13 +33,7 @@ export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, o
   return (
     <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title}>
       <div className="p-4 pb-0">
-        <Textarea
-          rows={5}
-          placeholder="Write a note..."
-          ref={inputRef}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <Textarea rows={5} placeholder="Write a note..." value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
     </Drawer>
   );

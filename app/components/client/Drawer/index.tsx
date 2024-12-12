@@ -15,8 +15,8 @@ interface DrawerProps {
   open: boolean;
   okText?: React.ReactNode;
   cancelText?: React.ReactNode;
-  onOk: (...args: any[]) => void;
-  onCancel: () => void;
+  onOk: (...args: any[]) => Promise<void>;
+  onCancel: () => Promise<void>;
   data?: Record<keyof any, string>;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -33,12 +33,12 @@ export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
   description,
   okDisabled
 }) => {
-  const handleCancel = () => {
-    onCancel();
+  const handleCancel = async () => {
+    await onCancel();
   };
 
-  const handleOk = () => {
-    onOk();
+  const handleOk = async () => {
+    await onOk();
   };
 
   const okTitle = React.useMemo(() => {
