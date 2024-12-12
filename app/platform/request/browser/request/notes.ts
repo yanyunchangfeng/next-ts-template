@@ -19,9 +19,9 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
   }
 };
 
-export const addNote = async (title: string) => {
+export const addNote = async (note: Partial<Note>) => {
   try {
-    const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify({ title }) });
+    const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify(note) });
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
@@ -47,7 +47,7 @@ export const updateNote = async (note: Note) => {
   }
 };
 
-export const deleteNote = async (id: string) => {
+export const deleteNote = async (id: number) => {
   try {
     const res = await fetch(`/api/notes`, {
       method: 'DELETE',

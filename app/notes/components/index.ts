@@ -6,4 +6,5 @@ export * from './NoteList';
 export * from './PageSelect';
 export * from './MoreOptions';
 export * from './AlertNote';
-export * from './EditNote';
+export * from './NoteDrawer';
+export * from './NotesHeader';
