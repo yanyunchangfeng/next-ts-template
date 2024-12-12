@@ -8,7 +8,7 @@ export async function User() {
   } = await supabase.auth.getUser();
   return (
     <Avatar>
-      <AvatarImage src={user?.user_metadata.avatar_url || 'https://via.placeholder.com/32'} />
+      <AvatarImage src={user?.user_metadata.avatar_url} />
       <AvatarFallback>{user?.user_metadata.name || 'N/A'}</AvatarFallback>
     </Avatar>
   );

@@ -1,24 +1,25 @@
 import { useNotesStore } from '@/app/store';
-import { Textarea } from '@/components/ui/textarea';
-import { Loader2 } from 'lucide-react';
-import { FC } from 'react';
+import { Plus } from 'lucide-react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
+import { NoteDrawer } from '@/app/notes/components';
+import { Note } from '@/app/shared';
 
-export const AddNote: FC = () => {
-  const { addNoteTitle, addNote, setAddNoteTitle, pending } = useNotesStore();
-
+export const AddNote: React.FC = () => {
+  const { setAddIsOpen, addIsOpen, addNote } = useNotesStore();
+  const handleAddNote = (note: Partial<Note>) => {
+    setAddIsOpen(false);
+    addNote(note);
+  };
+  const handleOpen = () => {
+    setAddIsOpen(true);
+  };
   return (
-    <div className="flex items-center rounded-md shadow-md pr-2 gap-2">
-      <Textarea
-        // rows={2}
-        placeholder="Add a new note"
-        value={addNoteTitle}
-        onChange={(e) => setAddNoteTitle(e.target.value)}
-      />
-      <Button disabled={!addNoteTitle || pending} onClick={addNote} variant="destructive">
-        {addNoteTitle && pending ? <Loader2 className="animate-spin" /> : null}
-        Add
+    <>
+      <Button variant="outline" size="icon" onClick={handleOpen}>
+        <Plus />
       </Button>
-    </div>
+      <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={() => setAddIsOpen(false)} />
+    </>
   );
 };

@@ -1,11 +1,15 @@
 import React from 'react';
 import { Loading } from '@/app/components';
 import { useNotesStore } from '@/app/store';
-import { NoteList } from '@/app/notes/components';
+import { NoteList, NoteDrawer } from '@/app/notes/components';
+import { Note } from '@/app/shared';
 
 export const Notes: React.FC = () => {
-  const { pending, fetchNotes } = useNotesStore();
-
+  const { pending, fetchNotes, setEditIsOpen, updateNote, editIsOpen, openNote } = useNotesStore();
+  const handleUpdateNote = (note: Note) => {
+    setEditIsOpen(false);
+    updateNote(note);
+  };
   React.useEffect(() => {
     fetchNotes();
   }, []);
@@ -14,6 +18,11 @@ export const Notes: React.FC = () => {
     if (pending) {
       return <Loading />;
     }
-    return <NoteList />;
-  }, [pending]);
+    return (
+      <>
+        <NoteList />
+        <NoteDrawer onOk={handleUpdateNote} open={editIsOpen} data={openNote} onCancel={() => setEditIsOpen(false)} />
+      </>
+    );
+  }, [pending, editIsOpen, openNote]);
 };

@@ -14,15 +14,21 @@ interface PaginationProps {
   current: number;
   pages: number;
   total: number;
-  onChange: (pageNo: number) => void;
+  onPageChange: (pageNo: number) => void;
 }
 
-export const Paginations: React.FC<PaginationProps> = ({ current, onChange, pages, total }) => {
+export const Paginations: React.FC<PaginationProps & React.ComponentProps<'nav'>> = ({
+  current,
+  onPageChange,
+  pages,
+  total,
+  ...restProps
+}) => {
   const handleChange = (pageNo: number) => {
-    onChange(pageNo);
+    onPageChange(pageNo);
   };
   return (
-    <Pagination>
+    <Pagination {...restProps}>
       <PaginationContent>
         <PaginationItem>
           <span>{total}</span>

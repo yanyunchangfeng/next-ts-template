@@ -13,8 +13,8 @@ const DEFAULT_NOTES = {
   searchNote: { keyWord: '' },
   deleteIsOpen: false,
   editIsOpen: false,
-  openNote: { id: '', title: '' } as Note,
-  addNoteTitle: '',
+  addIsOpen: false,
+  openNote: {} as Partial<Note>,
   pending: true,
   selectedPerPage: '5',
   perPages: [
@@ -51,11 +51,10 @@ export const useNotesStore = createPersistStore(
         }));
         set(() => ({ notes, pending: false }));
       },
-      async addNote() {
+      async addNote(note: Partial<Note>) {
         set(() => ({ pending: true }));
-        const id = await RequestService.notes.addNote(get().addNoteTitle);
+        const id = await RequestService.notes.addNote(note);
         if (!id) return;
-        set(() => ({ addNoteTitle: '' }));
         set(() => ({ searchNote: { ...get().searchNote, keyWord: '' } }));
         get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize, keyWord: get().searchNote.keyWord });
       },
@@ -65,15 +64,17 @@ export const useNotesStore = createPersistStore(
         if (!data) return;
         get().fetchNotes();
       },
-      async deleteNote(id?: string) {
+      async deleteNote(id?: number) {
         set(() => ({ deleteIsOpen: false, pending: true }));
-        const data = await RequestService.notes.deleteNote(id || get().openNote.id);
+        const data = await RequestService.notes.deleteNote(id || (get().openNote.id as unknown as number));
         if (!data) return;
-        set(() => ({ openNote: { id: '', title: '' } as Note }));
         get().fetchNotes();
       },
       setNotes(notes: Notes) {
         set(() => ({ notes }));
+      },
+      setAddIsOpen(addIsOpen: boolean) {
+        set(() => ({ addIsOpen }));
       },
       setDeleteIsOpen(deleteIsOpen: boolean) {
         set(() => ({ deleteIsOpen }));
@@ -83,9 +84,6 @@ export const useNotesStore = createPersistStore(
       },
       setOpenNote(note: Note) {
         set(() => ({ openNote: note }));
-      },
-      setAddNoteTitle(title: string) {
-        set(() => ({ addNoteTitle: title }));
       },
       setSelectedPerPage(selectedPerPage: string) {
         set(() => ({ selectedPerPage }));

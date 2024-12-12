@@ -9,21 +9,27 @@ import {
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
 import React from 'react';
-import { useNotesStore } from '@/app/store';
 import { Textarea } from '@/components/ui/textarea';
+import { Note } from '@/app/shared';
 
-export const EditNote: React.FC = () => {
-  const { editIsOpen, setEditIsOpen, openNote, updateNote } = useNotesStore();
+interface NoteDrawerProps {
+  open: boolean;
+  onOk: (note: Note) => void;
+  onCancel: () => void;
+  data?: Partial<Note>;
+}
+
+export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, onCancel }) => {
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const updateNoteHandler = () => {
-    if (inputRef.current?.value) {
-      updateNote({ id: openNote.id, title: inputRef.current?.value, created_at: openNote.created_at });
-    }
+  const handleOk = () => {
+    if (inputRef.current?.value) onOk({ ...data, title: inputRef.current.value } as Note);
   };
-
+  const handleCancel = () => {
+    onCancel();
+  };
   return (
-    <Drawer open={editIsOpen} onOpenChange={setEditIsOpen}>
+    <Drawer open={open} onClose={handleCancel}>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
@@ -31,10 +37,10 @@ export const EditNote: React.FC = () => {
             <DrawerDescription>This action cannot be undone.</DrawerDescription>
           </DrawerHeader>
           <div className="p-4 pb-0">
-            <Textarea rows={5} placeholder="Write a note..." defaultValue={openNote.title} ref={inputRef} />
+            <Textarea rows={5} placeholder="Write a note..." defaultValue={data?.title} ref={inputRef} />
           </div>
           <DrawerFooter>
-            <Button onClick={updateNoteHandler}>Submit</Button>
+            <Button onClick={handleOk}>Submit</Button>
             <DrawerClose asChild>
               <Button variant={'outline'}>Cancel</Button>
             </DrawerClose>
