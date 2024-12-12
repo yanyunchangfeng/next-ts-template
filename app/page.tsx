@@ -19,7 +19,7 @@ import Link from 'next/link';
 import { type FC } from 'react';
 import { photos as originPhotos, isDynamic } from './shared';
 import React from 'react';
-import { Loading } from '@/app/components';
+import { Skeleton } from '@/app/components';
 
 const Home: FC = () => {
   const [photos, setPhotos] = React.useState<{ src: string; id: string }[]>([]);
@@ -45,7 +45,7 @@ const Home: FC = () => {
 
   const photoTem = React.useMemo(() => {
     if (isLoading) {
-      return <Loading />;
+      return <Skeleton />;
     }
     return photos.map(({ src, id }) => {
       return (
