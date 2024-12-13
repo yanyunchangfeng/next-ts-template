@@ -5,3 +5,6 @@ export * from './Popover';
 export * from './Confirm';
 export * from './Drawer';
 export * from './DatePickerRange';
+export * from './DropDownMenu';
+export * from './DropDownUser';
+export * from './User';
