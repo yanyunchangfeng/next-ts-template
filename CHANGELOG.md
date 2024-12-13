@@ -1,3 +1,9 @@
+# [1.22.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.21.0...v1.22.0) (2024-12-13)
+
+### Features
+
+- add newTheme & three mode ([76c8be4](https://github.com/yanyunchangfeng/next-ts-template/commit/76c8be43ca205811a352267c6e72712b1ca07cbe))
+
 # [1.21.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.20.0...v1.21.0) (2024-12-13)
 
 ### Features
