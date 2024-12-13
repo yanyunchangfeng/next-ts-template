@@ -11,7 +11,7 @@ export const NoteList: React.FC = () => {
       {notes.data.map((note) => {
         const createTime = new Date(note.created_at).toLocaleString();
         let updateTime: React.ReactNode = note.updated_at ? new Date(note.updated_at).toLocaleString() : null;
-        const classes = 'text-white/50';
+        const classes = 'text-[hsl(var(--foreground-light))] ';
         updateTime = updateTime ? (
           <Popover content={updateTime} className={classes}>
             (edited)
