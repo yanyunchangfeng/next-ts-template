@@ -9,16 +9,23 @@ export async function GET(request: NextRequest) {
     return NextResponse.json([]);
   }
   const url = new URL(request.url);
-  let pageNo = Number(url.searchParams.get('pageNo'));
-  let pageSize = Number(url.searchParams.get('pageSize'));
-  const keyWord = url.searchParams.get('keyWord') || '';
+  const { searchParams } = url;
+  let pageNo = Number(searchParams.get('pageNo'));
+  let pageSize = Number(searchParams.get('pageSize'));
+  const keyWord = searchParams.get('keyWord') ?? '';
+  let startDate: string | number = searchParams.get('startDate') || '1970-01-01'; // 获取 startDate 参数
+  let endDate: string | number = searchParams.get('endDate') || '2100-01-01';
   pageNo = Number.isNaN(pageNo) || pageNo <= 0 ? 1 : pageNo;
   pageSize = Number.isNaN(pageSize) || pageSize <= 0 ? 10 : pageSize;
+  startDate = new Date(startDate).getTime();
+  endDate = new Date(endDate).getTime();
 
   const supabase = await createClient();
   const { count, error: countError } = await supabase
     .from('notes')
     .select('id', { count: 'exact', head: true })
+    .gte('created_at', startDate)
+    .lte('created_at', endDate)
     .ilike('title', `%${keyWord}%`);
   if (countError) {
     return NextResponse.json({ message: countError.message }, { status: 400 });
@@ -36,6 +43,8 @@ export async function GET(request: NextRequest) {
     .select()
     .ilike('title', `%${keyWord}%`)
     .range(offset, offset + pageSize - 1)
+    .gte('created_at', startDate)
+    .lte('created_at', endDate)
     .order('created_at', { ascending: false });
   if (error) {
     return NextResponse.json({ message: error.message }, { status, statusText });

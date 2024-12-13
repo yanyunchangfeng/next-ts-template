@@ -15,4 +15,6 @@ export interface NoteSearchParams {
   pageNo: number;
   pageSize: number;
   keyWord?: string;
+  startDate?: string;
+  endDate?: string;
 }
