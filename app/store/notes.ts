@@ -1,6 +1,7 @@
 import { createPersistStore } from '@/app/utils';
 import { Note, Notes, NoteSearchParams } from '@/app/shared';
 import RequestService from '@/app/platform/request/browser/RequestService';
+import { CusDateRange } from '@/app/components';
 
 const DEFAULT_NOTES = {
   notes: {
@@ -10,7 +11,7 @@ const DEFAULT_NOTES = {
     totalPages: 0,
     data: [] as Note[]
   },
-  searchNote: { keyWord: '' },
+  searchNote: { keyWord: '', date: { from: undefined, to: undefined } as CusDateRange },
   deleteIsOpen: false,
   editIsOpen: false,
   addIsOpen: false,
@@ -41,7 +42,9 @@ export const useNotesStore = createPersistStore(
           {
             pageNo: get().notes.pageNo,
             pageSize: get().notes.pageSize,
-            keyWord: get().searchNote.keyWord
+            keyWord: get().searchNote.keyWord,
+            startDate: get().searchNote.date?.from,
+            endDate: get().searchNote.date?.to
           },
           searchParams
         );
@@ -90,7 +93,7 @@ export const useNotesStore = createPersistStore(
         set(() => ({ notes: { ...get().notes, pageSize: Number(selectedPerPage) } }));
         get().fetchNotes();
       },
-      setSearchNote(searchNote: typeof DEFAULT_NOTES.searchNote) {
+      setSearchNote(searchNote: Partial<typeof DEFAULT_NOTES.searchNote>) {
         set(() => ({ searchNote: { ...get().searchNote, ...searchNote } }));
       }
     };

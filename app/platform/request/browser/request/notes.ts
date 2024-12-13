@@ -5,8 +5,10 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
     return notes;
   }
   try {
+    const startDate = searchParams?.startDate ?? '';
+    const endDate = searchParams?.endDate ?? '';
     const res = await fetch(
-      `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}`
+      `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}&startDate=${startDate}&endDate=${endDate}`
     );
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
