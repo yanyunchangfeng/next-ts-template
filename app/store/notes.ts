@@ -42,7 +42,7 @@ export const useNotesStore = createPersistStore(
           {
             pageNo: get().notes.pageNo,
             pageSize: get().notes.pageSize,
-            keyWord: get().searchNote.keyWord,
+            keyWord: get().searchNote.keyWord.trim(),
             startDate: get().searchNote.date?.from,
             endDate: get().searchNote.date?.to
           },
