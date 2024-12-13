@@ -3,8 +3,6 @@ import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 import { Navigation } from '@/app/components';
-import { User } from '@/app/components/server/User';
-import { isDynamic } from './shared';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -55,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 h-screen`}
       >
         <div className="flex flex-col h-full px-4">
-          <Navigation>{isDynamic ? <User /> : null}</Navigation>
+          <Navigation />
           <div className="flex flex-1">{children}</div>
         </div>
         <SpeedInsights />

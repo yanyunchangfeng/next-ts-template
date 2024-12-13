@@ -7,10 +7,10 @@ import {
   useRouter
 } from 'next/navigation';
 import React from 'react';
-import { SignOut } from '@/app/components';
+import { DropDownUser } from '@/app/components';
 import { Button } from '@/components/ui/button';
 
-export const Navigation: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const Navigation: React.FC = () => {
   // const path = usePathname(); // 获取当前路径
   const router = useRouter();
   // const notesClasses = clsx('hover:text-red-600', {
@@ -24,7 +24,7 @@ export const Navigation: React.FC<React.PropsWithChildren> = ({ children }) => {
   // });
   return (
     <nav className="flex items-center justify-center gap-2  py-4">
-      {children}
+      <DropDownUser />
       <Button onClick={() => router.push('/notes', { scroll: false })} variant="link">
         notes
       </Button>
@@ -38,7 +38,7 @@ export const Navigation: React.FC<React.PropsWithChildren> = ({ children }) => {
       <Button onClick={() => router.push('/?redirect=false', { scroll: false })} variant="link">
         home
       </Button>
-      <SignOut />
+      {/* <SignOut /> */}
     </nav>
   );
 };
