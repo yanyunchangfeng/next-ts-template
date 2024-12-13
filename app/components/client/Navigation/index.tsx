@@ -1,27 +1,13 @@
 'use client';
 
-// import clsx from 'clsx';
-// import Link from 'next/link';
-import {
-  // usePathname,
-  useRouter
-} from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import { DropDownUser } from '@/app/components';
+import { DropDownUser, ModeToggle } from '@/app/components';
 import { Button } from '@/components/ui/button';
 
 export const Navigation: React.FC = () => {
-  // const path = usePathname(); // 获取当前路径
   const router = useRouter();
-  // const notesClasses = clsx('hover:text-red-600', {
-  //   'text-red-500': path === '/notes'
-  // });
-  // const blogClasses = clsx('hover:text-red-600', {
-  //   'text-red-500': path === '/blog'
-  // });
-  // const homeClasses = clsx('hover:text-red-600', {
-  //   'text-red-500': path === '/'
-  // });
+
   return (
     <nav className="flex items-center justify-center gap-2  py-4">
       <DropDownUser />
@@ -38,7 +24,7 @@ export const Navigation: React.FC = () => {
       <Button onClick={() => router.push('/?redirect=false', { scroll: false })} variant="link">
         home
       </Button>
-      {/* <SignOut /> */}
+      <ModeToggle />
     </nav>
   );
 };
