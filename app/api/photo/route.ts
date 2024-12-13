@@ -8,7 +8,19 @@ export async function GET() {
   if (!isDynamic) {
     return NextResponse.json([]);
   }
+  const res = await fetch('https://dog.ceo/api/breeds/image/random', { next: { revalidate: 0 } });
+  if (!res.ok) {
+    throw new Error('Failed to fetch photos');
+  }
+  const dogData: { message: string; status: string } = await res.json();
   const supabase = await createClient();
-  const { data: photos } = await supabase.from('photos').select();
+  const { status, statusText, error } = await supabase
+    .from('photos')
+    .insert([{ src: dogData.message }])
+    .select('id');
+  if (error) {
+    return NextResponse.json({ message: error.message }, { status, statusText });
+  }
+  const { data: photos } = await supabase.from('photos').select().order('id', { ascending: false }).range(0, 2);
   return NextResponse.json(photos);
 }

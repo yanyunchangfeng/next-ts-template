@@ -3,7 +3,7 @@ import { FC, use } from 'react';
 const getData = async () => {
   // 基于时间的重新验证;
   // 使用基于时间的重新验证，你需要在使用 fetch 的时候设置 next.revalidate 选项（以秒为单位）：
-  const res = await fetch('https://api.thecatapi.com/v1/images/search', { next: { revalidate: 10 } });
+  const res = await fetch('https://api.thecatapi.com/v1/images/search', { next: { revalidate: 5 } });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }

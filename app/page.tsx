@@ -50,7 +50,7 @@ const Home: FC = () => {
     return photos.map(({ src, id }) => {
       return (
         <Link key={id} href={`/photo/${id}`}>
-          <img width="100" src={src} className="m-1" />
+          <img width="120" src={src} className="m-1" />
         </Link>
       );
     });
@@ -58,7 +58,7 @@ const Home: FC = () => {
 
   return (
     <React.Profiler id="home" onRender={console.log}>
-      <main className="flex justify-center items-center flex-1">{photoTem}</main>
+      <main className="flex justify-center items-center flex-1 gap-2">{photoTem}</main>
     </React.Profiler>
   );
 };
