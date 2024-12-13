@@ -1,3 +1,9 @@
+# [1.21.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.20.0...v1.21.0) (2024-12-13)
+
+### Features
+
+- add dropdownUser & refactor common components ([295fb2b](https://github.com/yanyunchangfeng/next-ts-template/commit/295fb2b2463d1b6a9f3a9404ce80f1d744d67017))
+
 # [1.21.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.20.0...v1.21.0-rc.1) (2024-12-13)
 
 ### Features
