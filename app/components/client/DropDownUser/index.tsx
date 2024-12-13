@@ -26,7 +26,7 @@ export const DropDownUser: React.FC<React.PropsWithChildren> = () => {
       content={
         <>
           <DropdownMenuLabel>{user?.user_metadata?.name || 'N/A'}</DropdownMenuLabel>
-          <DropdownMenuItem onClick={handleLogOut}>
+          <DropdownMenuItem onClick={handleLogOut} disabled={!user}>
             Log out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
