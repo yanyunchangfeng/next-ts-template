@@ -58,7 +58,7 @@ export const useNotesStore = createPersistStore(
         set(() => ({ pending: true }));
         const id = await RequestService.notes.addNote(note);
         if (!id) return;
-        set(() => ({ searchNote: { ...get().searchNote, keyWord: '' } }));
+        set(() => ({ searchNote: DEFAULT_NOTES.searchNote }));
         get().fetchNotes({ pageNo: 1, pageSize: get().notes.pageSize, keyWord: get().searchNote.keyWord });
       },
       async updateNote(note: Note) {
