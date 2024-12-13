@@ -1,3 +1,9 @@
+# [1.20.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.19.0...v1.20.0-rc.1) (2024-12-13)
+
+### Features
+
+- add note calendar search ([39ec332](https://github.com/yanyunchangfeng/next-ts-template/commit/39ec332307d8eb2b61e87a13d816e7103446a223))
+
 # [1.19.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v1.18.0...v1.19.0) (2024-12-12)
 
 ### Features
