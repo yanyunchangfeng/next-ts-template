@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
-import { Navigation, ThemeProvider } from '@/app/components';
+import { Navigation } from '@/app/components';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased  h-screen`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex flex-col h-full px-4">
-            <Navigation />
-            <div className="flex flex-1">{children}</div>
-          </div>
-        </ThemeProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-purple-400 to-purple-800 h-screen`}
+      >
+        <div className="flex flex-col h-full px-4">
+          <Navigation />
+          <div className="flex flex-1">{children}</div>
+        </div>
         <SpeedInsights />
       </body>
     </html>

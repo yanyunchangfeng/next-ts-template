@@ -8,5 +8,3 @@ export * from './DatePickerRange';
 export * from './DropDownMenu';
 export * from './DropDownUser';
 export * from './User';
-export * from './ThemeProvider';
-export * from './ModeToggle';
