@@ -14,13 +14,16 @@ export async function GET() {
   }
   const dogData: { message: string; status: string } = await res.json();
   const supabase = await createClient();
-  const { status, statusText, error } = await supabase
+  const { error: insertError } = await supabase
     .from('photos')
     .insert([{ src: dogData.message }])
     .select('id');
-  if (error) {
-    return NextResponse.json({ message: error.message }, { status, statusText });
+  if (insertError) {
+    return NextResponse.json({ message: insertError.message }, { status: 400 });
   }
-  const { data: photos } = await supabase.from('photos').select().order('id', { ascending: false }).range(0, 2);
+  const { data: photos, error } = await supabase.from('photos').select().order('id', { ascending: false }).limit(3);
+  if (error) {
+    return NextResponse.json({ message: error.message }, { status: 400 });
+  }
   return NextResponse.json(photos);
 }

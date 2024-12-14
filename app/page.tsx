@@ -19,7 +19,7 @@ import Link from 'next/link';
 import { type FC } from 'react';
 import { photos as originPhotos, isDynamic } from './shared';
 import React from 'react';
-import { Skeleton } from '@/app/components';
+import { Skeleton, AspectRatioImage } from '@/app/components';
 
 const Home: FC = () => {
   const [photos, setPhotos] = React.useState<{ src: string; id: string }[]>([]);
@@ -50,7 +50,7 @@ const Home: FC = () => {
     return photos.map(({ src, id }) => {
       return (
         <Link key={id} href={`/photo/${id}`}>
-          <img width="120" src={src} className="m-1" />
+          <AspectRatioImage src={src} alt="dog" fill />
         </Link>
       );
     });
@@ -58,7 +58,7 @@ const Home: FC = () => {
 
   return (
     <React.Profiler id="home" onRender={console.log}>
-      <main className="flex justify-center items-center flex-1 gap-2">{photoTem}</main>
+      <main className="flex flex-col justify-center items-center flex-1 gap-4">{photoTem}</main>
     </React.Profiler>
   );
 };
