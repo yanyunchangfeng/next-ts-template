@@ -33,12 +33,7 @@ export async function GET(request: NextRequest) {
   const totalPages = Math.ceil(count! / pageSize);
   const validPageNo = pageNo > totalPages ? 1 : pageNo;
   const offset = (validPageNo - 1) * pageSize;
-  const {
-    data: notes,
-    error,
-    status,
-    statusText
-  } = await supabase
+  const { data: notes, error } = await supabase
     .from('notes')
     .select()
     .ilike('title', `%${keyWord}%`)
@@ -47,7 +42,7 @@ export async function GET(request: NextRequest) {
     .lte('created_at', endDate)
     .order('created_at', { ascending: false });
   if (error) {
-    return NextResponse.json({ message: error.message }, { status, statusText });
+    return NextResponse.json({ message: error.message }, { status: 400 });
   }
   return NextResponse.json(
     {
@@ -57,7 +52,7 @@ export async function GET(request: NextRequest) {
       pageSize,
       totalPages
     },
-    { status: 200, statusText }
+    { status: 200 }
   );
 }
 export async function POST(request: NextRequest) {
@@ -74,11 +69,11 @@ export async function POST(request: NextRequest) {
   // insert() 不强制要求传递数组，你可以根据实际需求插入单条或多条数据。
   // 单条插入：直接传入一个对象。
   // 批量插入：传入一个对象数组。
-  const { data, status, statusText, error } = await supabase.from('notes').insert({ title }).select('id');
+  const { data, error } = await supabase.from('notes').insert({ title }).select('id');
   if (error) {
-    return NextResponse.json({ message: error.message }, { status, statusText });
+    return NextResponse.json({ message: error?.message }, { status: 400 });
   }
-  return NextResponse.json(data, { status: 200, statusText });
+  return NextResponse.json(data, { status: 200 });
 }
 
 export async function PUT(request: NextRequest) {
@@ -92,16 +87,16 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ message: 'ID and Title are required' }, { status: 400 });
   }
   const supabase = await createClient();
-  const { data, error, status, statusText } = await supabase
+  const { data, error } = await supabase
     .from('notes')
     .update([{ title: title }])
     .eq('id', id)
     .select();
 
   if (error) {
-    return NextResponse.json({ message: error.message }, { status, statusText });
+    return NextResponse.json({ message: error.message }, { status: 400 });
   }
-  return NextResponse.json(data, { status: 200, statusText });
+  return NextResponse.json(data, { status: 200 });
 }
 
 export async function DELETE(request: NextRequest) {
@@ -115,11 +110,11 @@ export async function DELETE(request: NextRequest) {
   // 执行删除操作
   //   eq 是单个字段的等值匹配，适用于比较一个字段与某个具体值是否相等。
   // match 是多条件匹配，适用于一次性检查多个字段与对应值的匹配，等价于多个 eq 条件的 AND 组合。
-  const { data, error, status, statusText } = await supabase.from('notes').delete().match({ id }).select(); // 通过 id 删除笔记
+  const { data, error } = await supabase.from('notes').delete().match({ id }).select(); // 通过 id 删除笔记
   // 错误处理
   if (error) {
-    return NextResponse.json({ message: error.message }, { status, statusText });
+    return NextResponse.json({ message: error.message }, { status: 400 });
   }
   // 返回删除成功的数据
-  return NextResponse.json(data, { status: 200, statusText });
+  return NextResponse.json(data, { status: 200 });
 }

@@ -1,4 +1,5 @@
 import { isDynamic, Note, Notes, notes, NoteSearchParams } from '@/app/shared';
+import { toast } from 'sonner';
 
 export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> => {
   if (!isDynamic) {
@@ -11,61 +12,53 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
       `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}&startDate=${startDate}&endDate=${endDate}`
     );
     if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
+      const message = (await res.json())?.message ?? 'Unknown error';
+      throw new Error(`Status: ${res.status} Reason: ${message}`);
     }
     const data = await res.json();
     return data;
   } catch (e) {
-    console.log('Error fetch notes', e);
+    toast.error(`${e}`);
     return { totalCount: 0, totalPages: 0, data: [], pageNo: searchParams.pageNo, pageSize: searchParams.pageSize };
   }
 };
 
 export const addNote = async (note: Partial<Note>) => {
-  try {
-    const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify(note) });
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-    const data = await res.json();
-    const newId = data?.[0]?.id; // 获取新增记录的 id
-    return newId;
-  } catch (e) {
-    console.log('Error add note', e);
+  const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify(note) });
+  if (!res.ok) {
+    const message = (await res.json())?.message ?? 'Unknown error';
+    throw new Error(`Status: ${res.status} Reason: ${message}`);
   }
+  const data = await res.json();
+  const newId = data?.[0]?.id; // 获取新增记录的 id
+  return newId;
 };
 
 export const updateNote = async (note: Note) => {
-  try {
-    const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note) });
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-    const data = await res.json();
-    const newData = data?.[0];
-    return newData;
-  } catch (e) {
-    console.log('Error update note', e);
+  const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note) });
+  if (!res.ok) {
+    const message = (await res.json())?.message ?? 'Unknown error';
+    throw new Error(`Status: ${res.status} Reason: ${message}`);
   }
+  const data = await res.json();
+  const newData = data?.[0];
+  return newData;
 };
 
 export const deleteNote = async (id: number) => {
-  try {
-    const res = await fetch(`/api/notes`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id })
-    });
+  const res = await fetch(`/api/notes`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-    const data = await res.json();
-    const effectRows = data?.length;
-    return effectRows;
-  } catch (e) {
-    console.log('Error delete note', e);
+  if (!res.ok) {
+    const message = (await res.json())?.message ?? 'Unknown error';
+    throw new Error(`Status: ${res.status} Reason: ${message}`);
   }
+  const data = await res.json();
+  const effectRows = data?.length;
+  return effectRows;
 };

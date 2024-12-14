@@ -20,6 +20,7 @@ import { type FC } from 'react';
 import { photos as originPhotos, isDynamic } from './shared';
 import React from 'react';
 import { Skeleton, AspectRatioImage } from '@/app/components';
+import { toast } from 'sonner';
 
 const Home: FC = () => {
   const [photos, setPhotos] = React.useState<{ src: string; id: string }[]>([]);
@@ -29,15 +30,24 @@ const Home: FC = () => {
       return originPhotos;
     }
     const res = await fetch(`/api/photo`);
+    if (!res.ok) {
+      const message = (await res.json())?.message ?? 'Unknown error';
+      throw new Error(`Status: ${res.status} Reason: ${message}`);
+    }
     const data = await res.json();
     return data as { src: string; id: string }[];
   };
 
   const fetchPhotos = async () => {
-    setIsLoading(true);
-    const data = await fetchData();
-    setIsLoading(false);
-    setPhotos(data);
+    try {
+      setIsLoading(true);
+      const data = await fetchData();
+      setPhotos(data);
+    } catch (err) {
+      toast.error(`${err}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
   React.useEffect(() => {
     fetchPhotos();

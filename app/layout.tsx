@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 import { Navigation, ThemeProvider } from '@/app/components';
+import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </ThemeProvider>
         <SpeedInsights />
+        <Toaster />
       </body>
     </html>
   );

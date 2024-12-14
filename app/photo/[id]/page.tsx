@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { isDynamic, PhotoParams, photos } from '@/app/shared';
 import React from 'react';
 import { Skeleton, AspectRatioImage } from '@/app/components';
+import { toast } from 'sonner';
 
 // Error: Page "/photo/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
 // export async function generateStaticParams() {
@@ -23,17 +24,24 @@ const Page: FC<PhotoParams> = ({ params: { id } }) => {
       return [photos[1]];
     }
     const res = await fetch(`/api/photo/${id}`);
+
     if (!res.ok) {
-      throw new Error('Failed to fetch data');
+      const message = (await res.json())?.message ?? 'Unknown error';
+      throw new Error(`Status: ${res.status} Reason: ${message}`);
     }
     const data = await res.json();
     return data as { src: string; id: string }[];
   };
   const fetchPhoto = async () => {
-    setIsLoading(true);
-    const data = await fetchData();
-    setIsLoading(false);
-    setPhoto(data);
+    try {
+      setIsLoading(true);
+      const data = await fetchData();
+      setPhoto(data);
+    } catch (err) {
+      toast.error(`${err}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   React.useEffect(() => {
