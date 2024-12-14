@@ -9,22 +9,30 @@ import {
   AlertDialogTitle
 } from '@/components/ui/alert-dialog';
 import React from 'react';
-
+import { Loader2 } from 'lucide-react';
 interface ConfirmProps {
   open: boolean;
   data?: Partial<{
     description: string;
   }>;
-  onCancel: (bool: boolean) => void;
-  onOk: () => void;
+  onCancel: () => Promise<void>;
+  onOk: () => Promise<void>;
 }
 
 export const Confirm: React.FC<ConfirmProps> = ({ open, data, onCancel, onOk }) => {
-  const handleOpenChange = (boolean: boolean) => {
-    onCancel(boolean);
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const handleCancel = async () => {
+    await onCancel();
   };
-  const handleOk = () => {
-    onOk();
+  const handleOk = async () => {
+    try {
+      setConfirmLoading(true);
+      await onOk();
+    } catch (err) {
+      console.log(`${err}`);
+    } finally {
+      setConfirmLoading(false);
+    }
   };
   const description = React.useMemo(() => {
     if (data?.description) {
@@ -33,7 +41,7 @@ export const Confirm: React.FC<ConfirmProps> = ({ open, data, onCancel, onOk }) 
   }, [data]);
 
   return (
-    <AlertDialog open={open} onOpenChange={handleOpenChange}>
+    <AlertDialog open={open}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure? </AlertDialogTitle>
@@ -43,8 +51,11 @@ export const Confirm: React.FC<ConfirmProps> = ({ open, data, onCancel, onOk }) 
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleOk}>Continue</AlertDialogAction>
+          <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={handleOk} disabled={confirmLoading}>
+            {confirmLoading ? <Loader2 className="animate-spin" /> : null}
+            Continue
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

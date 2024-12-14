@@ -10,7 +10,7 @@ export async function GET() {
   }
   const res = await fetch('https://dog.ceo/api/breeds/image/random', { next: { revalidate: 0 } });
   if (!res.ok) {
-    throw new Error('Failed to fetch photos');
+    return NextResponse.json({ message: 'fetch random dog error' }, { status: 400 });
   }
   const dogData: { message: string; status: string } = await res.json();
   const supabase = await createClient();

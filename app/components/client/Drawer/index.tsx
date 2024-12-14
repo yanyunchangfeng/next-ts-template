@@ -9,6 +9,7 @@ import {
   DrawerTitle
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
 
 interface DrawerProps {
@@ -33,12 +34,20 @@ export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
   description,
   okDisabled
 }) => {
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
   const handleCancel = async () => {
     await onCancel();
   };
 
   const handleOk = async () => {
-    await onOk();
+    try {
+      setConfirmLoading(true);
+      await onOk();
+    } catch (err) {
+      console.log(`${err}`);
+    } finally {
+      setConfirmLoading(false);
+    }
   };
 
   const okTitle = React.useMemo(() => {
@@ -79,7 +88,8 @@ export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
           </DrawerHeader>
           {children}
           <DrawerFooter>
-            <Button onClick={handleOk} disabled={okDisabled}>
+            <Button onClick={handleOk} disabled={okDisabled || confirmLoading}>
+              {confirmLoading ? <Loader2 className="animate-spin" /> : null}
               {okTitle}
             </Button>
             <DrawerClose asChild>

@@ -4,12 +4,17 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { NoteDrawer } from '@/app/notes/components';
 import { Note } from '@/app/shared';
+import { toast } from 'sonner';
 
 export const AddNote: React.FC = () => {
   const { setAddIsOpen, addIsOpen, addNote } = useNotesStore();
   const handleAddNote = async (note: Partial<Note>) => {
-    setAddIsOpen(false);
-    await addNote(note);
+    try {
+      await addNote(note);
+      setAddIsOpen(false);
+    } catch (err) {
+      toast.error(`${err}`);
+    }
   };
   const handleOpen = async () => {
     setAddIsOpen(true);
