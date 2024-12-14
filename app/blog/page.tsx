@@ -1,4 +1,5 @@
 import { FC, use } from 'react';
+import { AspectRatioImage } from '@/app/components';
 
 const getData = async () => {
   // 基于时间的重新验证;
@@ -22,10 +23,10 @@ const getData = async () => {
 
 const Blog: FC = () => {
   const data = use(getData());
-
+  const src = data?.[0]?.url;
   return (
     <div className="mt-5 flex-1 rounded-xl text-white flex items-center justify-center">
-      <img src={data[0].url} alt="cat" width={200} height={200} />
+      <AspectRatioImage src={src} alt="cat" fill />
     </div>
   );
 };
