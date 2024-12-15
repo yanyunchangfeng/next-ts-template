@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {
+  NextRequest
+  //  NextResponse
+} from 'next/server';
 
 export const withRedirect = (index: number, next: (request: NextRequest) => void) => {
   return async (request: NextRequest) => {
@@ -11,10 +14,10 @@ export const withRedirect = (index: number, next: (request: NextRequest) => void
     // if (request.nextUrl.pathname.startsWith('/dashboard/')) {
     //   return NextResponse.rewrite(new URL('/', request.url)); // 重写不会变更浏览器地址栏
     // }
-    const { pathname, searchParams } = request.nextUrl;
-    if (pathname === '/' && !searchParams.has('redirect')) {
-      return NextResponse.redirect(new URL('/notes', request.url)); // matcher config 对应的处理逻辑
-    }
+    // const { pathname, searchParams } = request.nextUrl;
+    // if (pathname === '/' && !searchParams.has('redirect')) {
+    //   return NextResponse.redirect(new URL('/notes', request.url)); // matcher config 对应的处理逻辑
+    // }
     return next(request);
   };
 };

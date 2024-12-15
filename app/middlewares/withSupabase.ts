@@ -37,36 +37,40 @@ export const withSupabase = (
         }
       }
     );
-    const { origin } = new URL(request.url);
-    const {
-      data: { user }
-    } = await supabase.auth.getUser();
-    console.log('User:', user);
-    if (!user) {
-      const { data } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${origin}/auth/callback` // 以supabase auth url-configuration为准 https://supabase.com/dashboard/project/epcmgkebpuxlvuoplnrg/auth/url-configuration
-        }
-      });
-      if (data?.url) {
-        console.log('Redirecting to:', data.url);
-        const redirectResponse = NextResponse.redirect(data.url);
-        // 从请求中获取所有 cookies
-        const cookies = supabaseResponse.cookies.getAll();
-        // 将 cookies 手动设置到响应中
-        cookies.forEach((cookie) => {
-          redirectResponse.cookies.set(cookie.name, cookie.value, {
-            // 如果你有设置过期时间、路径等，这里都可以复制过来
-            path: cookie.path,
-            domain: cookie.domain,
-            secure: cookie.secure,
-            httpOnly: cookie.httpOnly,
-            sameSite: cookie.sameSite,
-            expires: cookie.expires
-          });
+
+    const { pathname } = request.nextUrl;
+    if (pathname === '/notes') {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+      console.log('User:', user);
+      if (!user) {
+        const { origin } = new URL(request.url);
+        const { data } = await supabase.auth.signInWithOAuth({
+          provider: 'google',
+          options: {
+            redirectTo: `${origin}/auth/callback` // 以supabase auth url-configuration为准 https://supabase.com/dashboard/project/epcmgkebpuxlvuoplnrg/auth/url-configuration
+          }
         });
-        return redirectResponse;
+        if (data?.url) {
+          console.log('Redirecting to:', data.url);
+          const redirectResponse = NextResponse.redirect(data.url);
+          // 从请求中获取所有 cookies
+          const cookies = supabaseResponse.cookies.getAll();
+          // 将 cookies 手动设置到响应中
+          cookies.forEach((cookie) => {
+            redirectResponse.cookies.set(cookie.name, cookie.value, {
+              // 如果你有设置过期时间、路径等，这里都可以复制过来
+              path: cookie.path,
+              domain: cookie.domain,
+              secure: cookie.secure,
+              httpOnly: cookie.httpOnly,
+              sameSite: cookie.sameSite,
+              expires: cookie.expires
+            });
+          });
+          return redirectResponse;
+        }
       }
     }
     return supabaseResponse;
