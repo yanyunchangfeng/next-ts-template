@@ -60,16 +60,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json([]);
   }
   const body = await request.json();
-  const { title } = body;
+  const { title, user_id } = body;
   // 验证数据是否包含 title
-  if (!title) {
-    return NextResponse.json({ message: 'Title is required' }, { status: 400 });
+  if (!title || !user_id) {
+    return NextResponse.json({ message: 'title & user_id is required' }, { status: 400 });
   }
   const supabase = await createClient();
   // insert() 不强制要求传递数组，你可以根据实际需求插入单条或多条数据。
   // 单条插入：直接传入一个对象。
   // 批量插入：传入一个对象数组。
-  const { data, error } = await supabase.from('notes').insert({ title }).select('id');
+  const { data, error } = await supabase.from('notes').insert(body).select('id');
   if (error) {
     return NextResponse.json({ message: error?.message }, { status: 400 });
   }
