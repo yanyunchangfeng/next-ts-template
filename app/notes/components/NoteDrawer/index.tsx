@@ -12,7 +12,7 @@ interface NoteDrawerProps {
 
 export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, onCancel }) => {
   const [title, setTitle] = React.useState(data.title);
-
+  const ref = React.useRef<HTMLTextAreaElement>(null);
   const handleOk = async () => {
     if (title) {
       await onOk({ ...data, title } as Note);
@@ -31,9 +31,15 @@ export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, o
   }, [data.title]);
 
   return (
-    <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title}>
+    <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title} fixed>
       <div className="p-4 pb-0">
-        <Textarea rows={5} placeholder="Write a note..." value={title} onChange={(e) => setTitle(e.target.value)} />
+        <Textarea
+          rows={5}
+          placeholder="Write a note..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          ref={ref}
+        />
       </div>
     </Drawer>
   );

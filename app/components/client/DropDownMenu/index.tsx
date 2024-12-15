@@ -12,6 +12,7 @@ import {
 
 interface DropDownMenuProps {
   open: boolean;
+  asChild?: boolean;
   onOpenChange: (open: boolean) => void;
   content?: React.ReactNode;
 }
@@ -21,11 +22,14 @@ export const DropDownMenu: React.FC<DropDownMenuProps & DropdownMenuPrimitive.Dr
   open,
   content,
   onOpenChange,
+  asChild,
   ...restProps
 }) => {
   return (
     <DropDownMenuDefault open={open} onOpenChange={onOpenChange} {...restProps}>
-      <DropdownMenuTrigger className="focus:outline-none">{children}</DropdownMenuTrigger>
+      <DropdownMenuTrigger className="focus:outline-none" asChild={asChild}>
+        {children}
+      </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[200px]">
         {content}
       </DropdownMenuContent>

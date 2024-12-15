@@ -26,6 +26,7 @@ export const MoreOptions: React.FC<{ note: Note }> = ({ note }) => {
     <DropDownMenu
       open={open}
       onOpenChange={setOpen}
+      asChild
       content={
         <>
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
