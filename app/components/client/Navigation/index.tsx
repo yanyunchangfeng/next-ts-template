@@ -21,7 +21,8 @@ export const Navigation: React.FC = () => {
     或者在前进后退导航时维持之前的滚动距离。
     如果你想要禁用这个行为，你可以给 <Link> 组件传递一个 scroll={false}属性，
     或者在使用 router.push和 router.replace的时候，设置 scroll: false */}
-      <Button onClick={() => router.push('/?redirect=false', { scroll: false })} variant="link">
+      {/* ?redirect=false 通过searchParams可以使用中间件区分要不要重定向 */}
+      <Button onClick={() => router.push('/', { scroll: false })} variant="link">
         home
       </Button>
       <ModeToggle />

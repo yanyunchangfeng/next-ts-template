@@ -10,6 +10,9 @@ export const config = {
       source: '/'
     },
     {
+      source: '/blog'
+    },
+    {
       source: '/notes'
     }
   ]

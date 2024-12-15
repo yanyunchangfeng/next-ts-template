@@ -6,10 +6,10 @@ import { User } from '@/app/components';
 import { DropdownMenuItem, DropdownMenuLabel, DropdownMenuShortcut } from '@/components/ui/dropdown-menu';
 import { logOut } from '@/app/utils';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@/app/hooks';
+import { useUserStore } from '@/app/store';
 
 export const DropDownUser: React.FC<React.PropsWithChildren> = () => {
-  const { user } = useUser();
+  const { user } = useUserStore();
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
