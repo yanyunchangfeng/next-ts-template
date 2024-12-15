@@ -2,6 +2,7 @@ import React from 'react';
 import { Drawer } from '@/app/components';
 import { Note } from '@/app/shared';
 import { Textarea } from '@/components/ui/textarea';
+import { useUserStore } from '@/app/store';
 
 interface NoteDrawerProps {
   open: boolean;
@@ -12,11 +13,12 @@ interface NoteDrawerProps {
 
 export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, onCancel }) => {
   const [title, setTitle] = React.useState(data.title);
+  const { user } = useUserStore();
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
 
   const handleOk = async () => {
     if (title) {
-      await onOk({ ...data, title } as Note);
+      await onOk({ ...data, title, user_id: user.id } as Note);
       setTitle(undefined);
     }
   };
