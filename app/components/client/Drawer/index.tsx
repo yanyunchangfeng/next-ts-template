@@ -38,6 +38,29 @@ export const Drawer: React.FC<DrawerProps & DialogProps> = ({
   ...restProps
 }) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
+
+  const drawerContainerRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    // https://github.com/shadcn-ui/ui/issues/2831
+    const resizeAbortController = new AbortController();
+    const handleResize = () => {
+      if (drawerContainerRef.current) {
+        drawerContainerRef.current.style.setProperty('bottom', `env(safe-area-inset-bottom)`);
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize, { signal: resizeAbortController.signal });
+      handleResize(); // Initial call in case the keyboard is already open
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        resizeAbortController.abort();
+      }
+    };
+  }, []);
   const handleCancel = async () => {
     await onCancel();
   };
@@ -83,7 +106,7 @@ export const Drawer: React.FC<DrawerProps & DialogProps> = ({
 
   return (
     <DefaultDrawer open={open} onClose={handleCancel} {...restProps}>
-      <DrawerContent>
+      <DrawerContent ref={drawerContainerRef}>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle>{drawerTitle}</DrawerTitle>

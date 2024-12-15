@@ -31,7 +31,7 @@ export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, o
   }, [data.title]);
 
   return (
-    <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title} fixed>
+    <Drawer open={open} onCancel={handleCancel} onOk={handleOk} okDisabled={!title || title === data.title}>
       <div className="p-4 pb-0">
         <Textarea
           rows={5}
