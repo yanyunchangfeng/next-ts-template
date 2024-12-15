@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import {
   Drawer as DefaultDrawer,
   DrawerClose,
@@ -8,9 +9,11 @@ import {
   DrawerHeader,
   DrawerTitle
 } from '@/components/ui/drawer';
+import { DialogProps } from 'vaul';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import React from 'react';
+// import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 interface DrawerProps {
   open: boolean;
@@ -23,7 +26,7 @@ interface DrawerProps {
   description?: React.ReactNode;
   okDisabled?: boolean;
 }
-export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
+export const Drawer: React.FC<DrawerProps & DialogProps> = ({
   open,
   onCancel,
   onOk,
@@ -32,7 +35,8 @@ export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
   cancelText,
   title,
   description,
-  okDisabled
+  okDisabled,
+  ...restProps
 }) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const handleCancel = async () => {
@@ -79,7 +83,7 @@ export const Drawer: React.FC<DrawerProps & React.PropsWithChildren> = ({
   }, [description]);
 
   return (
-    <DefaultDrawer open={open} onClose={handleCancel}>
+    <DefaultDrawer open={open} onClose={handleCancel} {...restProps}>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
