@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { NoteDrawer } from '@/app/notes/components';
 import { Note } from '@/app/shared';
 import { toast } from 'sonner';
+import RequestService from '@/app/platform/request/browser/RequestService';
 
 export const AddNote: React.FC = () => {
   const { setAddIsOpen, addIsOpen, addNote } = useNotesStore();
@@ -20,6 +21,7 @@ export const AddNote: React.FC = () => {
     setAddIsOpen(true);
   };
   const handleCancel = async () => {
+    RequestService.notes.notesAbortController.abort('abort add note');
     setAddIsOpen(false);
   };
   return (

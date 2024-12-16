@@ -4,6 +4,7 @@ import { useNotesStore } from '@/app/store';
 import { NoteList, NoteDrawer } from '@/app/notes/components';
 import { Note } from '@/app/shared';
 import { toast } from 'sonner';
+import RequestService from '@/app/platform/request/browser/RequestService';
 
 export const Notes: React.FC = () => {
   const { pending, fetchNotes, setEditIsOpen, updateNote, editIsOpen, openNote } = useNotesStore();
@@ -16,6 +17,7 @@ export const Notes: React.FC = () => {
     }
   };
   const handleCancel = async () => {
+    RequestService.notes.notesAbortController.abort();
     setEditIsOpen(false);
   };
   React.useEffect(() => {
