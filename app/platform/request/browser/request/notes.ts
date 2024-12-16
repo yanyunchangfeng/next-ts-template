@@ -1,7 +1,11 @@
 import { isDynamic, Note, Notes, notes, NoteSearchParams } from '@/app/shared';
 import { toast } from 'sonner';
 
+export let notesAbortController = new AbortController();
+const signal = AbortSignal.any([notesAbortController.signal]);
+
 export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> => {
+  notesAbortController = new AbortController();
   if (!isDynamic) {
     return notes;
   }
@@ -9,7 +13,8 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
     const startDate = searchParams?.startDate ?? '';
     const endDate = searchParams?.endDate ?? '';
     const res = await fetch(
-      `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}&startDate=${startDate}&endDate=${endDate}`
+      `/api/notes?pageNo=${searchParams.pageNo}&pageSize=${searchParams.pageSize}&keyWord=${searchParams.keyWord}&startDate=${startDate}&endDate=${endDate}`,
+      { signal }
     );
     if (!res.ok) {
       const message = (await res.json())?.message ?? 'Unknown error';
@@ -24,7 +29,12 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
 };
 
 export const addNote = async (note: Partial<Note>) => {
-  const res = await fetch(`/api/notes`, { method: 'POST', body: JSON.stringify(note) });
+  notesAbortController = new AbortController();
+  const res = await fetch(`/api/notes`, {
+    method: 'POST',
+    body: JSON.stringify(note),
+    signal
+  });
   if (!res.ok) {
     const message = (await res.json())?.message ?? 'Unknown error';
     throw new Error(`Status: ${res.status} Reason: ${message}`);
@@ -35,7 +45,8 @@ export const addNote = async (note: Partial<Note>) => {
 };
 
 export const updateNote = async (note: Note) => {
-  const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note) });
+  notesAbortController = new AbortController();
+  const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note), signal });
   if (!res.ok) {
     const message = (await res.json())?.message ?? 'Unknown error';
     throw new Error(`Status: ${res.status} Reason: ${message}`);
@@ -46,12 +57,14 @@ export const updateNote = async (note: Note) => {
 };
 
 export const deleteNote = async (id: number) => {
+  notesAbortController = new AbortController();
   const res = await fetch(`/api/notes`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ id })
+    body: JSON.stringify({ id }),
+    signal
   });
 
   if (!res.ok) {

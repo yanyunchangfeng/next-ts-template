@@ -1,10 +1,12 @@
 import { useNotesStore } from '@/app/store';
 import { Confirm } from '@/app/components';
 import { toast } from 'sonner';
+import RequestService from '@/app/platform/request/browser/RequestService';
 
 export const AlertNote: React.FC = () => {
   const { deleteIsOpen, setDeleteIsOpen, deleteNote, openNote } = useNotesStore();
   const handleCancel = async () => {
+    RequestService.notes.notesAbortController.abort();
     setDeleteIsOpen(false);
   };
   const handleDelete = async () => {
