@@ -3,7 +3,7 @@ import { Note, Notes, NoteSearchParams } from '@/app/shared';
 import RequestService from '@/app/platform/request/browser/RequestService';
 import { CusDateRange } from '@/app/components';
 
-const DEFAULT_NOTES = {
+export const DEFAULT_NOTES = {
   notes: {
     pageNo: 1,
     pageSize: 5,

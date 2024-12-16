@@ -6,15 +6,17 @@ import { User } from '@/app/components';
 import { DropdownMenuItem, DropdownMenuLabel, DropdownMenuShortcut } from '@/components/ui/dropdown-menu';
 import { logOut } from '@/app/utils';
 import { useRouter } from 'next/navigation';
-import { useUserStore } from '@/app/store';
+import { useNotesStore, useUserStore, DEFAULT_NOTES } from '@/app/store';
 
 export const DropDownUser: React.FC<React.PropsWithChildren> = () => {
   const { user } = useUserStore();
+  const { setSearchNote } = useNotesStore();
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   const handleLogOut = async () => {
     await logOut();
+    setSearchNote(DEFAULT_NOTES.searchNote);
     router.push('/blog');
     router.refresh();
   };
