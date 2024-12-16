@@ -1,11 +1,9 @@
-/* eslint-disable */
-
 import { createPersistStore } from '@/app/utils';
 import { createClient } from '@/app/utils/supabase/client';
+import { type User } from '@supabase/supabase-js';
 
 const DEFAULT_USER = {
-  user: null as any,
-  error: null as any,
+  user: undefined as User | undefined,
   loading: true
 };
 
@@ -24,7 +22,7 @@ export const useUserStore = createPersistStore(
         supabase.auth.onAuthStateChange((event, session) => {
           switch (event) {
             case 'INITIAL_SESSION':
-              set({ user: session?.user as any });
+              get().setUser(session?.user);
               break;
             case 'SIGNED_IN':
               // 这里不会触发 因为我们是在服务端登录后导航的，所以这里不会触发 因此主动调用fetchUser
@@ -32,13 +30,16 @@ export const useUserStore = createPersistStore(
               // 本地没有触发 然而在vercel上可以触发 所以注释掉
               break;
             case 'SIGNED_OUT':
-              set({ user: session?.user as any });
+              get().setUser(session?.user);
           }
-          set({ loading: false });
+          get().setLoading(false);
         });
       },
-      setUser(user: Record<keyof any, any>) {
+      setUser(user: typeof DEFAULT_USER.user) {
         set({ user });
+      },
+      setLoading(loading: typeof DEFAULT_USER.loading) {
+        set({ loading });
       }
     };
     return methods;

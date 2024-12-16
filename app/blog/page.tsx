@@ -5,10 +5,12 @@ const getData = async () => {
   // 基于时间的重新验证;
   // 使用基于时间的重新验证，你需要在使用 fetch 的时候设置 next.revalidate 选项（以秒为单位）：
   const res = await fetch('https://api.thecatapi.com/v1/images/search', { next: { revalidate: 5 } });
+
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch api.thecatapi.com data');
   }
-  return res.json();
+  const data = await res.json();
+  return data?.[0]?.url;
 };
 
 // 异步组件
@@ -22,10 +24,10 @@ const getData = async () => {
 // };
 
 const Blog: FC = () => {
-  const data = use(getData());
-  const src = data?.[0]?.url;
+  const src = use(getData());
+
   return (
-    <div className="mt-5 flex-1 rounded-xl text-white flex items-center justify-center">
+    <div className="flex-1 flex items-center justify-center">
       <AspectRatioImage src={src} alt="cat" fill />
     </div>
   );
