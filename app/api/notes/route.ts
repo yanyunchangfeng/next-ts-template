@@ -81,18 +81,20 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json([]);
   }
   const body = await request.json();
-  const { id, title } = body;
+  const { id, title, user_id } = body;
   // 验证数据是否包含 title
   if (!id || !title) {
-    return NextResponse.json({ message: 'ID and Title are required' }, { status: 400 });
+    return NextResponse.json({ message: 'id and title are required' }, { status: 400 });
   }
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('notes')
     .update([{ title: title }])
-    .eq('id', id)
+    .match({ id, user_id })
     .select();
-
+  if (data?.length === 0) {
+    return NextResponse.json({ message: 'you dont have permission to option this note' }, { status: 401 });
+  }
   if (error) {
     return NextResponse.json({ message: error.message }, { status: 400 });
   }
@@ -111,6 +113,9 @@ export async function DELETE(request: NextRequest) {
   //   eq 是单个字段的等值匹配，适用于比较一个字段与某个具体值是否相等。
   // match 是多条件匹配，适用于一次性检查多个字段与对应值的匹配，等价于多个 eq 条件的 AND 组合。
   const { data, error } = await supabase.from('notes').delete().match({ id }).select(); // 通过 id 删除笔记
+  if (data?.length === 0) {
+    return NextResponse.json({ message: 'you dont have permission to option this note' }, { status: 401 });
+  }
   // 错误处理
   if (error) {
     return NextResponse.json({ message: error.message }, { status: 400 });
