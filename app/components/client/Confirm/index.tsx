@@ -22,6 +22,7 @@ interface ConfirmProps {
 export const Confirm: React.FC<ConfirmProps> = ({ open, data, onCancel, onOk }) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const handleCancel = async () => {
+    setConfirmLoading(false);
     await onCancel();
   };
   const handleOk = async () => {
