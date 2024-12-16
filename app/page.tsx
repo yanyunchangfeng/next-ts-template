@@ -24,23 +24,22 @@ import { toast } from 'sonner';
 
 const Home: FC = () => {
   const [photos, setPhotos] = React.useState<{ src: string; id: string }[]>([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const fetchData = async () => {
     if (!isDynamic) {
       return originPhotos;
     }
     const res = await fetch(`/api/photo`);
+    const data = await res.json();
     if (!res.ok) {
-      const message = (await res.json())?.message ?? 'Unknown error';
+      const message = data?.message ?? 'Unknown error';
       throw new Error(`Status: ${res.status} Reason: ${message}`);
     }
-    const data = await res.json();
     return data as { src: string; id: string }[];
   };
 
   const fetchPhotos = async () => {
     try {
-      setIsLoading(true);
       const data = await fetchData();
       setPhotos(data);
     } catch (err) {

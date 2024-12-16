@@ -18,7 +18,7 @@ export const NoteDrawer: React.FC<NoteDrawerProps> = ({ open, data = {}, onOk, o
 
   const handleOk = async () => {
     if (title) {
-      await onOk({ ...data, title, user_id: user.id } as Note);
+      await onOk({ ...data, title, user_id: user?.id } as Note);
       setTitle(undefined);
     }
   };
