@@ -17,7 +17,7 @@ export const Notes: React.FC = () => {
     }
   };
   const handleCancel = async () => {
-    RequestService.notes.notesAbortController.abort();
+    RequestService.notes.notesAbortController.abort('abort update note');
     setEditIsOpen(false);
   };
   React.useEffect(() => {

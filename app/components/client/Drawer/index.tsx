@@ -62,6 +62,7 @@ export const Drawer: React.FC<DrawerProps & DialogProps> = ({
     };
   }, []);
   const handleCancel = async () => {
+    setConfirmLoading(false);
     await onCancel();
   };
 

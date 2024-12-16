@@ -2,10 +2,10 @@ import { isDynamic, Note, Notes, notes, NoteSearchParams } from '@/app/shared';
 import { toast } from 'sonner';
 
 export let notesAbortController = new AbortController();
-const signal = AbortSignal.any([notesAbortController.signal]);
 
 export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> => {
   notesAbortController = new AbortController();
+  const signal = AbortSignal.any([notesAbortController.signal, AbortSignal.timeout(5000)]);
   if (!isDynamic) {
     return notes;
   }
@@ -30,6 +30,7 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
 
 export const addNote = async (note: Partial<Note>) => {
   notesAbortController = new AbortController();
+  const signal = AbortSignal.any([notesAbortController.signal, AbortSignal.timeout(5000)]);
   const res = await fetch(`/api/notes`, {
     method: 'POST',
     body: JSON.stringify(note),
@@ -46,6 +47,7 @@ export const addNote = async (note: Partial<Note>) => {
 
 export const updateNote = async (note: Note) => {
   notesAbortController = new AbortController();
+  const signal = AbortSignal.any([notesAbortController.signal, AbortSignal.timeout(5000)]);
   const res = await fetch(`/api/notes`, { method: 'PUT', body: JSON.stringify(note), signal });
   if (!res.ok) {
     const message = (await res.json())?.message ?? 'Unknown error';
@@ -58,6 +60,7 @@ export const updateNote = async (note: Note) => {
 
 export const deleteNote = async (id: number) => {
   notesAbortController = new AbortController();
+  const signal = AbortSignal.any([notesAbortController.signal, AbortSignal.timeout(5000)]);
   const res = await fetch(`/api/notes`, {
     method: 'DELETE',
     headers: {

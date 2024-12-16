@@ -6,7 +6,7 @@ import RequestService from '@/app/platform/request/browser/RequestService';
 export const AlertNote: React.FC = () => {
   const { deleteIsOpen, setDeleteIsOpen, deleteNote, openNote } = useNotesStore();
   const handleCancel = async () => {
-    RequestService.notes.notesAbortController.abort();
+    RequestService.notes.notesAbortController.abort('abort delete note');
     setDeleteIsOpen(false);
   };
   const handleDelete = async () => {
