@@ -68,10 +68,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <SidebarProvider defaultOpen={defaultOpen}>
             <AppSidebar />
             <SidebarInset className="overflow-x-hidden">
-              <main className="flex flex-col px-4 flex-1">
-                <SidebarTrigger />
-                {children}
-              </main>
+              <div className="flex flex-col px-4 flex-1">
+                <SidebarTrigger className="my-2" />
+                <div className="flex flex-1">{children}</div>
+              </div>
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
