@@ -67,7 +67,7 @@ const Home: FC = () => {
 
   return (
     <React.Profiler id="home" onRender={console.log}>
-      <main className="flex flex-col justify-center items-center flex-1 gap-4">{photoTem}</main>
+      <div className="flex flex-col justify-center items-center flex-1 gap-4">{photoTem} </div>
     </React.Profiler>
   );
 };
