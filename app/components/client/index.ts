@@ -11,3 +11,4 @@ export * from './User';
 export * from './ThemeProvider';
 export * from './ModeToggle';
 export * from './AspectRatio';
+export * from './SideBar';

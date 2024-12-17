@@ -14,14 +14,14 @@ export const User: React.FC = () => {
 
   if (loading)
     return (
-      <Avatar>
+      <Avatar className="h-8 w-8">
         <AvatarFallback>
           <Skeleton />
         </AvatarFallback>
       </Avatar>
     );
   return (
-    <Avatar>
+    <Avatar className="h-8 w-8">
       <AvatarImage src={user?.user_metadata?.avatar_url} />
       <AvatarFallback>{user?.user_metadata?.name || 'N/A'}</AvatarFallback>
     </Avatar>

@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
-import { Navigation, ThemeProvider } from '@/app/components';
+import { ThemeProvider } from '@/app/components';
 import { Toaster } from '@/components/ui/sonner';
+import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/app/components';
+import { cookies } from 'next/headers';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -54,16 +57,23 @@ export const metadata: Metadata = {
 // (..)(..) 表示匹配上上层级。
 // (...) 表示匹配根目录
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true';
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased  h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex flex-col h-full px-4">
-            <Navigation />
-            <div className="flex flex-1">{children}</div>
-          </div>
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            <SidebarInset className="overflow-x-hidden">
+              <main className="flex flex-col px-4 flex-1">
+                <SidebarTrigger />
+                {children}
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
         </ThemeProvider>
         <SpeedInsights />
         <Toaster />
