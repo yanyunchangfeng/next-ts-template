@@ -3,7 +3,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import {
   Pagination as DefaultPagination,
   PaginationContent,
-  //   PaginationEllipsis,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -33,17 +33,7 @@ export const Pagination: React.FC<PaginationProps & React.ComponentProps<'nav'>>
         <PaginationItem>
           <span>{total}</span>
         </PaginationItem>
-        <PaginationItem>
-          {current === 1 ? (
-            <Button disabled variant="ghost">
-              First
-            </Button>
-          ) : (
-            <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
-              First
-            </PaginationLink>
-          )}
-        </PaginationItem>
+
         <PaginationItem>
           {current === 1 ? (
             <Button disabled variant="ghost">
@@ -55,9 +45,33 @@ export const Pagination: React.FC<PaginationProps & React.ComponentProps<'nav'>>
           )}
         </PaginationItem>
         <PaginationItem>
+          {current !== 1 ? (
+            <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
+              1
+            </PaginationLink>
+          ) : null}
+        </PaginationItem>
+        {current > 1 + 1 ? (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        ) : null}
+        <PaginationItem>
           <PaginationLink isActive className="cursor-pointer">
             {current}
           </PaginationLink>
+        </PaginationItem>
+        {current < pages - 1 ? (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        ) : null}
+        <PaginationItem>
+          {current !== pages ? (
+            <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
+              {pages}
+            </PaginationLink>
+          ) : null}
         </PaginationItem>
         <PaginationItem>
           {current === pages ? (
@@ -67,17 +81,6 @@ export const Pagination: React.FC<PaginationProps & React.ComponentProps<'nav'>>
             </Button>
           ) : (
             <PaginationNext onClick={() => handleChange(current + 1)} className="cursor-pointer" />
-          )}
-        </PaginationItem>
-        <PaginationItem>
-          {current === pages ? (
-            <Button disabled variant="ghost">
-              Last
-            </Button>
-          ) : (
-            <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
-              Last
-            </PaginationLink>
           )}
         </PaginationItem>
       </PaginationContent>
