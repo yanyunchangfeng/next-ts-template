@@ -49,7 +49,7 @@ export const DatePickerRange: React.FC<DatePickerRangeProps & React.HTMLAttribut
           <Button
             id="date"
             variant={'outline'}
-            className={cn('w-[300px] justify-start text-left font-normal', !date && 'text-muted-foreground')}
+            className={cn('justify-start text-left font-normal', !date && 'text-muted-foreground')}
           >
             <CalendarIcon />
             {date?.from ? (
