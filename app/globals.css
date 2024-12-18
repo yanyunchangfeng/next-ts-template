@@ -87,7 +87,7 @@ body {
   }
 }
 /**
- * Dark mode 在上面生成的不生效 故在此单独定义
+ * Dark mode 在@layer base 定义的 .dark 编译后未生成类名 故在此覆盖单独定义 保证darkMode生效 
  */
 .dark {
   --background: 224 71.4% 4.1%;
