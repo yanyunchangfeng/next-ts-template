@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Sidebar,
   SidebarContent,
@@ -12,8 +14,10 @@ import {
 } from '@/components/ui/sidebar';
 import { DropDownUser, ModeToggle } from '@/app/components';
 import { MENUITEMS } from '@/app/shared';
+import { usePathname } from 'next/navigation';
 
 export function AppSidebar() {
+  const pathName = usePathname();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -30,7 +34,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {MENUITEMS.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild tooltip={item.title}>
+                  <SidebarMenuButton asChild tooltip={item.title} isActive={pathName === item.url}>
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
