@@ -5,7 +5,8 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuShortcut
+  DropdownMenuShortcut,
+  DropdownMenuContent
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import React from 'react';
@@ -28,7 +29,7 @@ export const MoreOptions: React.FC<{ note: Note }> = ({ note }) => {
       onOpenChange={setOpen}
       asChild
       content={
-        <>
+        <DropdownMenuContent align="end" className="w-[200px]">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem onClick={handleUpdate}>Edit</DropdownMenuItem>
@@ -37,7 +38,7 @@ export const MoreOptions: React.FC<{ note: Note }> = ({ note }) => {
               <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuGroup>
-        </>
+        </DropdownMenuContent>
       }
     >
       <Button variant="ghost" size="sm">
