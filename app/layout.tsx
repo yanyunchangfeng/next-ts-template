@@ -4,8 +4,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/globals.css';
 import { ThemeProvider } from '@/app/components';
 import { Toaster } from '@/components/ui/sonner';
-import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/app/components';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar, Header } from '@/app/components';
 import { cookies } from 'next/headers';
 
 const geistSans = localFont({
@@ -60,6 +60,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true';
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -69,7 +70,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <AppSidebar />
             <SidebarInset className="overflow-x-hidden">
               <div className="flex flex-col px-4 flex-1">
-                <SidebarTrigger className="my-2" />
+                <Header />
                 <div className="flex flex-1">{children}</div>
               </div>
             </SidebarInset>

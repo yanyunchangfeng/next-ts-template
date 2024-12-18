@@ -1,7 +1,7 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import {
   DropdownMenu as DropDownMenuDefault,
-  DropdownMenuContent,
+  // DropdownMenuContent,
   //   DropdownMenuGroup,
   //   DropdownMenuItem,
   //   DropdownMenuLabel,
@@ -27,12 +27,10 @@ export const DropDownMenu: React.FC<DropDownMenuProps & DropdownMenuPrimitive.Dr
 }) => {
   return (
     <DropDownMenuDefault open={open} onOpenChange={onOpenChange} {...restProps}>
-      <DropdownMenuTrigger className="focus:outline-none" asChild={asChild}>
-        {children}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[200px]">
-        {content}
-      </DropdownMenuContent>
+      <DropdownMenuTrigger asChild={asChild}>{children}</DropdownMenuTrigger>
+      {/* <DropdownMenuContent align="end" className="w-[200px]"> */}
+      {/* </DropdownMenuContent> */}
+      {content}
     </DropDownMenuDefault>
   );
 };

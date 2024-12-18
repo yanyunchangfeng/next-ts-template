@@ -14,16 +14,22 @@ export const User: React.FC = () => {
 
   if (loading)
     return (
-      <Avatar className="h-8 w-8">
+      <Avatar className="h-8 w-8 rounded-lg">
         <AvatarFallback>
           <Skeleton />
         </AvatarFallback>
       </Avatar>
     );
   return (
-    <Avatar className="h-8 w-8">
-      <AvatarImage src={user?.user_metadata?.avatar_url} />
-      <AvatarFallback>{user?.user_metadata?.name || 'N/A'}</AvatarFallback>
-    </Avatar>
+    <>
+      <Avatar className="h-8 w-8 rounded-lg">
+        <AvatarImage src={user?.user_metadata?.avatar_url} />
+        <AvatarFallback>{user?.user_metadata?.name || 'N/A'}</AvatarFallback>
+      </Avatar>
+      <div className="grid flex-1 text-left text-sm leading-tight">
+        <span className="truncate font-semibold">{user?.user_metadata?.name || 'N/A'}</span>
+        <span className="truncate text-xs">{user?.user_metadata?.email}</span>
+      </div>
+    </>
   );
 };

@@ -1,5 +1,3 @@
-import { Home, Rss, NotebookPen } from 'lucide-react';
-
 import {
   Sidebar,
   SidebarContent,
@@ -13,25 +11,7 @@ import {
   SidebarHeader
 } from '@/components/ui/sidebar';
 import { DropDownUser, ModeToggle } from '@/app/components';
-
-// Menu items.
-const items = [
-  {
-    title: 'Home',
-    url: '/',
-    icon: Home
-  },
-  {
-    title: 'Notes',
-    url: '/notes',
-    icon: NotebookPen
-  },
-  {
-    title: 'Blog',
-    url: '/blog',
-    icon: Rss
-  }
-];
+import { MENUITEMS } from '@/app/shared';
 
 export function AppSidebar() {
   return (
@@ -48,7 +28,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {MENUITEMS.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild tooltip={item.title}>
                     <a href={item.url}>
