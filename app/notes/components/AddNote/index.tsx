@@ -6,6 +6,7 @@ import { NoteDrawer } from '@/app/notes/components';
 import { Note } from '@/app/shared';
 import { toast } from 'sonner';
 import RequestService from '@/app/platform/request/browser/RequestService';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export const AddNote: React.FC = () => {
   const { setAddIsOpen, addIsOpen, addNote } = useNotesStore();
@@ -26,9 +27,18 @@ export const AddNote: React.FC = () => {
   };
   return (
     <>
-      <Button variant="outline" size="icon" onClick={handleOpen}>
-        <Plus />
-      </Button>
+      <TooltipProvider>
+        <Tooltip defaultOpen>
+          <TooltipTrigger asChild>
+            <Button variant="outline" size="icon" onClick={handleOpen}>
+              <Plus />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Write a note...</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={handleCancel} />
     </>
   );
