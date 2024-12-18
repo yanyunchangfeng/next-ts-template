@@ -5,10 +5,12 @@ import {
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious
+  PaginationLink
+  // PaginationNext,
+  // PaginationPrevious
 } from '@/components/ui/pagination';
+import { useSidebar } from '@/components/ui/sidebar';
+import React from 'react';
 
 interface PaginationProps {
   current: number;
@@ -24,66 +26,112 @@ export const Pagination: React.FC<PaginationProps & React.ComponentProps<'nav'>>
   total,
   ...restProps
 }) => {
-  const handleChange = (pageNo: number) => {
+  const { isMobile } = useSidebar();
+  const handleChange = React.useCallback((pageNo: number) => {
     onPageChange(pageNo);
-  };
+  }, []);
+
+  const paginationItems = React.useMemo(() => {
+    const totalItem = (
+      <PaginationItem>
+        <span>{total}</span>
+      </PaginationItem>
+    );
+    const prevItem = (
+      <PaginationItem>
+        {current === 1 ? (
+          <Button disabled variant="ghost" size="icon">
+            <ChevronLeft />
+            {/* Previous */}
+          </Button>
+        ) : (
+          <Button variant="ghost" size="icon" onClick={() => handleChange(current - 1)}>
+            <ChevronLeft />
+            {/* Previous */}
+          </Button>
+          // <PaginationPrevious onClick={() => handleChange(current - 1)} className="cursor-pointer" />
+        )}
+      </PaginationItem>
+    );
+    const firstItem = (
+      <PaginationItem>
+        {current !== 1 ? (
+          <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
+            1
+          </PaginationLink>
+        ) : null}
+      </PaginationItem>
+    );
+    const beforeEllipsisItem =
+      current > 1 + 1 ? (
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+      ) : null;
+    const currentItem = (
+      <PaginationItem>
+        <PaginationLink isActive className="cursor-pointer">
+          {current}
+        </PaginationLink>
+      </PaginationItem>
+    );
+    const afterEllipsisItem =
+      current < pages - 1 ? (
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+      ) : null;
+    const lastItem = (
+      <PaginationItem>
+        {current !== pages ? (
+          <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
+            {pages}
+          </PaginationLink>
+        ) : null}
+      </PaginationItem>
+    );
+    const nextItem =
+      current === pages ? (
+        <Button disabled variant="ghost" size="icon">
+          {/* Next */}
+          <ChevronRight />
+        </Button>
+      ) : (
+        // <PaginationNext onClick={() => handleChange(current + 1)} className="cursor-pointer" />
+        <Button variant="ghost" onClick={() => handleChange(current + 1)} size="icon">
+          {/* Next */}
+          <ChevronRight />
+        </Button>
+      );
+    if (isMobile) {
+      return (
+        <>
+          {prevItem}
+          {firstItem}
+          {/* {beforeEllipsisItem} */}
+          {currentItem}
+          {/* {afterEllipsisItem} */}
+          {lastItem}
+          {nextItem}
+        </>
+      );
+    }
+    return (
+      <>
+        {totalItem}
+        {prevItem}
+        {firstItem}
+        {beforeEllipsisItem}
+        {currentItem}
+        {afterEllipsisItem}
+        {lastItem}
+        {nextItem}
+      </>
+    );
+  }, [isMobile, current, pages, total]);
   return (
     <DefaultPagination {...restProps}>
-      <PaginationContent>
-        <PaginationItem>
-          <span>{total}</span>
-        </PaginationItem>
-
-        <PaginationItem>
-          {current === 1 ? (
-            <Button disabled variant="ghost">
-              <ChevronLeft />
-              Previous
-            </Button>
-          ) : (
-            <PaginationPrevious onClick={() => handleChange(current - 1)} className="cursor-pointer" />
-          )}
-        </PaginationItem>
-        <PaginationItem>
-          {current !== 1 ? (
-            <PaginationLink onClick={() => handleChange(1)} className="cursor-pointer">
-              1
-            </PaginationLink>
-          ) : null}
-        </PaginationItem>
-        {current > 1 + 1 ? (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        ) : null}
-        <PaginationItem>
-          <PaginationLink isActive className="cursor-pointer">
-            {current}
-          </PaginationLink>
-        </PaginationItem>
-        {current < pages - 1 ? (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        ) : null}
-        <PaginationItem>
-          {current !== pages ? (
-            <PaginationLink onClick={() => handleChange(pages)} className="cursor-pointer">
-              {pages}
-            </PaginationLink>
-          ) : null}
-        </PaginationItem>
-        <PaginationItem>
-          {current === pages ? (
-            <Button disabled variant="ghost">
-              Next
-              <ChevronRight />
-            </Button>
-          ) : (
-            <PaginationNext onClick={() => handleChange(current + 1)} className="cursor-pointer" />
-          )}
-        </PaginationItem>
-      </PaginationContent>
+      <PaginationContent>{paginationItems}</PaginationContent>
     </DefaultPagination>
   );
 };
