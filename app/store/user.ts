@@ -1,10 +1,12 @@
-import { createPersistStore } from '@/app/utils';
+import { createPersistStore, refreshSession } from '@/app/utils';
 import { createClient } from '@/app/utils/supabase/client';
-import { type User } from '@supabase/supabase-js';
+import { type Session, type AuthError, type User } from '@supabase/supabase-js';
 
 const DEFAULT_USER = {
-  user: undefined as User | undefined,
-  loading: true
+  user: null as User | undefined | null,
+  session: null as Session | null,
+  loading: true,
+  error: null as AuthError | null
 };
 
 export const useUserStore = createPersistStore(
@@ -19,17 +21,19 @@ export const useUserStore = createPersistStore(
     const methods = {
       async fetchUser() {
         const supabase = createClient();
-        supabase.auth.onAuthStateChange((event, session) => {
+        supabase.auth.onAuthStateChange(async (event, session) => {
+          console.log('🚀~ event:', event);
           switch (event) {
+            case 'SIGNED_IN':
+              refreshSession();
             case 'INITIAL_SESSION':
+            case 'SIGNED_OUT':
+            case 'TOKEN_REFRESHED':
+            case 'PASSWORD_RECOVERY':
+            case 'USER_UPDATED':
               get().setUser(session?.user);
               break;
-            case 'SIGNED_IN':
-              // 这里不会触发 因为我们是在服务端登录后导航的，所以这里不会触发 因此主动调用fetchUser
-              // console.log('User signed in:', session);
-              // 本地没有触发 然而在vercel上可以触发 所以注释掉
-              break;
-            case 'SIGNED_OUT':
+            default:
               get().setUser(session?.user);
           }
           get().setLoading(false);
@@ -38,8 +42,14 @@ export const useUserStore = createPersistStore(
       setUser(user: typeof DEFAULT_USER.user) {
         set({ user });
       },
+      setSession(session: typeof DEFAULT_USER.session) {
+        set({ session });
+      },
       setLoading(loading: typeof DEFAULT_USER.loading) {
         set({ loading });
+      },
+      setError(error: typeof DEFAULT_USER.error) {
+        set({ error });
       }
     };
     return methods;

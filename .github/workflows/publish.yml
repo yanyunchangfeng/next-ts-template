@@ -2,7 +2,7 @@ name: Publish Package to npmjs
 
 env:
   TEST_SCRIPT: ${{vars.TEST_SCRIPT ||  'test'}}
-  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build:export'}}
+  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build'}}
 on:
   workflow_dispatch: # 手动触发
   push:

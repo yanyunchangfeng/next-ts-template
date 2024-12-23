@@ -1,6 +1,6 @@
 import { Skeleton } from '@/app/components';
 
-const Load: React.FC = () => {
+const Loading: React.FC = () => {
   return <Skeleton />;
 };
-export default Load;
+export default Loading;

@@ -15,7 +15,7 @@ export const AddNote: React.FC = () => {
       await addNote(note);
       setAddIsOpen(false);
     } catch (err) {
-      toast.error(`${err}`);
+      toast.error(`${err}`, { position: 'top-center' });
     }
   };
   const handleOpen = async () => {
@@ -39,7 +39,7 @@ export const AddNote: React.FC = () => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={handleCancel} />
+      <NoteDrawer open={addIsOpen} onOk={handleAddNote} onCancel={handleCancel} data={{}} />
     </>
   );
 };
