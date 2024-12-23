@@ -1,6 +1,6 @@
 import { createClient } from './supabase/client';
 
-export async function logOut() {
+export async function refreshSession() {
   const supabase = createClient();
-  return await supabase.auth.signOut();
+  return await supabase.auth.refreshSession();
 }

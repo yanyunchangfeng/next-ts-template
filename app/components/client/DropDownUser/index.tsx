@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator
   // DropdownMenuGroup
 } from '@/components/ui/dropdown-menu';
-import { logOut } from '@/app/utils';
+import { logOut, logIn } from '@/app/utils';
 import { useRouter } from 'next/navigation';
 import { useNotesStore, useUserStore, DEFAULT_NOTES } from '@/app/store';
 import { SidebarMenuButton, useSidebar } from '@/components/ui/sidebar';
@@ -18,23 +18,54 @@ import {
   // BadgeCheck, Bell,
   ChevronsUpDown,
   // CreditCard,
-  LogOut
+  LogOut,
+  LogIn
   // Sparkles
 } from 'lucide-react';
+import { toast } from 'sonner';
 
 export const DropDownUser: React.FC<React.PropsWithChildren> = () => {
-  const { user } = useUserStore();
+  const { user, fetchUser } = useUserStore();
   const { setSearchNote } = useNotesStore();
   const { isMobile } = useSidebar();
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   const handleLogOut = async () => {
-    await logOut();
+    const { error } = await logOut();
+    if (error) {
+      return toast.error(`${error}`);
+    }
     setSearchNote(DEFAULT_NOTES.searchNote);
-    router.push('/blog');
+    router.push('/');
     router.refresh();
   };
+  const handleLogIn = async () => {
+    const { error } = await logIn();
+    if (error) {
+      return toast.error(`${error}`);
+    }
+  };
+  const dropDownItems = React.useMemo(() => {
+    if (user) {
+      return (
+        <DropdownMenuItem onClick={handleLogOut}>
+          <LogOut />
+          Log out
+        </DropdownMenuItem>
+      );
+    }
+    return (
+      <DropdownMenuItem onClick={handleLogIn}>
+        <LogIn />
+        Log in
+      </DropdownMenuItem>
+    );
+  }, [user]);
+  React.useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <DropDownMenu
       open={open}
@@ -76,10 +107,7 @@ export const DropDownUser: React.FC<React.PropsWithChildren> = () => {
             </DropdownMenuItem>
           </DropdownMenuGroup> */}
           {/* <DropdownMenuSeparator /> */}
-          <DropdownMenuItem onClick={handleLogOut} disabled={!user}>
-            <LogOut />
-            Log out
-          </DropdownMenuItem>
+          {dropDownItems}
         </DropdownMenuContent>
       }
     >

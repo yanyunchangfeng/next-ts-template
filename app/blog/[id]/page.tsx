@@ -1,16 +1,17 @@
 'use client';
-import Link from 'next/link';
-import { type FC } from 'react';
+
+import { FC } from 'react';
+import { BlogParams, BlogEntities } from '@/app/shared';
 import React from 'react';
 import { Skeleton, AspectRatioImage } from '@/app/components';
 import { toast } from 'sonner';
-import { BlogEntities } from '@/app/shared';
 
-const Blog: FC = () => {
+const Page: FC<BlogParams> = ({ params: { id } }) => {
   const [photos, setPhotos] = React.useState<BlogEntities>([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
   const fetchData = async () => {
-    const res = await fetch(`/api/blog`);
+    const res = await fetch(`/api/blog/${id}`);
     const data = await res.json();
     if (!res.ok) {
       const message = data?.message ?? 'Unknown error';
@@ -18,8 +19,7 @@ const Blog: FC = () => {
     }
     return data as BlogEntities;
   };
-
-  const fetchPhotos = async () => {
+  const fetchPhoto = async () => {
     try {
       const data = await fetchData();
       setPhotos(data);
@@ -29,27 +29,20 @@ const Blog: FC = () => {
       setIsLoading(false);
     }
   };
+
   React.useEffect(() => {
-    fetchPhotos();
+    fetchPhoto();
   }, []);
 
-  const photoTem = React.useMemo(() => {
+  const PhotoItem = React.useMemo(() => {
     if (isLoading) {
       return <Skeleton />;
     }
-    return photos.map(({ id, base64 }) => {
-      return (
-        <Link key={id} href={`/blog/${id}`}>
-          <AspectRatioImage src={base64} alt="dog" fill />
-        </Link>
-      );
-    });
-  }, [photos, isLoading]);
+    const src = photos[0]?.base64;
+    return <AspectRatioImage src={src} fill alt="dog" className="w-[400px] mx-auto self-center" />;
+  }, [isLoading, photos]);
 
-  return (
-    <React.Profiler id="home" onRender={console.log}>
-      <div className="flex flex-col justify-center items-center flex-1 gap-4">{photoTem} </div>
-    </React.Profiler>
-  );
+  return PhotoItem;
 };
-export default Blog;
+
+export default Page;

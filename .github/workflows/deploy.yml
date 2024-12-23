@@ -2,7 +2,7 @@ name: Deploy
 
 env:
   TEST_SCRIPT: ${{vars.TEST_SCRIPT ||  'test'}}
-  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build:export'}}
+  BUILD_SCRIPT: ${{vars.BUILD_SCRIPT ||  'build'}}
 
 on:
   workflow_dispatch:
@@ -45,11 +45,11 @@ jobs:
       - name: Build project
         run: pnpm ${{env.BUILD_SCRIPT}}
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: dist
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
