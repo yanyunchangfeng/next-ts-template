@@ -1,3 +1,9 @@
+# [2.1.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.0.0...v2.1.0) (2024-12-23)
+
+### Features
+
+- release ([52b9488](https://github.com/yanyunchangfeng/next-ts-template/commit/52b9488073ed1b615e1b4b3aef7f9788399cfd30))
+
 # [2.1.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.0.0...v2.1.0-rc.1) (2024-12-23)
 
 ### Features
