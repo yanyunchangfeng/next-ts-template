@@ -1,3 +1,9 @@
+# [2.2.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.1.0...v2.2.0-rc.1) (2024-12-23)
+
+### Features
+
+- update pkg.json ([bb164e1](https://github.com/yanyunchangfeng/next-ts-template/commit/bb164e1b1cf60fa2eac82f6384f13e3677669c5d))
+
 # [2.1.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.0.0...v2.1.0) (2024-12-23)
 
 ### Features
