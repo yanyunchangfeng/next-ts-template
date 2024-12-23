@@ -19,7 +19,7 @@
     "release": "semantic-release"
   },
   "files": [
-    "dist"
+    ".next"
   ],
   "repository": {
     "type": "git",
