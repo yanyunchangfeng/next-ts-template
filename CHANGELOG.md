@@ -1,3 +1,9 @@
+# [2.5.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.4.0...v2.5.0-rc.1) (2024-12-24)
+
+### Features
+
+- update notes store ([c1a4a8f](https://github.com/yanyunchangfeng/next-ts-template/commit/c1a4a8f7498e5057862580825efc8ed0b60fc5c7))
+
 # [2.4.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.3.0...v2.4.0) (2024-12-24)
 
 ### Features
