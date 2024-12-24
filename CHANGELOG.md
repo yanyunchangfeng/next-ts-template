@@ -1,3 +1,9 @@
+# [2.4.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.3.0...v2.4.0-rc.1) (2024-12-24)
+
+### Features
+
+- update layout & notes page ([3092c53](https://github.com/yanyunchangfeng/next-ts-template/commit/3092c531fbe5e40270b11297b3a3681bddf9d19a))
+
 # [2.3.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.2.0...v2.3.0) (2024-12-24)
 
 ### Features
