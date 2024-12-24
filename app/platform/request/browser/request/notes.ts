@@ -6,7 +6,7 @@ export let notesAbortController = new AbortController();
 export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> => {
   notesAbortController = new AbortController();
   const signal =
-    AbortSignal?.any?.([notesAbortController.signal, AbortSignal.timeout(1000 * 7)]) ?? notesAbortController.signal;
+    AbortSignal?.any?.([notesAbortController.signal, AbortSignal?.timeout?.(1000 * 7)]) ?? notesAbortController.signal;
   try {
     const startDate = searchParams?.startDate ?? '';
     const endDate = searchParams?.endDate ?? '';
@@ -21,7 +21,7 @@ export const fetchData = async (searchParams: NoteSearchParams): Promise<Notes> 
     const data = await res.json();
     return data;
   } catch (e) {
-    toast.error(`${e}`, { position: 'top-center' });
+    toast.error(`Fetch Notes ${e}`, { position: 'top-center' });
     return { totalCount: 0, totalPages: 0, data: [], pageNo: searchParams.pageNo, pageSize: searchParams.pageSize };
   }
 };
