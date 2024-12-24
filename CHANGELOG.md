@@ -1,3 +1,9 @@
+# [2.3.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.2.0...v2.3.0) (2024-12-24)
+
+### Features
+
+- add custom globals ([4cd6481](https://github.com/yanyunchangfeng/next-ts-template/commit/4cd6481949e56079647e116c26b3f22aface392d))
+
 # [2.3.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.2.0...v2.3.0-rc.1) (2024-12-24)
 
 ### Features
