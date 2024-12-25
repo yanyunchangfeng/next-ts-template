@@ -1,6 +1,6 @@
 {
   "name": "next-ts-template",
-  "version": "2.6.0-rc.1",
+  "version": "2.6.0",
   "private": false,
   "scripts": {
     "dev": "next dev",
