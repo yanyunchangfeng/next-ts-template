@@ -1,3 +1,9 @@
+# [2.7.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.6.0...v2.7.0) (2024-12-25)
+
+### Features
+
+- update AddNote & NoteDrawer ([cecd630](https://github.com/yanyunchangfeng/next-ts-template/commit/cecd63038da83ef35372ed2ebe9a35d90b20b1e2))
+
 # [2.7.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.6.0...v2.7.0-rc.1) (2024-12-25)
 
 ### Features
