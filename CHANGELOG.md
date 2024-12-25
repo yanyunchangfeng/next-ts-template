@@ -1,3 +1,9 @@
+# [2.6.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.5.0...v2.6.0-rc.1) (2024-12-25)
+
+### Features
+
+- update notes page , AddNote , NotesHeader ([990211d](https://github.com/yanyunchangfeng/next-ts-template/commit/990211d777dccb4ce2c50dbcabf867724df09449))
+
 # [2.5.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.4.0...v2.5.0) (2024-12-24)
 
 ### Features
