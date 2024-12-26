@@ -1,3 +1,9 @@
+# [2.8.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.7.0...v2.8.0-rc.1) (2024-12-26)
+
+### Features
+
+- update server user component ([87ddc0e](https://github.com/yanyunchangfeng/next-ts-template/commit/87ddc0e5366f32c2f1eade740251c6bdd4dd5e1b))
+
 # [2.7.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.6.0...v2.7.0) (2024-12-25)
 
 ### Features
