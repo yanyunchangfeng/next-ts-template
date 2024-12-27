@@ -1,3 +1,9 @@
+# [2.9.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.8.0...v2.9.0) (2024-12-27)
+
+### Features
+
+- update SideBar menuitem active ([7cbdfd9](https://github.com/yanyunchangfeng/next-ts-template/commit/7cbdfd9b4ae6e5bbdae380e52792ee9c1654301d))
+
 # [2.9.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.8.0...v2.9.0-rc.1) (2024-12-27)
 
 ### Features
