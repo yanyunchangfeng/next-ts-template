@@ -1,3 +1,9 @@
+# [2.10.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.9.0...v2.10.0) (2024-12-27)
+
+### Features
+
+- update pkg dev & host.js ([b40935c](https://github.com/yanyunchangfeng/next-ts-template/commit/b40935cf9781b5ba05737a5966e4e78b0799e46a))
+
 # [2.10.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.9.0...v2.10.0-rc.1) (2024-12-27)
 
 ### Features
