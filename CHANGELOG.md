@@ -1,3 +1,9 @@
+## [2.11.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.0...v2.11.1) (2024-12-28)
+
+### Bug Fixes
+
+- blog page & header ([5dc60de](https://github.com/yanyunchangfeng/next-ts-template/commit/5dc60de0a1b0329c7ead497d544f36774342a586))
+
 ## [2.11.1-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.0...v2.11.1-rc.1) (2024-12-28)
 
 ### Bug Fixes
