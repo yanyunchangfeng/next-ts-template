@@ -1,3 +1,9 @@
+## [2.11.3](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.2...v2.11.3) (2024-12-28)
+
+### Bug Fixes
+
+- browser setting lng switch lauguage show ([eb0495f](https://github.com/yanyunchangfeng/next-ts-template/commit/eb0495fbacfff8eb4b44e2ae9501a7688f7622a7))
+
 ## [2.11.3-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.2...v2.11.3-rc.1) (2024-12-28)
 
 ### Bug Fixes
