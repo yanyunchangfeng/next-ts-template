@@ -1,3 +1,9 @@
+# [2.11.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.10.0...v2.11.0-rc.1) (2024-12-28)
+
+### Features
+
+- add lang switch & update header i18n ([d5c51c1](https://github.com/yanyunchangfeng/next-ts-template/commit/d5c51c1eace5247496eb6dc6bd97519d132f7fe0))
+
 # [2.10.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.9.0...v2.10.0) (2024-12-27)
 
 ### Features
