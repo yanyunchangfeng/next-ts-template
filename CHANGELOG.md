@@ -1,3 +1,9 @@
+## [2.11.2-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.1...v2.11.2-rc.1) (2024-12-28)
+
+### Bug Fixes
+
+- langSwitch language show ([ff5f9b4](https://github.com/yanyunchangfeng/next-ts-template/commit/ff5f9b4eb15eda4ae990885f1115f728d93f8973))
+
 ## [2.11.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.0...v2.11.1) (2024-12-28)
 
 ### Bug Fixes
