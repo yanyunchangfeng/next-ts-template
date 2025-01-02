@@ -1,3 +1,9 @@
+# [2.12.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.4...v2.12.0-rc.1) (2025-01-02)
+
+### Features
+
+- update Header ([1b043c1](https://github.com/yanyunchangfeng/next-ts-template/commit/1b043c1ffa404b69f311f837a6e22f2e3d753fe4))
+
 ## [2.11.3](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.11.2...v2.11.3) (2024-12-28)
 
 ### Bug Fixes
