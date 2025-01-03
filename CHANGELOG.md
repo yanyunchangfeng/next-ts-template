@@ -1,3 +1,9 @@
+# [2.13.0](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.12.0...v2.13.0) (2025-01-03)
+
+### Features
+
+- add schema-dts ([3148de2](https://github.com/yanyunchangfeng/next-ts-template/commit/3148de2c0abe227e660bd0222d403c4494b9a490))
+
 # [2.13.0-rc.1](https://github.com/yanyunchangfeng/next-ts-template/compare/v2.12.0...v2.13.0-rc.1) (2025-01-03)
 
 ### Features
